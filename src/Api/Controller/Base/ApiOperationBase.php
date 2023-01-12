@@ -6,6 +6,7 @@ namespace DesolatorMagno\AuthorizePhp\Api\Controller\Base;
 use DesolatorMagno\AuthorizePhp\Api\Constants\ANetEnvironment;
 use DesolatorMagno\AuthorizePhp\Api\Contract\V1\AnetApiRequestType;
 use DesolatorMagno\AuthorizePhp\Api\Contract\V1\ANetApiResponseType;
+use DesolatorMagno\AuthorizePhp\Util\AuthorizeApiClient;
 use DesolatorMagno\AuthorizePhp\Util\Log;
 use DesolatorMagno\AuthorizePhp\Util\LogFactory as LogFactory;
 use DesolatorMagno\AuthorizePhp\Util\Mapper;
