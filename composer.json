@@ -1,45 +1,48 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "desolatormagno/authorize-php",
+    "description": "Update For SDK from Authorize",
     "keywords": [
-        ":vendor_name",
-        ":package_slug"
+        "DesolatorMagno",
+        "authorize-php"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/desolatormagno/authorize-php",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Reny Ramos",
+            "email": "renyramosgarcia@gmail.com",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": "^8.1"
+        "php": "^7.4",
+        "ext-curl": "*",
+        "ext-json": "*"
     },
     "require-dev": {
-        :require_dev_testing,
-        :require_dev_codestyle,
+        "phpunit/phpunit": "^9.5",
+        "laravel/pint": "^1.2",
         "spatie/ray": "^1.28"
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src"
+            "DesolatorMagno\\AuthorizePhp\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "DesolatorMagno\\AuthorizePhp\\Tests\\": "tests"
         }
     },
     "scripts": {
-        :scripts_testing,
-        :scripts_codestyle
+        "test": "vendor/bin/phpunit",
+            "test-coverage": "vendor/bin/phpunit --coverage",
+        "format": "vendor/bin/pint"
     },
     "config": {
         "sort-packages": true,
         "allow-plugins": {
-            :plugins_testing,
+
             "phpstan/extension-installer": true
         }
     },
