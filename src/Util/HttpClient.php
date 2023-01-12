@@ -27,7 +27,7 @@ class HttpClient
      *
      * @param string $endPoint end point to hit from  \net\authorize\api\constants\ANetEnvironment
      */
-    public function setPostUrl( $endPoint = \DesolatorMagno\AuthorizePhp\api\constants\ANetEnvironment::CUSTOM)
+    public function setPostUrl( $endPoint = \DesolatorMagno\AuthorizePhp\Api\Constants\ANetEnvironment::CUSTOM)
     {
         $this->_Url = sprintf( "%s/xml/v1/request.api", $endPoint);
     }

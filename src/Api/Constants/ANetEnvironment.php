@@ -1,5 +1,5 @@
 <?php
-namespace DesolatorMagno\AuthorizePhp\api\constants;
+namespace DesolatorMagno\AuthorizePhp\Api\Constants;
 
 class ANetEnvironment
 {

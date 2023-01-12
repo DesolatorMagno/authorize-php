@@ -1,14 +1,14 @@
 <?php
-namespace DesolatorMagno\AuthorizePhp\api\Controller;
+namespace DesolatorMagno\AuthorizePhp\Api\Controller;
 
-use DesolatorMagno\AuthorizePhp\api\contract\v1\AnetApiRequestType;
-use DesolatorMagno\AuthorizePhp\api\Controller\Base\ApiOperationBase;
+use DesolatorMagno\AuthorizePhp\Api\Contract\V1\AnetApiRequestType;
+use DesolatorMagno\AuthorizePhp\Api\Controller\Base\ApiOperationBase;
 
 class GetTransactionDetailsController extends ApiOperationBase
 {
     public function __construct(AnetApiRequestType $request)
     {
-        $responseType = 'DesolatorMagno\AuthorizePhp\api\contract\v1\GetTransactionDetailsResponse';
+        $responseType = 'DesolatorMagno\AuthorizePhp\Api\Contract\V1\GetTransactionDetailsResponse';
         parent::__construct($request, $responseType);
     }
 

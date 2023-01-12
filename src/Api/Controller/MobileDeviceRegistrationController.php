@@ -1,14 +1,14 @@
 <?php
-namespace DesolatorMagno\AuthorizePhp\api\Controller;
+namespace DesolatorMagno\AuthorizePhp\Api\Controller;
 
-use DesolatorMagno\AuthorizePhp\api\contract\v1\AnetApiRequestType;
-use DesolatorMagno\AuthorizePhp\api\Controller\Base\ApiOperationBase;
+use DesolatorMagno\AuthorizePhp\Api\Contract\V1\AnetApiRequestType;
+use DesolatorMagno\AuthorizePhp\Api\Controller\Base\ApiOperationBase;
 
 class MobileDeviceRegistrationController extends ApiOperationBase
 {
     public function __construct(AnetApiRequestType $request)
     {
-        $responseType = 'DesolatorMagno\AuthorizePhp\api\contract\v1\MobileDeviceRegistrationResponse';
+        $responseType = 'DesolatorMagno\AuthorizePhp\Api\Contract\V1\MobileDeviceRegistrationResponse';
         parent::__construct($request, $responseType);
     }
 
