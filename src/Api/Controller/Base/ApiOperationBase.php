@@ -1,158 +1,103 @@
 <?php
+
 namespace DesolatorMagno\AuthorizePhp\Api\Controller\Base;
 
-use DesolatorMagno\AuthorizePhp\util\Helpers;
-use DesolatorMagno\AuthorizePhp\util\HttpClient;
-use DesolatorMagno\AuthorizePhp\util\LogFactory as LogFactory;
-use InvalidArgumentException;
-// use JMS\Serializer\SerializerBuilder;
-// use JMS\Serializer\handler\HandlerRegistryInterface;
-// use GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\BaseTypesHandler;
-// use GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\XmlSchemaDateHandler;
 
+use DesolatorMagno\AuthorizePhp\Api\Constants\ANetEnvironment;
+use DesolatorMagno\AuthorizePhp\Api\Contract\V1\AnetApiRequestType;
+use DesolatorMagno\AuthorizePhp\Api\Contract\V1\ANetApiResponseType;
+use DesolatorMagno\AuthorizePhp\Util\Log;
+use DesolatorMagno\AuthorizePhp\Util\LogFactory as LogFactory;
+use DesolatorMagno\AuthorizePhp\Util\Mapper;
+use InvalidArgumentException;
+use ReflectionClass;
 
 abstract class ApiOperationBase implements IApiOperation
 {
-    /**
-     * @var \DesolatorMagno\AuthorizePhp\Api\Contract\V1\AnetApiRequestType
-     */
-    private $apiRequest = null;
+    private AnetApiRequestType $apiRequest;
+    protected ?AnetApiResponseType $apiResponse = null;
+    private string $apiResponseType;
+    public AuthorizeApiClient $httpClient;
+    public ?Log $logger;
 
     /**
-     * @var \DesolatorMagno\AuthorizePhp\Api\Contract\V1\AnetApiResponseType
-     */
-    private $apiResponse = null;
-
-    /**
-     * @var String
-     */
-    private $apiResponseType = '';
-
-    /**
-     * @var \JMS\Serializer\Serializer;
-     */
-    public $serializer = null;
-
-    /**
-     * @var \DesolatorMagno\AuthorizePhp\util\HttpClient;
-     */
-    public $httpClient = null;
-    private $logger = null;
-    /**
-     * Constructor.
-     *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\AnetApiRequestType $request ApiRequest to send
-     * @param string $responseType response type expected
      * @throws InvalidArgumentException if invalid request
      */
-    public function __construct(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\AnetApiRequestType $request, $responseType)
+    public function __construct(AnetApiRequestType $request, string $responseType)
     {
-        $this->logger = LogFactory::getLog(get_class($this));
-
-        if ( null == $request)
-        {
-            throw new InvalidArgumentException( "request cannot be null");
+        if (null == $responseType || '' == $responseType) {
+            throw new InvalidArgumentException("responseType cannot be null or empty");
         }
 
-        if ( null == $responseType || '' == $responseType)
-        {
-            throw new InvalidArgumentException( "responseType cannot be null or empty");
-        }
-
-        if ( null != $this->apiResponse)
-        {
-            throw new InvalidArgumentException( "response has to be null");
+        if (null != $this->apiResponse) {
+            throw new InvalidArgumentException("response has to be null");
         }
 
         $this->apiRequest = $request;
         $this->validate();
 
         $this->apiResponseType = $responseType;
-        $this->httpClient = new HttpClient;
+        $this->httpClient = new AuthorizeApiClient();
 
-/*        $serializerBuilder = SerializerBuilder::create();
-        $serializerBuilder->addMetadataDir( __DIR__ . '/../../yml/v1', 'net\authorize\api\contract\V1');//..\..\yml\V1\ //'/../lib/net/authorize/api/yml/v1'
-        $serializerBuilder->configureHandlers(
-            function (HandlerRegistryInterface $h)
+        $this->logger = LogFactory::getLog(get_class($this));
+        //$this->httpClient = new HttpClient;
 
-            use($serializerBuilder)
-            {
-                $serializerBuilder->addDefaultHandlers();
-                $h->registerSubscribingHandler(new BaseTypesHandler()); // XMLSchema List handling
-                $h->registerSubscribingHandler(new XmlSchemaDateHandler()); // XMLSchema date handling
-            }
-        );
-        $this->serializer = $serializerBuilder->build();*/
+        /*Log::withContext([
+            'request-id' => $requestId
+        ]);*/
     }
 
-    /**
-     * Retrieves response
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\AnetApiResponseType
-     */
-    public function getApiResponse()
+    public function getApiResponse(): ?AnetApiResponseType
     {
         return $this->apiResponse;
     }
 
-    /**
-     * Sends request and retrieves response
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\AnetApiResponseType
-     */
-    public function executeWithApiResponse($endPoint = \DesolatorMagno\AuthorizePhp\Api\Constants\ANetEnvironment::CUSTOM)
+    public function executeWithApiResponse($endPoint = ANetEnvironment::CUSTOM): ?AnetApiResponseType
     {
         $this->execute($endPoint);
         return $this->apiResponse;
     }
 
-    public function execute($endPoint = \DesolatorMagno\AuthorizePhp\Api\Constants\ANetEnvironment::CUSTOM)
+    public function execute($endPoint = ANetEnvironment::CUSTOM)
     {
         $this->beforeExecute();
 
-    $this->apiRequest->setClientId("sdk-php-" . \DesolatorMagno\AuthorizePhp\Api\Constants\ANetEnvironment::VERSION);
+        $this->apiRequest->setClientId("sdk-php-" . ANetEnvironment::VERSION);
 
-        $this->logger->info("Request Creation Begin");
-        $this->logger->debug($this->apiRequest);
-        // $xmlRequest = $this->serializer->serialize($this->apiRequest, 'xml');
-        //$requestArray = [lcfirst((new \ReflectionClass($this->apiRequest))->getShortName()) => $this->apiRequest];
+        //Log::channel('authorize')->info('Request Creation Begin');
+        ////Log::channel('authorize')->debug($this->apiRequest->jsonSerialize());
 
-        // $requestRoot = (new \DesolatorMagno\AuthorizePhp\Api\Contract\V1\Mapper)->getXmlName((new \ReflectionClass($this->apiRequest))->getName());
-        // $requestRoot = (\DesolatorMagno\AuthorizePhp\Api\Contract\V1\Mapper::Instance())->getXmlName((new \ReflectionClass($this->apiRequest))->getName());
-        $mapper = \DesolatorMagno\AuthorizePhp\util\Mapper::Instance();
-        $requestRoot = $mapper->getXmlName((new \ReflectionClass($this->apiRequest))->getName());
+        $mapper = Mapper::Instance();
+        $requestRoot = $mapper->getXmlName((new ReflectionClass($this->apiRequest))->getName());
 
         $requestArray = [$requestRoot => $this->apiRequest];
 
-        $this->logger->info("Request  Creation End");
+        //Log::channel('authorize')->info('Request  Creation End');
 
-        $this->httpClient->setPostUrl( $endPoint);
-        /*$xmlResponse = $this->httpClient->_sendRequest($xmlRequest);
-        if ( null == $xmlResponse)
-        {
-            throw new \Exception( "Error getting valid response from api. Check log file for error details");
-        }
-        $this->logger->info("Response De-Serialization Begin");
-        $this->apiResponse = $this->serializer->deserialize( $xmlResponse, $this->apiResponseType , 'xml');
-        $this->logger->info("Response De-Serialization End");*/
+        $this->httpClient->setPostUrl($endPoint);
 
-        $jsonResponse = $this->httpClient->_sendRequest(json_encode($requestArray));
-        if($jsonResponse != null){
-            //decoding json and removing bom
-            $possibleBOM = substr($jsonResponse, 0, 3);
-            $utfBOM = pack("CCC", 0xef, 0xbb, 0xbf);
+        //$jsonResponse = $this->httpClient->_sendRequest(json_encode($requestArray));
+        $requestData = json_encode($requestArray);
+        $jsonResponse = $this->httpClient->sendRequest($requestData);
+        //Log::channel('authorize')->info('Request Data');
+        //Log::channel('authorize')->info($jsonResponse);
 
-            if (0 === strncmp($possibleBOM, $utfBOM, 3)) {
-                $response = json_decode( substr($jsonResponse,3), true);
-            }
-            else {
-                $response = json_decode($jsonResponse, true);
-            }
-            $this->apiResponse = new $this->apiResponseType();
-            $this->apiResponse->set($response);
-        }
-        else {
-            $this->logger->error("Error getting response from API");
+        if (is_null($jsonResponse)) {
+            //Log::channel('authorize')->error('Error getting response from API');
             $this->apiResponse = null;
+            $this->afterExecute();
+            return;
         }
+
+        $response = json_decode($jsonResponse, true);
+        //Log::channel('authorize')->info(gettype($response));
+        ////Log::channel('authorize')->info($response);
+
+        $this->apiResponse = new $this->apiResponseType();
+        $this->apiResponse->set($response);
+        //Log::channel('authorize')->info($this->apiResponse->jsonSerialize());
+        //Log::channel('authorize')->info(serialize($this->apiResponse));
+
 
         $this->afterExecute();
     }
@@ -160,17 +105,24 @@ abstract class ApiOperationBase implements IApiOperation
     private function validate()
     {
         $merchantAuthentication = $this->apiRequest->getMerchantAuthentication();
-        if ( null == $merchantAuthentication)
-        {
-            throw new \InvalidArgumentException( "MerchantAuthentication cannot be null");
+        if (null == $merchantAuthentication) {
+            throw new InvalidArgumentException("MerchantAuthentication cannot be null");
         }
 
         $this->validateRequest();
     }
 
-    protected function beforeExecute() {}
-    protected function afterExecute()  {}
-    protected function validateRequest() {} //need to make this abstract
+    protected function beforeExecute()
+    {
+    }
+
+    protected function afterExecute()
+    {
+    }
+
+    protected function validateRequest()
+    {
+    } //need to make this abstract
 
     protected function now()
     {
