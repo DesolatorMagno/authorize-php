@@ -10,7 +10,7 @@ class EmvDetailsAType implements \JsonSerializable
 
     /**
      * @property
-     * \net\authorize\api\contract\V1\TransactionDetailsType\EmvDetailsAType\TagAType[]
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionDetailsType\EmvDetailsAType\TagAType[]
      * $tag
      */
     private $tag = null;
@@ -20,7 +20,7 @@ class EmvDetailsAType implements \JsonSerializable
      *
      * @return self
      * @param
-     * \net\authorize\api\contract\V1\TransactionDetailsType\EmvDetailsAType\TagAType
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionDetailsType\EmvDetailsAType\TagAType
      * $tag
      */
     public function addToTag(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionDetailsType\EmvDetailsAType\TagAType $tag)
@@ -55,7 +55,7 @@ class EmvDetailsAType implements \JsonSerializable
      * Gets as tag
      *
      * @return
-     * \net\authorize\api\contract\V1\TransactionDetailsType\EmvDetailsAType\TagAType[]
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionDetailsType\EmvDetailsAType\TagAType[]
      */
     public function getTag()
     {
@@ -66,7 +66,7 @@ class EmvDetailsAType implements \JsonSerializable
      * Sets a new tag
      *
      * @param
-     * \net\authorize\api\contract\V1\TransactionDetailsType\EmvDetailsAType\TagAType[]
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionDetailsType\EmvDetailsAType\TagAType[]
      * $tag
      * @return self
      */

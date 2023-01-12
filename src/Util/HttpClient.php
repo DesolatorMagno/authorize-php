@@ -25,7 +25,7 @@ class HttpClient
     /**
      * Set a log file.
      *
-     * @param string $endPoint end point to hit from  \net\authorize\api\constants\ANetEnvironment
+     * @param string $endPoint end point to hit from  \DesolatorMagno\AuthorizePhp\Api\Constants\ANetEnvironment
      */
     public function setPostUrl( $endPoint = \DesolatorMagno\AuthorizePhp\Api\Constants\ANetEnvironment::CUSTOM)
     {

@@ -2,8 +2,11 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
+use DateTime;
 use DesolatorMagno\AuthorizePhp\Traits\SerializeTrait;
-use net\authorize\util\Mapper;
+use DesolatorMagno\AuthorizePhp\Util\Mapper;
+use JsonSerializable;
+
 
 /**
  * Class representing ANetApiRequestType
@@ -11,44 +14,24 @@ use net\authorize\util\Mapper;
  *
  * XSD Type: ANetApiRequest
  */
-class ANetApiRequestType implements \JsonSerializable
+class ANetApiRequestType implements JsonSerializable
 {
 
     use SerializeTrait;
-    /**
-     * @property \net\authorize\api\contract\V1\MerchantAuthenticationType
-     * $merchantAuthentication
-     */
-    private $merchantAuthentication = null;
 
-    /**
-     * @property string $clientId
-     */
-    private $clientId = null;
+    private ?MerchantAuthenticationType $merchantAuthentication = null;
 
-    /**
-     * @property string $refId
-     */
-    private $refId = null;
+    private ?string $clientId = null;
 
-    /**
-     * Gets as merchantAuthentication
-     *
-     * @return \net\authorize\api\contract\V1\MerchantAuthenticationType
-     */
-    public function getMerchantAuthentication()
+    private ?string $refId = null;
+
+
+    public function getMerchantAuthentication(): ?MerchantAuthenticationType
     {
         return $this->merchantAuthentication;
     }
 
-    /**
-     * Sets a new merchantAuthentication
-     *
-     * @param \net\authorize\api\contract\V1\MerchantAuthenticationType
-     * $merchantAuthentication
-     * @return self
-     */
-    public function setMerchantAuthentication(\net\authorize\api\contract\V1\MerchantAuthenticationType $merchantAuthentication)
+    public function setMerchantAuthentication(MerchantAuthenticationType $merchantAuthentication): ANetApiRequestType
     {
         $this->merchantAuthentication = $merchantAuthentication;
         return $this;
@@ -59,91 +42,73 @@ class ANetApiRequestType implements \JsonSerializable
      *
      * @return string
      */
-    public function getClientId()
+    public function getClientId(): ?string
     {
         return $this->clientId;
     }
 
-    /**
-     * Sets a new clientId
-     *
-     * @param string $clientId
-     * @return self
-     */
-    public function setClientId($clientId)
+    public function setClientId(string $clientId): ANetApiRequestType
     {
         $this->clientId = $clientId;
         return $this;
     }
 
-    /**
-     * Gets as refId
-     *
-     * @return string
-     */
-    public function getRefId()
+    public function getRefId(): ?string
     {
         return $this->refId;
     }
 
-    /**
-     * Sets a new refId
-     *
-     * @param string $refId
-     * @return self
-     */
-    public function setRefId($refId)
+    public function setRefId(string $refId): ANetApiRequestType
     {
         $this->refId = $refId;
         return $this;
     }
 
-     // Json Set Code
+    // Json Set Code
+
+    /**
+     * @throws \Exception
+     */
     public function set($data)
     {
-        if(is_array($data) || is_object($data)) {
-			$mapper = Mapper::Instance();
-			foreach($data AS $key => $value) {
-				$classDetails = $mapper->getClass(get_class() , $key);
+        if (is_array($data) || is_object($data)) {
+            $mapper = Mapper::Instance();
+            foreach ($data as $key => $value) {
+                $classDetails = $mapper->getClass(get_class(), $key);
 
-				if($classDetails !== NULL ) {
-					if ($classDetails->isArray) {
-						if ($classDetails->isCustomDefined) {
-							foreach($value AS $keyChild => $valueChild) {
-								$type = new $classDetails->className;
-								$type->set($valueChild);
-								$this->{'addTo' . $key}($type);
-							}
-						}
-						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
-							foreach($value AS $keyChild => $valueChild) {
-								$type = new \DateTime($valueChild);
-								$this->{'addTo' . $key}($type);
-							}
-						}
-						else {
-							foreach($value AS $keyChild => $valueChild) {
-								$this->{'addTo' . $key}($valueChild);
-							}
-						}
-					}
-					else {
-						if ($classDetails->isCustomDefined){
-							$type = new $classDetails->className;
-							$type->set($value);
-							$this->{'set' . $key}($type);
-						}
-						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
-							$type = new \DateTime($value);
-							$this->{'set' . $key}($type);
-						}
-						else {
-							$this->{'set' . $key}($value);
-						}
-					}
-				}
-			}
-		}
+                if ($classDetails !== NULL) {
+                    if ($classDetails->isArray) {
+                        if ($classDetails->isCustomDefined) {
+                            foreach ($value as $keyChild => $valueChild) {
+                                $type = new $classDetails->className;
+                                $type->set($valueChild);
+                                $this->{'addTo' . $key}($type);
+                            }
+                        } else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date') {
+                            foreach ($value as $keyChild => $valueChild) {
+                                $type = new DateTime($valueChild);
+                                $this->{'addTo' . $key}($type);
+                            }
+                        } else {
+                            foreach ($value as $keyChild => $valueChild) {
+                                $this->{'addTo' . $key}($valueChild);
+                            }
+                        }
+                    } else {
+                        if ($classDetails->isCustomDefined) {
+                            $type = new $classDetails->className;
+                            $type->set($value);
+                            $this->{'set' . $key}($type);
+                        } else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date') {
+                            $type = new DateTime($value);
+                            $this->{'set' . $key}($type);
+                        } else {
+                            $this->{'set' . $key}($value);
+                        }
+                    }
+                }
+            }
+        }
     }
 
 }

@@ -115,8 +115,8 @@ abstract class ApiOperationBase implements IApiOperation
         // $xmlRequest = $this->serializer->serialize($this->apiRequest, 'xml');
         //$requestArray = [lcfirst((new \ReflectionClass($this->apiRequest))->getShortName()) => $this->apiRequest];
 
-        // $requestRoot = (new \net\authorize\api\contract\V1\Mapper)->getXmlName((new \ReflectionClass($this->apiRequest))->getName());
-        // $requestRoot = (\net\authorize\api\contract\V1\Mapper::Instance())->getXmlName((new \ReflectionClass($this->apiRequest))->getName());
+        // $requestRoot = (new \DesolatorMagno\AuthorizePhp\Api\Contract\V1\Mapper)->getXmlName((new \ReflectionClass($this->apiRequest))->getName());
+        // $requestRoot = (\DesolatorMagno\AuthorizePhp\Api\Contract\V1\Mapper::Instance())->getXmlName((new \ReflectionClass($this->apiRequest))->getName());
         $mapper = \DesolatorMagno\AuthorizePhp\util\Mapper::Instance();
         $requestRoot = $mapper->getXmlName((new \ReflectionClass($this->apiRequest))->getName());
 

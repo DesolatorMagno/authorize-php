@@ -17,7 +17,7 @@ class ANetApiResponseType implements \JsonSerializable
     private $refId = null;
 
     /**
-     * @property \net\authorize\api\contract\V1\MessagesType $messages
+     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\MessagesType $messages
      */
     private $messages = null;
 
@@ -51,7 +51,7 @@ class ANetApiResponseType implements \JsonSerializable
     /**
      * Gets as messages
      *
-     * @return \net\authorize\api\contract\V1\MessagesType
+     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\MessagesType
      */
     public function getMessages()
     {
@@ -61,10 +61,10 @@ class ANetApiResponseType implements \JsonSerializable
     /**
      * Sets a new messages
      *
-     * @param \net\authorize\api\contract\V1\MessagesType $messages
+     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\MessagesType $messages
      * @return self
      */
-    public function setMessages(\net\authorize\api\contract\V1\MessagesType $messages)
+    public function setMessages(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\MessagesType $messages)
     {
         $this->messages = $messages;
         return $this;

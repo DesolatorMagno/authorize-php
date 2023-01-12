@@ -10,7 +10,7 @@ class ErrorsAType implements \JsonSerializable
 
     /**
      * @property
-     * \net\authorize\api\contract\V1\TransactionResponseType\ErrorsAType\ErrorAType[]
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\ErrorsAType\ErrorAType[]
      * $error
      */
     private $error = null;
@@ -20,7 +20,7 @@ class ErrorsAType implements \JsonSerializable
      *
      * @return self
      * @param
-     * \net\authorize\api\contract\V1\TransactionResponseType\ErrorsAType\ErrorAType
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\ErrorsAType\ErrorAType
      * $error
      */
     public function addToError(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\ErrorsAType\ErrorAType $error)
@@ -55,7 +55,7 @@ class ErrorsAType implements \JsonSerializable
      * Gets as error
      *
      * @return
-     * \net\authorize\api\contract\V1\TransactionResponseType\ErrorsAType\ErrorAType[]
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\ErrorsAType\ErrorAType[]
      */
     public function getError()
     {
@@ -66,7 +66,7 @@ class ErrorsAType implements \JsonSerializable
      * Sets a new error
      *
      * @param
-     * \net\authorize\api\contract\V1\TransactionResponseType\ErrorsAType\ErrorAType[]
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\ErrorsAType\ErrorAType[]
      * $error
      * @return self
      */

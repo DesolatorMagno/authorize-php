@@ -10,7 +10,7 @@ class MessagesAType implements \JsonSerializable
 
     /**
      * @property
-     * \net\authorize\api\contract\V1\TransactionResponseType\MessagesAType\MessageAType[]
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\MessagesAType\MessageAType[]
      * $message
      */
     private $message = null;
@@ -20,7 +20,7 @@ class MessagesAType implements \JsonSerializable
      *
      * @return self
      * @param
-     * \net\authorize\api\contract\V1\TransactionResponseType\MessagesAType\MessageAType
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\MessagesAType\MessageAType
      * $message
      */
     public function addToMessage(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\MessagesAType\MessageAType $message)
@@ -55,7 +55,7 @@ class MessagesAType implements \JsonSerializable
      * Gets as message
      *
      * @return
-     * \net\authorize\api\contract\V1\TransactionResponseType\MessagesAType\MessageAType[]
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\MessagesAType\MessageAType[]
      */
     public function getMessage()
     {
@@ -66,7 +66,7 @@ class MessagesAType implements \JsonSerializable
      * Sets a new message
      *
      * @param
-     * \net\authorize\api\contract\V1\TransactionResponseType\MessagesAType\MessageAType[]
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\MessagesAType\MessageAType[]
      * $message
      * @return self
      */

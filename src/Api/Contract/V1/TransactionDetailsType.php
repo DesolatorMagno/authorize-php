@@ -218,7 +218,7 @@ class TransactionDetailsType implements \JsonSerializable
 
     /**
      * @property
-     * \net\authorize\api\contract\V1\TransactionDetailsType\EmvDetailsAType\TagAType[]
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionDetailsType\EmvDetailsAType\TagAType[]
      * $emvDetails
      */
     private $emvDetails = null;
@@ -1282,7 +1282,7 @@ class TransactionDetailsType implements \JsonSerializable
      *
      * @return self
      * @param
-     * \net\authorize\api\contract\V1\TransactionDetailsType\EmvDetailsAType\TagAType
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionDetailsType\EmvDetailsAType\TagAType
      * $tag
      */
     public function addToEmvDetails(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionDetailsType\EmvDetailsAType\TagAType $tag)
@@ -1317,7 +1317,7 @@ class TransactionDetailsType implements \JsonSerializable
      * Gets as emvDetails
      *
      * @return
-     * \net\authorize\api\contract\V1\TransactionDetailsType\EmvDetailsAType\TagAType[]
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionDetailsType\EmvDetailsAType\TagAType[]
      */
     public function getEmvDetails()
     {
@@ -1328,7 +1328,7 @@ class TransactionDetailsType implements \JsonSerializable
      * Sets a new emvDetails
      *
      * @param
-     * \net\authorize\api\contract\V1\TransactionDetailsType\EmvDetailsAType\TagAType[]
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionDetailsType\EmvDetailsAType\TagAType[]
      * $emvDetails
      * @return self
      */

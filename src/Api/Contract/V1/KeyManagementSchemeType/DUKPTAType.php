@@ -15,21 +15,21 @@ class DUKPTAType implements \JsonSerializable
 
     /**
      * @property
-     * \net\authorize\api\contract\V1\KeyManagementSchemeType\DUKPTAType\ModeAType
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\KeyManagementSchemeType\DUKPTAType\ModeAType
      * $mode
      */
     private $mode = null;
 
     /**
      * @property
-     * \net\authorize\api\contract\V1\KeyManagementSchemeType\DUKPTAType\DeviceInfoAType
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\KeyManagementSchemeType\DUKPTAType\DeviceInfoAType
      * $deviceInfo
      */
     private $deviceInfo = null;
 
     /**
      * @property
-     * \net\authorize\api\contract\V1\KeyManagementSchemeType\DUKPTAType\EncryptedDataAType
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\KeyManagementSchemeType\DUKPTAType\EncryptedDataAType
      * $encryptedData
      */
     private $encryptedData = null;
@@ -60,7 +60,7 @@ class DUKPTAType implements \JsonSerializable
      * Gets as mode
      *
      * @return
-     * \net\authorize\api\contract\V1\KeyManagementSchemeType\DUKPTAType\ModeAType
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\KeyManagementSchemeType\DUKPTAType\ModeAType
      */
     public function getMode()
     {
@@ -71,7 +71,7 @@ class DUKPTAType implements \JsonSerializable
      * Sets a new mode
      *
      * @param
-     * \net\authorize\api\contract\V1\KeyManagementSchemeType\DUKPTAType\ModeAType
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\KeyManagementSchemeType\DUKPTAType\ModeAType
      * $mode
      * @return self
      */
@@ -85,7 +85,7 @@ class DUKPTAType implements \JsonSerializable
      * Gets as deviceInfo
      *
      * @return
-     * \net\authorize\api\contract\V1\KeyManagementSchemeType\DUKPTAType\DeviceInfoAType
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\KeyManagementSchemeType\DUKPTAType\DeviceInfoAType
      */
     public function getDeviceInfo()
     {
@@ -96,7 +96,7 @@ class DUKPTAType implements \JsonSerializable
      * Sets a new deviceInfo
      *
      * @param
-     * \net\authorize\api\contract\V1\KeyManagementSchemeType\DUKPTAType\DeviceInfoAType
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\KeyManagementSchemeType\DUKPTAType\DeviceInfoAType
      * $deviceInfo
      * @return self
      */
@@ -110,7 +110,7 @@ class DUKPTAType implements \JsonSerializable
      * Gets as encryptedData
      *
      * @return
-     * \net\authorize\api\contract\V1\KeyManagementSchemeType\DUKPTAType\EncryptedDataAType
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\KeyManagementSchemeType\DUKPTAType\EncryptedDataAType
      */
     public function getEncryptedData()
     {
@@ -121,7 +121,7 @@ class DUKPTAType implements \JsonSerializable
      * Sets a new encryptedData
      *
      * @param
-     * \net\authorize\api\contract\V1\KeyManagementSchemeType\DUKPTAType\EncryptedDataAType
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\KeyManagementSchemeType\DUKPTAType\EncryptedDataAType
      * $encryptedData
      * @return self
      */

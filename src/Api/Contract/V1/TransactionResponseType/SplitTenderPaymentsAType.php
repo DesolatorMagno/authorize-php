@@ -10,7 +10,7 @@ class SplitTenderPaymentsAType implements \JsonSerializable
 
     /**
      * @property
-     * \net\authorize\api\contract\V1\TransactionResponseType\SplitTenderPaymentsAType\SplitTenderPaymentAType[]
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\SplitTenderPaymentsAType\SplitTenderPaymentAType[]
      * $splitTenderPayment
      */
     private $splitTenderPayment = null;
@@ -20,7 +20,7 @@ class SplitTenderPaymentsAType implements \JsonSerializable
      *
      * @return self
      * @param
-     * \net\authorize\api\contract\V1\TransactionResponseType\SplitTenderPaymentsAType\SplitTenderPaymentAType
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\SplitTenderPaymentsAType\SplitTenderPaymentAType
      * $splitTenderPayment
      */
     public function addToSplitTenderPayment(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\SplitTenderPaymentsAType\SplitTenderPaymentAType $splitTenderPayment)
@@ -55,7 +55,7 @@ class SplitTenderPaymentsAType implements \JsonSerializable
      * Gets as splitTenderPayment
      *
      * @return
-     * \net\authorize\api\contract\V1\TransactionResponseType\SplitTenderPaymentsAType\SplitTenderPaymentAType[]
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\SplitTenderPaymentsAType\SplitTenderPaymentAType[]
      */
     public function getSplitTenderPayment()
     {
@@ -66,7 +66,7 @@ class SplitTenderPaymentsAType implements \JsonSerializable
      * Sets a new splitTenderPayment
      *
      * @param
-     * \net\authorize\api\contract\V1\TransactionResponseType\SplitTenderPaymentsAType\SplitTenderPaymentAType[]
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\SplitTenderPaymentsAType\SplitTenderPaymentAType[]
      * $splitTenderPayment
      * @return self
      */

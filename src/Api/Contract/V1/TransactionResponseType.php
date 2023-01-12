@@ -83,28 +83,28 @@ class TransactionResponseType implements \JsonSerializable
 
     /**
      * @property
-     * \net\authorize\api\contract\V1\TransactionResponseType\PrePaidCardAType
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\PrePaidCardAType
      * $prePaidCard
      */
     private $prePaidCard = null;
 
     /**
      * @property
-     * \net\authorize\api\contract\V1\TransactionResponseType\MessagesAType\MessageAType[]
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\MessagesAType\MessageAType[]
      * $messages
      */
     private $messages = null;
 
     /**
      * @property
-     * \net\authorize\api\contract\V1\TransactionResponseType\ErrorsAType\ErrorAType[]
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\ErrorsAType\ErrorAType[]
      * $errors
      */
     private $errors = null;
 
     /**
      * @property
-     * \net\authorize\api\contract\V1\TransactionResponseType\SplitTenderPaymentsAType\SplitTenderPaymentAType[]
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\SplitTenderPaymentsAType\SplitTenderPaymentAType[]
      * $splitTenderPayments
      */
     private $splitTenderPayments = null;
@@ -121,14 +121,14 @@ class TransactionResponseType implements \JsonSerializable
 
     /**
      * @property
-     * \net\authorize\api\contract\V1\TransactionResponseType\SecureAcceptanceAType
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\SecureAcceptanceAType
      * $secureAcceptance
      */
     private $secureAcceptance = null;
 
     /**
      * @property
-     * \net\authorize\api\contract\V1\TransactionResponseType\EmvResponseAType
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\EmvResponseAType
      * $emvResponse
      */
     private $emvResponse = null;
@@ -484,7 +484,7 @@ class TransactionResponseType implements \JsonSerializable
      *
      * @return self
      * @param
-     * \net\authorize\api\contract\V1\TransactionResponseType\MessagesAType\MessageAType
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\MessagesAType\MessageAType
      * $message
      */
     public function addToMessages(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\MessagesAType\MessageAType $message)
@@ -519,7 +519,7 @@ class TransactionResponseType implements \JsonSerializable
      * Gets as messages
      *
      * @return
-     * \net\authorize\api\contract\V1\TransactionResponseType\MessagesAType\MessageAType[]
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\MessagesAType\MessageAType[]
      */
     public function getMessages()
     {
@@ -530,7 +530,7 @@ class TransactionResponseType implements \JsonSerializable
      * Sets a new messages
      *
      * @param
-     * \net\authorize\api\contract\V1\TransactionResponseType\MessagesAType\MessageAType[]
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\MessagesAType\MessageAType[]
      * $messages
      * @return self
      */
@@ -545,7 +545,7 @@ class TransactionResponseType implements \JsonSerializable
      *
      * @return self
      * @param
-     * \net\authorize\api\contract\V1\TransactionResponseType\ErrorsAType\ErrorAType
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\ErrorsAType\ErrorAType
      * $error
      */
     public function addToErrors(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\ErrorsAType\ErrorAType $error)
@@ -580,7 +580,7 @@ class TransactionResponseType implements \JsonSerializable
      * Gets as errors
      *
      * @return
-     * \net\authorize\api\contract\V1\TransactionResponseType\ErrorsAType\ErrorAType[]
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\ErrorsAType\ErrorAType[]
      */
     public function getErrors()
     {
@@ -591,7 +591,7 @@ class TransactionResponseType implements \JsonSerializable
      * Sets a new errors
      *
      * @param
-     * \net\authorize\api\contract\V1\TransactionResponseType\ErrorsAType\ErrorAType[]
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\ErrorsAType\ErrorAType[]
      * $errors
      * @return self
      */
@@ -606,7 +606,7 @@ class TransactionResponseType implements \JsonSerializable
      *
      * @return self
      * @param
-     * \net\authorize\api\contract\V1\TransactionResponseType\SplitTenderPaymentsAType\SplitTenderPaymentAType
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\SplitTenderPaymentsAType\SplitTenderPaymentAType
      * $splitTenderPayment
      */
     public function addToSplitTenderPayments(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\SplitTenderPaymentsAType\SplitTenderPaymentAType $splitTenderPayment)
@@ -641,7 +641,7 @@ class TransactionResponseType implements \JsonSerializable
      * Gets as splitTenderPayments
      *
      * @return
-     * \net\authorize\api\contract\V1\TransactionResponseType\SplitTenderPaymentsAType\SplitTenderPaymentAType[]
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\SplitTenderPaymentsAType\SplitTenderPaymentAType[]
      */
     public function getSplitTenderPayments()
     {
@@ -652,7 +652,7 @@ class TransactionResponseType implements \JsonSerializable
      * Sets a new splitTenderPayments
      *
      * @param
-     * \net\authorize\api\contract\V1\TransactionResponseType\SplitTenderPaymentsAType\SplitTenderPaymentAType[]
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\SplitTenderPaymentsAType\SplitTenderPaymentAType[]
      * $splitTenderPayments
      * @return self
      */
@@ -744,7 +744,7 @@ class TransactionResponseType implements \JsonSerializable
      * Gets as secureAcceptance
      *
      * @return
-     * \net\authorize\api\contract\V1\TransactionResponseType\SecureAcceptanceAType
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\SecureAcceptanceAType
      */
     public function getSecureAcceptance()
     {
@@ -755,7 +755,7 @@ class TransactionResponseType implements \JsonSerializable
      * Sets a new secureAcceptance
      *
      * @param
-     * \net\authorize\api\contract\V1\TransactionResponseType\SecureAcceptanceAType
+     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\SecureAcceptanceAType
      * $secureAcceptance
      * @return self
      */
