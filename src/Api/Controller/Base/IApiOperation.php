@@ -1,14 +1,14 @@
 <?php
-namespace DesolatorMagno\AuthorizePhp\api\Controller\Base;
+namespace DesolatorMagno\AuthorizePhp\Api\Controller\Base;
 
 interface IApiOperation
 {
     /**
-     * @return \DesolatorMagno\AuthorizePhp\api\contract\v1\ANetApiResponseType
+     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ANetApiResponseType
      */
     public function getApiResponse();
     /**
- * @return \DesolatorMagno\AuthorizePhp\api\contract\v1\ANetApiResponseType
+ * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ANetApiResponseType
  */
 public function executeWithApiResponse( $endPoint = null);
     /**

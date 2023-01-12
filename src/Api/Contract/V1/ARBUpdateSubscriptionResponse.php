@@ -1,0 +1,89 @@
+<?php
+
+namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
+
+use DesolatorMagno\AuthorizePhp\Api\Contract\V1\ANetApiResponseType;
+
+/**
+ * Class representing ARBUpdateSubscriptionResponse
+ */
+class ARBUpdateSubscriptionResponse extends ANetApiResponseType
+{
+
+    /**
+     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileIdType $profile
+     */
+    private $profile = null;
+
+    /**
+     * Gets as profile
+     *
+     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileIdType
+     */
+    public function getProfile()
+    {
+        return $this->profile;
+    }
+
+    /**
+     * Sets a new profile
+     *
+     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileIdType $profile
+     * @return self
+     */
+    public function setProfile(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileIdType $profile)
+    {
+        $this->profile = $profile;
+        return $this;
+    }
+
+
+    // Json Set Code
+    public function set($data)
+    {
+        if(is_array($data) || is_object($data)) {
+			$mapper = \DesolatorMagno\AuthorizePhp\util\Mapper::Instance();
+			foreach($data AS $key => $value) {
+				$classDetails = $mapper->getClass(get_class() , $key);
+
+				if($classDetails !== NULL ) {
+					if ($classDetails->isArray) {
+						if ($classDetails->isCustomDefined) {
+							foreach($value AS $keyChild => $valueChild) {
+								$type = new $classDetails->className;
+								$type->set($valueChild);
+								$this->{'addTo' . $key}($type);
+							}
+						}
+						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
+							foreach($value AS $keyChild => $valueChild) {
+								$type = new \DateTime($valueChild);
+								$this->{'addTo' . $key}($type);
+							}
+						}
+						else {
+							foreach($value AS $keyChild => $valueChild) {
+								$this->{'addTo' . $key}($valueChild);
+							}
+						}
+					}
+					else {
+						if ($classDetails->isCustomDefined){
+							$type = new $classDetails->className;
+							$type->set($value);
+							$this->{'set' . $key}($type);
+						}
+						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
+							$type = new \DateTime($value);
+							$this->{'set' . $key}($type);
+						}
+						else {
+							$this->{'set' . $key}($value);
+						}
+					}
+				}
+			}
+		}
+    }
+
+}

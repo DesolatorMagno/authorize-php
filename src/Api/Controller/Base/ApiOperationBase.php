@@ -1,5 +1,5 @@
 <?php
-namespace DesolatorMagno\AuthorizePhp\api\Controller\Base;
+namespace DesolatorMagno\AuthorizePhp\Api\Controller\Base;
 
 use DesolatorMagno\AuthorizePhp\util\Helpers;
 use DesolatorMagno\AuthorizePhp\util\HttpClient;
@@ -14,12 +14,12 @@ use InvalidArgumentException;
 abstract class ApiOperationBase implements IApiOperation
 {
     /**
-     * @var \DesolatorMagno\AuthorizePhp\api\contract\v1\AnetApiRequestType
+     * @var \DesolatorMagno\AuthorizePhp\Api\Contract\V1\AnetApiRequestType
      */
     private $apiRequest = null;
 
     /**
-     * @var \DesolatorMagno\AuthorizePhp\api\contract\v1\AnetApiResponseType
+     * @var \DesolatorMagno\AuthorizePhp\Api\Contract\V1\AnetApiResponseType
      */
     private $apiResponse = null;
 
@@ -41,11 +41,11 @@ abstract class ApiOperationBase implements IApiOperation
     /**
      * Constructor.
      *
-     * @param \DesolatorMagno\AuthorizePhp\api\contract\v1\AnetApiRequestType $request ApiRequest to send
+     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\AnetApiRequestType $request ApiRequest to send
      * @param string $responseType response type expected
      * @throws InvalidArgumentException if invalid request
      */
-    public function __construct(\DesolatorMagno\AuthorizePhp\api\contract\v1\AnetApiRequestType $request, $responseType)
+    public function __construct(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\AnetApiRequestType $request, $responseType)
     {
         $this->logger = LogFactory::getLog(get_class($this));
 
@@ -71,7 +71,7 @@ abstract class ApiOperationBase implements IApiOperation
         $this->httpClient = new HttpClient;
 
 /*        $serializerBuilder = SerializerBuilder::create();
-        $serializerBuilder->addMetadataDir( __DIR__ . '/../../yml/v1', 'net\authorize\api\contract\v1');//..\..\yml\v1\ //'/../lib/net/authorize/api/yml/v1'
+        $serializerBuilder->addMetadataDir( __DIR__ . '/../../yml/v1', 'net\authorize\api\contract\V1');//..\..\yml\V1\ //'/../lib/net/authorize/api/yml/v1'
         $serializerBuilder->configureHandlers(
             function (HandlerRegistryInterface $h)
 
@@ -87,7 +87,7 @@ abstract class ApiOperationBase implements IApiOperation
 
     /**
      * Retrieves response
-     * @return \DesolatorMagno\AuthorizePhp\api\contract\v1\AnetApiResponseType
+     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\AnetApiResponseType
      */
     public function getApiResponse()
     {
@@ -96,27 +96,27 @@ abstract class ApiOperationBase implements IApiOperation
 
     /**
      * Sends request and retrieves response
-     * @return \DesolatorMagno\AuthorizePhp\api\contract\v1\AnetApiResponseType
+     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\AnetApiResponseType
      */
-    public function executeWithApiResponse($endPoint = \DesolatorMagno\AuthorizePhp\api\constants\ANetEnvironment::CUSTOM)
+    public function executeWithApiResponse($endPoint = \DesolatorMagno\AuthorizePhp\Api\Constants\ANetEnvironment::CUSTOM)
     {
         $this->execute($endPoint);
         return $this->apiResponse;
     }
 
-    public function execute($endPoint = \DesolatorMagno\AuthorizePhp\api\constants\ANetEnvironment::CUSTOM)
+    public function execute($endPoint = \DesolatorMagno\AuthorizePhp\Api\Constants\ANetEnvironment::CUSTOM)
     {
         $this->beforeExecute();
 
-    $this->apiRequest->setClientId("sdk-php-" . \DesolatorMagno\AuthorizePhp\api\constants\ANetEnvironment::VERSION);
+    $this->apiRequest->setClientId("sdk-php-" . \DesolatorMagno\AuthorizePhp\Api\Constants\ANetEnvironment::VERSION);
 
         $this->logger->info("Request Creation Begin");
         $this->logger->debug($this->apiRequest);
         // $xmlRequest = $this->serializer->serialize($this->apiRequest, 'xml');
         //$requestArray = [lcfirst((new \ReflectionClass($this->apiRequest))->getShortName()) => $this->apiRequest];
 
-        // $requestRoot = (new \net\authorize\api\contract\v1\Mapper)->getXmlName((new \ReflectionClass($this->apiRequest))->getName());
-        // $requestRoot = (\net\authorize\api\contract\v1\Mapper::Instance())->getXmlName((new \ReflectionClass($this->apiRequest))->getName());
+        // $requestRoot = (new \net\authorize\api\contract\V1\Mapper)->getXmlName((new \ReflectionClass($this->apiRequest))->getName());
+        // $requestRoot = (\net\authorize\api\contract\V1\Mapper::Instance())->getXmlName((new \ReflectionClass($this->apiRequest))->getName());
         $mapper = \DesolatorMagno\AuthorizePhp\util\Mapper::Instance();
         $requestRoot = $mapper->getXmlName((new \ReflectionClass($this->apiRequest))->getName());
 
