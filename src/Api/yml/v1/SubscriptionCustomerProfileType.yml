@@ -1,0 +1,22 @@
+DesolatorMagno\AuthorizePhp\Api\Contract\V1\SubscriptionCustomerProfileType:
+    properties:
+        paymentProfile:
+            expose: true
+            access_type: public_method
+            serialized_name: paymentProfile
+            xml_element:
+                namespace: AnetApi/xml/v1/schema/AnetApiSchema.xsd
+            accessor:
+                getter: getPaymentProfile
+                setter: setPaymentProfile
+            type: DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerPaymentProfileMaskedType
+        shippingProfile:
+            expose: true
+            access_type: public_method
+            serialized_name: shippingProfile
+            xml_element:
+                namespace: AnetApi/xml/v1/schema/AnetApiSchema.xsd
+            accessor:
+                getter: getShippingProfile
+                setter: setShippingProfile
+            type: DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressExType

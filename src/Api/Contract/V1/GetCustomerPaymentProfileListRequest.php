@@ -126,7 +126,7 @@ class GetCustomerPaymentProfileListRequest extends ANetApiRequestType
         function ($val){
             return !is_null($val);
         });
-        $mapper = \DesolatorMagno\AuthorizePhp\util\Mapper::Instance();
+        $mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
         foreach($values as $key => $value){
             $classDetails = $mapper->getClass(get_class() , $key);
             if (isset($value)){

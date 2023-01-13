@@ -2,7 +2,7 @@
 
 namespace DesolatorMagno\AuthorizePhp\Traits;
 
-use DesolatorMagno\AuthorizePhp\util\Mapper;
+use DesolatorMagno\AuthorizePhp\Util\Mapper;
 
 trait SerializeTrait
 {
@@ -36,6 +36,7 @@ trait SerializeTrait
                 }
             }
         }
-        return array_merge(parent::jsonSerialize(), $values);
+        //return array_merge(parent::jsonSerialize(), $values);
+        return $values;
     }
 }

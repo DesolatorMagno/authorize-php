@@ -2,6 +2,9 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
+use DesolatorMagno\AuthorizePhp\Util\Mapper;
+use Log;
+
 /**
  * Class representing CreateTransactionResponse
  */
@@ -70,9 +73,13 @@ class CreateTransactionResponse extends ANetApiResponseType
     public function set($data)
     {
         if(is_array($data) || is_object($data)) {
-			$mapper = \DesolatorMagno\AuthorizePhp\util\Mapper::Instance();
+			$mapper = Mapper::Instance();
 			foreach($data AS $key => $value) {
 				$classDetails = $mapper->getClass(get_class() , $key);
+                Log::channel('authorize')->info('ClassDetails');
+                Log::channel('authorize')->info($classDetails);
+                Log::channel('authorize')->info($key);
+                Log::channel('authorize')->info($value);
 
 				if($classDetails !== NULL ) {
 					if ($classDetails->isArray) {

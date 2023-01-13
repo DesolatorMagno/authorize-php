@@ -1,0 +1,22 @@
+DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentSimpleType:
+    properties:
+        creditCard:
+            expose: true
+            access_type: public_method
+            serialized_name: creditCard
+            xml_element:
+                namespace: AnetApi/xml/v1/schema/AnetApiSchema.xsd
+            accessor:
+                getter: getCreditCard
+                setter: setCreditCard
+            type: DesolatorMagno\AuthorizePhp\Api\Contract\V1\CreditCardSimpleType
+        bankAccount:
+            expose: true
+            access_type: public_method
+            serialized_name: bankAccount
+            xml_element:
+                namespace: AnetApi/xml/v1/schema/AnetApiSchema.xsd
+            accessor:
+                getter: getBankAccount
+                setter: setBankAccount
+            type: DesolatorMagno\AuthorizePhp\Api\Contract\V1\BankAccountType

@@ -5,7 +5,7 @@ namespace DesolatorMagno\AuthorizePhp\Util;
  * A class to send a request to the XML API.
  *
  * @package    AuthorizeNet
- * @subpackage net\authorize\util
+ * @subpackage net\authorize\Util
  */
 class HttpClient
 {

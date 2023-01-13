@@ -2,7 +2,6 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
-use DesolatorMagno\AuthorizePhp\Api\Contract\V1\ANetApiRequestType;
 use DesolatorMagno\AuthorizePhp\Traits\SerializeTrait;
 
 /**
@@ -13,17 +12,17 @@ class CreateTransactionRequest extends ANetApiRequestType
     use SerializeTrait;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionRequestType
+     * @property TransactionRequestType
      * $transactionRequest
      */
-    private $transactionRequest = null;
+    private ?TransactionRequestType $transactionRequest = null;
 
     /**
      * Gets as transactionRequest
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionRequestType
+     * @return TransactionRequestType
      */
-    public function getTransactionRequest()
+    public function getTransactionRequest(): ?TransactionRequestType
     {
         return $this->transactionRequest;
     }
@@ -31,10 +30,10 @@ class CreateTransactionRequest extends ANetApiRequestType
     /**
      * Sets a new transactionRequest
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionRequestType $transactionRequest
+     * @param TransactionRequestType $transactionRequest
      * @return self
      */
-    public function setTransactionRequest(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionRequestType $transactionRequest)
+    public function setTransactionRequest(TransactionRequestType $transactionRequest)
     {
         $this->transactionRequest = $transactionRequest;
         return $this;

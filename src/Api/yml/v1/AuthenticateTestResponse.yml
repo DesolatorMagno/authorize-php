@@ -1,0 +1,4 @@
+DesolatorMagno\AuthorizePhp\Api\Contract\V1\AuthenticateTestResponse:
+    xml_root_name: authenticateTestResponse
+    xml_root_namespace: AnetApi/xml/v1/schema/AnetApiSchema.xsd
+    properties: {  }

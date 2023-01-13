@@ -5,7 +5,6 @@ namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 use DateTime;
 use DesolatorMagno\AuthorizePhp\Traits\SerializeTrait;
 use DesolatorMagno\AuthorizePhp\Traits\SetSerializeTrait;
-use DesolatorMagno\AuthorizePhp\Util\Mapper;
 use JsonSerializable;
 
 

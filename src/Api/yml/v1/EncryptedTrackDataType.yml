@@ -1,0 +1,12 @@
+DesolatorMagno\AuthorizePhp\Api\Contract\V1\EncryptedTrackDataType:
+    properties:
+        formOfPayment:
+            expose: true
+            access_type: public_method
+            serialized_name: FormOfPayment
+            xml_element:
+                namespace: AnetApi/xml/v1/schema/AnetApiSchema.xsd
+            accessor:
+                getter: getFormOfPayment
+                setter: setFormOfPayment
+            type: DesolatorMagno\AuthorizePhp\Api\Contract\V1\KeyBlockType

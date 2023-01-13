@@ -1,9 +1,9 @@
 <?php
 namespace DesolatorMagno\AuthorizePhp\Api\Controller\Base;
 
-use DesolatorMagno\AuthorizePhp\util\Helpers;
-use DesolatorMagno\AuthorizePhp\util\HttpClient;
-use DesolatorMagno\AuthorizePhp\util\LogFactory as LogFactory;
+use DesolatorMagno\AuthorizePhp\Util\Helpers;
+use DesolatorMagno\AuthorizePhp\Util\HttpClient;
+use DesolatorMagno\AuthorizePhp\Util\LogFactory as LogFactory;
 use InvalidArgumentException;
 // use JMS\Serializer\SerializerBuilder;
 // use JMS\Serializer\handler\HandlerRegistryInterface;
@@ -29,7 +29,7 @@ abstract class OldApiOperationBase implements IApiOperation
     private $apiResponseType = '';
 
      /**
-     * @var \DesolatorMagno\AuthorizePhp\util\HttpClient;
+     * @var \DesolatorMagno\AuthorizePhp\Util\HttpClient;
      */
     public $httpClient = null;
     private $logger = null;
@@ -112,7 +112,7 @@ abstract class OldApiOperationBase implements IApiOperation
 
         // $requestRoot = (new \DesolatorMagno\AuthorizePhp\Api\Contract\V1\Mapper)->getXmlName((new \ReflectionClass($this->apiRequest))->getName());
         // $requestRoot = (\DesolatorMagno\AuthorizePhp\Api\Contract\V1\Mapper::Instance())->getXmlName((new \ReflectionClass($this->apiRequest))->getName());
-        $mapper = \DesolatorMagno\AuthorizePhp\util\Mapper::Instance();
+        $mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
         $requestRoot = $mapper->getXmlName((new \ReflectionClass($this->apiRequest))->getName());
 
         $requestArray = [$requestRoot => $this->apiRequest];

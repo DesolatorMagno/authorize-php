@@ -1,0 +1,14 @@
+DesolatorMagno\AuthorizePhp\Api\Contract\V1\GetBatchStatisticsResponse:
+    xml_root_name: getBatchStatisticsResponse
+    xml_root_namespace: AnetApi/xml/v1/schema/AnetApiSchema.xsd
+    properties:
+        batch:
+            expose: true
+            access_type: public_method
+            serialized_name: batch
+            xml_element:
+                namespace: AnetApi/xml/v1/schema/AnetApiSchema.xsd
+            accessor:
+                getter: getBatch
+                setter: setBatch
+            type: DesolatorMagno\AuthorizePhp\Api\Contract\V1\BatchDetailsType

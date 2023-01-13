@@ -6,6 +6,7 @@ use DesolatorMagno\AuthorizePhp\Api\Constants\ANetEnvironment;
 use Exception;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
+use Log;
 
 class AuthorizeApiClient
 {
@@ -45,10 +46,10 @@ class AuthorizeApiClient
         //$this->logger->info(sprintf("Request to AnetApi: \n%s", $xmlRequest));
 
         if ($this->verify_peer) {
-            $options[CURLOPT_CAINFO] = dirname(__FILE__ ) . '/ssl/cert.pem';
+            $options[CURLOPT_CAINFO] = dirname(__FILE__, 2) . '/ssl/cert.pem';
             //$options[CURLOPT_CAINFO] = dirname(dirname(__FILE__)) . '/../../ssl/cert.pem';
-            //Log::channel('authorize')->info('SSL Path:');
-            //Log::channel('authorize')->info(dirname(__FILE__ ) . '/ssl/cert.pem');
+            Log::channel('authorize')->info('SSL Path:');
+            Log::channel('authorize')->info(dirname(__FILE__, 2) . '/ssl/cert.pem');
 
             //Log::channel('authorize')->info(dirname(dirname(__FILE__)) . '/../../ssl/cert.pem');
 
@@ -67,36 +68,34 @@ class AuthorizeApiClient
     }
 
     public function sendRequest(string $xmlRequest)
-
     {
         $options = $this->getCurlOptions($xmlRequest);
         $xmlResponse = '';
-        //Log::channel('authorize')->info("<--------Inside Send Request-------->");
+        Log::channel('authorize')->info("<--------Inside Send Request-------->");
         if ($options == []) return '[]';
 
         try {
 
-            //Log::channel('authorize')->info("Sending http request via Guzzle");
-            //Log::channel('authorize')->info("Url:  {$this->url}");
+            Log::channel('authorize')->info("Sending http request via Guzzle");
+            Log::channel('authorize')->info("Url:  {$this->url}");
 
             $apiResponse = $this->client->post($this->url, [
                 'curl' => $options
             ]);
+            Log::channel('authorize')->info($options);
 
             $xmlResponse = $apiResponse->getBody();
-            //Log::channel('authorize')->info("Code: {$apiResponse->getStatusCode()}");
-            //Log::channel('authorize')->info("Response from AnetApi: $xmlResponse");
-            //Log::channel('authorize')->info($xmlResponse);
+            Log::channel('authorize')->info("Code: {$apiResponse->getStatusCode()}");
+            Log::channel('authorize')->info("Response from AnetApi: $xmlResponse");
 
         } catch (GuzzleException $ex) {
-            //Log::channel('authorize')->error($ex->getMessage());
+            Log::channel('authorize')->error($ex->getMessage());
             $errorMessage = sprintf("\n%s:Error making http request via curl: Code:'%s', Message:'%s', Trace:'%s', File:'%s':'%s'",
                 $this->now(), $ex->getCode(), $ex->getMessage(), $ex->getTraceAsString(), $ex->getFile(), $ex->getLine());
-            //Log::channel('authorize')->error($errorMessage);
-        }
-        catch (Exception $e) {
-            //Log::channel('authorize')->error('Error with Guzzle');
-            //Log::channel('authorize')->error($e->getMessage());
+            Log::channel('authorize')->error($errorMessage);
+        } catch (Exception $e) {
+            Log::channel('authorize')->error('Error with Guzzle');
+            Log::channel('authorize')->error($e->getMessage());
         }
 
 
@@ -110,12 +109,12 @@ class AuthorizeApiClient
         /*        //Log::channel('authorize')->error('Api Response: ');
         //Log::channel('authorize')->error($xmlResponse);
         //Log::channel('authorize')->error(json_encode(trim($xmlResponse)));*/
-        return str_replace("\xEF\xBB\xBF",'',trim($xmlResponse));
+        return str_replace("\xEF\xBB\xBF", '', trim($xmlResponse));
 
     }
 
     protected function now()
     {
-        return date( DATE_RFC2822);
+        return date(DATE_RFC2822);
     }
 }

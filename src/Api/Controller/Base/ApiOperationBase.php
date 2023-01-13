@@ -7,11 +7,13 @@ use DesolatorMagno\AuthorizePhp\Api\Constants\ANetEnvironment;
 use DesolatorMagno\AuthorizePhp\Api\Contract\V1\AnetApiRequestType;
 use DesolatorMagno\AuthorizePhp\Api\Contract\V1\ANetApiResponseType;
 use DesolatorMagno\AuthorizePhp\Util\AuthorizeApiClient;
-use DesolatorMagno\AuthorizePhp\Util\Log;
-use DesolatorMagno\AuthorizePhp\Util\LogFactory as LogFactory;
+//use DesolatorMagno\AuthorizePhp\Util\Log;
+use DesolatorMagno\AuthorizePhp\Util\LogFactory;
 use DesolatorMagno\AuthorizePhp\Util\Mapper;
+use Exception;
 use InvalidArgumentException;
 use ReflectionClass;
+use Log;
 
 abstract class ApiOperationBase implements IApiOperation
 {
@@ -40,7 +42,7 @@ abstract class ApiOperationBase implements IApiOperation
         $this->apiResponseType = $responseType;
         $this->httpClient = new AuthorizeApiClient();
 
-        $this->logger = LogFactory::getLog(get_class($this));
+        //$this->logger = LogFactory::getLog(get_class($this));
         //$this->httpClient = new HttpClient;
 
         /*Log::withContext([
@@ -53,23 +55,29 @@ abstract class ApiOperationBase implements IApiOperation
         return $this->apiResponse;
     }
 
+    /**
+     * @throws Exception
+     */
     public function executeWithApiResponse($endPoint = ANetEnvironment::CUSTOM): ?AnetApiResponseType
     {
         $this->execute($endPoint);
         return $this->apiResponse;
     }
 
+    /**
+     * @throws Exception
+     */
     public function execute($endPoint = ANetEnvironment::CUSTOM)
     {
         $this->beforeExecute();
 
         $this->apiRequest->setClientId("sdk-php-" . ANetEnvironment::VERSION);
-
         //Log::channel('authorize')->info('Request Creation Begin');
-        ////Log::channel('authorize')->debug($this->apiRequest->jsonSerialize());
+        Log::channel('authorize')->debug($this->apiRequest->jsonSerialize());
 
         $mapper = Mapper::Instance();
         $requestRoot = $mapper->getXmlName((new ReflectionClass($this->apiRequest))->getName());
+        $requestData = json_encode($requestRoot);
 
         $requestArray = [$requestRoot => $this->apiRequest];
 
@@ -77,28 +85,31 @@ abstract class ApiOperationBase implements IApiOperation
 
         $this->httpClient->setPostUrl($endPoint);
 
-        //$jsonResponse = $this->httpClient->_sendRequest(json_encode($requestArray));
         $requestData = json_encode($requestArray);
+        Log::channel('authorize')->debug($requestData);
+
         $jsonResponse = $this->httpClient->sendRequest($requestData);
         //Log::channel('authorize')->info('Request Data');
-        //Log::channel('authorize')->info($jsonResponse);
+        Log::channel('authorize')->info($jsonResponse);
 
         if (is_null($jsonResponse)) {
-            //Log::channel('authorize')->error('Error getting response from API');
+            Log::channel('authorize')->error('Error getting response from API');
             $this->apiResponse = null;
             $this->afterExecute();
             return;
         }
 
+        Log::channel('authorize')->info($jsonResponse);
+        Log::channel('authorize')->info(gettype($jsonResponse));
+
         $response = json_decode($jsonResponse, true);
-        //Log::channel('authorize')->info(gettype($response));
-        ////Log::channel('authorize')->info($response);
+        Log::channel('authorize')->info(gettype($response));
+        Log::channel('authorize')->info($response);
 
         $this->apiResponse = new $this->apiResponseType();
-        $this->apiResponse->set($response);
-        //Log::channel('authorize')->info($this->apiResponse->jsonSerialize());
+        $this->apiResponse->set($jsonResponse);
+        Log::channel('authorize')->info($this->apiResponse->jsonSerialize());
         //Log::channel('authorize')->info(serialize($this->apiResponse));
-
 
         $this->afterExecute();
     }

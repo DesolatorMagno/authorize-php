@@ -1,0 +1,12 @@
+DesolatorMagno\AuthorizePhp\Api\Contract\V1\OrderExType:
+    properties:
+        purchaseOrderNumber:
+            expose: true
+            access_type: public_method
+            serialized_name: purchaseOrderNumber
+            xml_element:
+                namespace: AnetApi/xml/v1/schema/AnetApiSchema.xsd
+            accessor:
+                getter: getPurchaseOrderNumber
+                setter: setPurchaseOrderNumber
+            type: string

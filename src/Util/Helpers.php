@@ -5,7 +5,7 @@ namespace DesolatorMagno\AuthorizePhp\Util;
  * A class defining helpers
  *
  * @package    AuthorizeNet
- * @subpackage net\authorize\util
+ * @subpackage net\authorize\Util
  */
 class Helpers
 {

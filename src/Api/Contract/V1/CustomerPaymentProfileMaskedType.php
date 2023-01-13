@@ -296,7 +296,7 @@ class CustomerPaymentProfileMaskedType extends CustomerPaymentProfileBaseType im
         function ($val){
             return !is_null($val);
         });
-        $mapper = \DesolatorMagno\AuthorizePhp\util\Mapper::Instance();
+        $mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
         foreach($values as $key => $value){
             $classDetails = $mapper->getClass(get_class() , $key);
             if (isset($value)){
@@ -324,7 +324,7 @@ class CustomerPaymentProfileMaskedType extends CustomerPaymentProfileBaseType im
     public function set($data)
     {
         if(is_array($data) || is_object($data)) {
-			$mapper = \DesolatorMagno\AuthorizePhp\util\Mapper::Instance();
+			$mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
 			foreach($data AS $key => $value) {
 				$classDetails = $mapper->getClass(get_class() , $key);
 

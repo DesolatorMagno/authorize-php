@@ -1,0 +1,16 @@
+DesolatorMagno\AuthorizePhp\Api\Contract\V1\ArrayOfSettingType:
+    properties:
+        setting:
+            expose: true
+            access_type: public_method
+            serialized_name: setting
+            xml_element:
+                namespace: AnetApi/xml/v1/schema/AnetApiSchema.xsd
+            accessor:
+                getter: getSetting
+                setter: setSetting
+            xml_list:
+                inline: true
+                entry_name: setting
+                namespace: AnetApi/xml/v1/schema/AnetApiSchema.xsd
+            type: array<DesolatorMagno\AuthorizePhp\Api\Contract\V1\SettingType>

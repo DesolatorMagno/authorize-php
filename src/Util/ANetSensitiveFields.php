@@ -4,7 +4,7 @@ namespace DesolatorMagno\AuthorizePhp\Util;
 
 
 define("ANET_SENSITIVE_XMLTAGS_JSON_FILE","AuthorizedNetSensitiveTagsConfig.json");
-define("ANET_SENSITIVE_DATE_CONFIG_CLASS", 'DesolatorMagno\AuthorizePhp\util\SensitiveDataConfigType');
+define("ANET_SENSITIVE_DATE_CONFIG_CLASS", 'DesolatorMagno\AuthorizePhp\Util\SensitiveDataConfigType');
 
 class ANetSensitiveFields
 {

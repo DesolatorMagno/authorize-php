@@ -21,7 +21,7 @@ define("ANET_LOG_LEVEL",ANET_LOG_DEBUG);
  * A class to implement logging.
  *
  * @package    AuthorizeNet
- * @subpackage net\authorize\util
+ * @subpackage net\authorize\Util
  */
 
 class Log
