@@ -2,7 +2,7 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1\MessagesType;
 
-use DesolatorMagno\AuthorizePhp\Traits\SerializeTrait;
+use DesolatorMagno\AuthorizePhp\Traits\SerializeSingleTrait;
 use DesolatorMagno\AuthorizePhp\Traits\SetSerializeTrait;
 use JsonSerializable;
 
@@ -12,7 +12,7 @@ use JsonSerializable;
 class MessageAType implements JsonSerializable
 {
 
-    use SerializeTrait, SetSerializeTrait;
+    use SerializeSingleTrait, SetSerializeTrait;
 
     private ?string $code = null;
 

@@ -290,7 +290,10 @@ class MerchantAuthenticationType implements \JsonSerializable
     // Json Set Code
     public function set($data)
     {
+        \Log::channel('authorize')->debug('Inside Setting Data to Merchant');
+
         if(is_array($data) || is_object($data)) {
+            \Log::channel('authorize')->debug('Setting Data to Merchant');
 			$mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
 			foreach($data AS $key => $value) {
 				$classDetails = $mapper->getClass(get_class() , $key);

@@ -2,7 +2,7 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
-use DesolatorMagno\AuthorizePhp\Traits\SerializeTrait;
+use DesolatorMagno\AuthorizePhp\Traits\SerializeSingleTrait;
 use DesolatorMagno\AuthorizePhp\Traits\SetSerializeTrait;
 
 /**
@@ -14,7 +14,7 @@ use DesolatorMagno\AuthorizePhp\Traits\SetSerializeTrait;
 class ANetApiResponseType implements \JsonSerializable
 {
 
-    use SerializeTrait, SetSerializeTrait;
+    use SerializeSingleTrait, SetSerializeTrait;
 
     /**
      * @property string $refId

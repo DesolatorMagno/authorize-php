@@ -4,10 +4,11 @@ namespace DesolatorMagno\AuthorizePhp\Traits;
 
 use DesolatorMagno\AuthorizePhp\Util\Mapper;
 
-trait SerializeTrait
+trait SerializeSingleTrait
 {
-    // Json Serialize Code
-    public function jsonSerializeHandle(): array
+    use SerializeTrait;
+
+    public function jsonSerialize(): array
     {
         $values = array_filter((array)get_object_vars($this),
             function ($val) {

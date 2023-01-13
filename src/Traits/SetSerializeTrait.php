@@ -19,12 +19,6 @@ trait SetSerializeTrait
             $mapper = Mapper::Instance();
             foreach ($data as $key => $value) {
                 $classDetails = $mapper->getClass(get_class(), $key);
-                Log::channel('authorize')->info('ClassDetails');
-                Log::channel('authorize')->info($classDetails);
-                Log::channel('authorize')->info($key);
-                Log::channel('authorize')->info($value);
-
-
                 if ($classDetails !== NULL) {
                     if ($classDetails->isArray) {
                         if ($classDetails->isCustomDefined) {
