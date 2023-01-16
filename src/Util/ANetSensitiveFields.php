@@ -1,7 +1,7 @@
 <?php
 namespace DesolatorMagno\AuthorizePhp\Util;
 
-
+use Exception;
 
 define("ANET_SENSITIVE_XMLTAGS_JSON_FILE","AuthorizedNetSensitiveTagsConfig.json");
 define("ANET_SENSITIVE_DATE_CONFIG_CLASS", 'DesolatorMagno\AuthorizePhp\Util\SensitiveDataConfigType');
@@ -60,11 +60,8 @@ class ANetSensitiveFields
         //Check for disableMask flag in case of client json.
         self::$applySensitiveTags = array();
         foreach($sensitiveTags as $sensitiveTag){
-            if($sensitiveTag->disableMask){
-                //skip masking continue;
-            }
-            else{
-                array_push(self::$applySensitiveTags,$sensitiveTag);
+            if (!$sensitiveTag->disableMask){
+                self::$applySensitiveTags[] = $sensitiveTag;
             }
         }
     }

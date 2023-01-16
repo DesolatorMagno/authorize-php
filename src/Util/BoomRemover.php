@@ -5,7 +5,7 @@ namespace DesolatorMagno\AuthorizePhp\Util;
 trait BoomRemover
 {
 
-    public function removeBoom(?string $jsonResponse)
+    public function removeBoom(?string $jsonResponse): ?array
     {
         if (is_null($jsonResponse)) {
             return null;

@@ -90,7 +90,7 @@ class SubscriptionCustomerProfileType extends CustomerProfileExType implements \
                 }
                 if (is_array($value)){
                     if (!$classDetails->isInlineArray){
-                        $subKey = $classDetails->arrayEntryname;
+                        $subKey = $classDetails->arrayEntryName;
                         $subArray = [$subKey => $value];
                         $values[$key] = $subArray;
                     }

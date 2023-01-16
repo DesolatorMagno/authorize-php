@@ -310,7 +310,7 @@ class CustomerPaymentProfileMaskedType extends CustomerPaymentProfileBaseType im
                 }
                 if (is_array($value)){
                     if (!$classDetails->isInlineArray){
-                        $subKey = $classDetails->arrayEntryname;
+                        $subKey = $classDetails->arrayEntryName;
                         $subArray = [$subKey => $value];
                         $values[$key] = $subArray;
                     }

@@ -2,91 +2,54 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
+use DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\EmvResponseAType;
+use DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\ErrorsAType\ErrorAType;
+use DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\MessagesAType\MessageAType;
+use DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\PrePaidCardAType;
+use DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\SecureAcceptanceAType;
+use DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\SplitTenderPaymentsAType\SplitTenderPaymentAType;
+use DesolatorMagno\AuthorizePhp\Traits\SetSerializeTrait;
+use JsonSerializable;
+
 /**
  * Class representing TransactionResponseType
  *
  *
  * XSD Type: transactionResponse
  */
-class TransactionResponseType implements \JsonSerializable
+class TransactionResponseType implements JsonSerializable
 {
+    use SetSerializeTrait;
 
-    /**
-     * @property string $responseCode
-     */
-    private $responseCode = null;
+    private ?string $responseCode = null;
 
-    /**
-     * @property string $rawResponseCode
-     */
-    private $rawResponseCode = null;
+    private ?string $rawResponseCode = null;
 
-    /**
-     * @property string $authCode
-     */
-    private $authCode = null;
+    private ?string $authCode = null;
 
-    /**
-     * @property string $avsResultCode
-     */
-    private $avsResultCode = null;
+    private ?string $avsResultCode = null;
 
-    /**
-     * @property string $cvvResultCode
-     */
-    private $cvvResultCode = null;
+    private ?string $cvvResultCode = null;
 
-    /**
-     * @property string $cavvResultCode
-     */
-    private $cavvResultCode = null;
+    private ?string $cavvResultCode = null;
 
-    /**
-     * @property string $transId
-     */
-    private $transId = null;
+    private ?string $transId = null;
 
-    /**
-     * @property string $refTransID
-     */
-    private $refTransID = null;
+    private ?string $refTransID = null;
 
-    /**
-     * @property string $transHash
-     */
-    private $transHash = null;
+    private ?string $transHash = null;
 
-    /**
-     * @property string $testRequest
-     */
-    private $testRequest = null;
+    private ?string $testRequest = null;
 
-    /**
-     * @property string $accountNumber
-     */
-    private $accountNumber = null;
+    private ?string $accountNumber = null;
 
-    /**
-     * @property string $entryMode
-     */
-    private $entryMode = null;
+    private ?string $entryMode = null;
 
-    /**
-     * @property string $accountType
-     */
-    private $accountType = null;
+    private ?string $accountType = null;
 
-    /**
-     * @property string $splitTenderId
-     */
-    private $splitTenderId = null;
+    private ?string $splitTenderId = null;
 
-    /**
-     * @property
-     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\PrePaidCardAType
-     * $prePaidCard
-     */
-    private $prePaidCard = null;
+    private ?TransactionResponseType\PrePaidCardAType $prePaidCard = null;
 
     /**
      * @property
@@ -110,14 +73,14 @@ class TransactionResponseType implements \JsonSerializable
     private $splitTenderPayments = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\UserFieldType[] $userFields
+     * @property UserFieldType[] $userFields
      */
     private $userFields = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\NameAndAddressType $shipTo
+     * @property NameAndAddressType $shipTo
      */
-    private $shipTo = null;
+    private ?NameAndAddressType $shipTo = null;
 
     /**
      * @property
@@ -126,368 +89,180 @@ class TransactionResponseType implements \JsonSerializable
      */
     private $secureAcceptance = null;
 
-    /**
-     * @property
-     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\EmvResponseAType
-     * $emvResponse
-     */
-    private $emvResponse = null;
+    private ?TransactionResponseType\EmvResponseAType $emvResponse = null;
 
-    /**
-     * @property string $transHashSha2
-     */
-    private $transHashSha2 = null;
+    private ?string $transHashSha2 = null;
 
-    /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileIdType $profile
-     */
-    private $profile = null;
+    private ?CustomerProfileIdType $profile = null;
 
-    /**
-     * @property string $networkTransId
-     */
-    private $networkTransId = null;
+    private ?string $networkTransId = null;
 
-    /**
-     * Gets as responseCode
-     *
-     * @return string
-     */
-    public function getResponseCode()
+    public function getResponseCode(): ?string
     {
         return $this->responseCode;
     }
 
-    /**
-     * Sets a new responseCode
-     *
-     * @param string $responseCode
-     * @return self
-     */
-    public function setResponseCode($responseCode)
+    public function setResponseCode(string $responseCode): TransactionResponseType
     {
         $this->responseCode = $responseCode;
         return $this;
     }
 
-    /**
-     * Gets as rawResponseCode
-     *
-     * @return string
-     */
-    public function getRawResponseCode()
+    public function getRawResponseCode(): ?string
     {
         return $this->rawResponseCode;
     }
 
-    /**
-     * Sets a new rawResponseCode
-     *
-     * @param string $rawResponseCode
-     * @return self
-     */
-    public function setRawResponseCode($rawResponseCode)
+    public function setRawResponseCode(string $rawResponseCode): TransactionResponseType
     {
         $this->rawResponseCode = $rawResponseCode;
         return $this;
     }
 
-    /**
-     * Gets as authCode
-     *
-     * @return string
-     */
-    public function getAuthCode()
+    public function getAuthCode(): ?string
     {
         return $this->authCode;
     }
 
-    /**
-     * Sets a new authCode
-     *
-     * @param string $authCode
-     * @return self
-     */
-    public function setAuthCode($authCode)
+    public function setAuthCode(string $authCode): TransactionResponseType
     {
         $this->authCode = $authCode;
         return $this;
     }
 
-    /**
-     * Gets as avsResultCode
-     *
-     * @return string
-     */
-    public function getAvsResultCode()
+    public function getAvsResultCode(): ?string
     {
         return $this->avsResultCode;
     }
 
-    /**
-     * Sets a new avsResultCode
-     *
-     * @param string $avsResultCode
-     * @return self
-     */
-    public function setAvsResultCode($avsResultCode)
+    public function setAvsResultCode(string $avsResultCode): TransactionResponseType
     {
         $this->avsResultCode = $avsResultCode;
         return $this;
     }
 
-    /**
-     * Gets as cvvResultCode
-     *
-     * @return string
-     */
-    public function getCvvResultCode()
+    public function getCvvResultCode(): ?string
     {
         return $this->cvvResultCode;
     }
 
-    /**
-     * Sets a new cvvResultCode
-     *
-     * @param string $cvvResultCode
-     * @return self
-     */
-    public function setCvvResultCode($cvvResultCode)
+    public function setCvvResultCode(string $cvvResultCode): TransactionResponseType
     {
         $this->cvvResultCode = $cvvResultCode;
         return $this;
     }
 
-    /**
-     * Gets as cavvResultCode
-     *
-     * @return string
-     */
-    public function getCavvResultCode()
+    public function getCavvResultCode(): ?string
     {
         return $this->cavvResultCode;
     }
 
-    /**
-     * Sets a new cavvResultCode
-     *
-     * @param string $cavvResultCode
-     * @return self
-     */
-    public function setCavvResultCode($cavvResultCode)
+    public function setCavvResultCode(string $cavvResultCode): TransactionResponseType
     {
         $this->cavvResultCode = $cavvResultCode;
         return $this;
     }
 
-    /**
-     * Gets as transId
-     *
-     * @return string
-     */
-    public function getTransId()
+    public function getTransId(): ?string
     {
         return $this->transId;
     }
 
-    /**
-     * Sets a new transId
-     *
-     * @param string $transId
-     * @return self
-     */
-    public function setTransId($transId)
+    public function setTransId(string $transId): TransactionResponseType
     {
         $this->transId = $transId;
         return $this;
     }
 
-    /**
-     * Gets as refTransID
-     *
-     * @return string
-     */
-    public function getRefTransID()
+    public function getRefTransID(): ?string
     {
         return $this->refTransID;
     }
 
-    /**
-     * Sets a new refTransID
-     *
-     * @param string $refTransID
-     * @return self
-     */
-    public function setRefTransID($refTransID)
+    public function setRefTransID(string $refTransID): TransactionResponseType
     {
         $this->refTransID = $refTransID;
         return $this;
     }
 
-    /**
-     * Gets as transHash
-     *
-     * @return string
-     */
-    public function getTransHash()
+    public function getTransHash(): ?string
     {
         return $this->transHash;
     }
 
-    /**
-     * Sets a new transHash
-     *
-     * @param string $transHash
-     * @return self
-     */
-    public function setTransHash($transHash)
+    public function setTransHash(string $transHash): TransactionResponseType
     {
         $this->transHash = $transHash;
         return $this;
     }
 
-    /**
-     * Gets as testRequest
-     *
-     * @return string
-     */
-    public function getTestRequest()
+    public function getTestRequest(): ?string
     {
         return $this->testRequest;
     }
 
-    /**
-     * Sets a new testRequest
-     *
-     * @param string $testRequest
-     * @return self
-     */
-    public function setTestRequest($testRequest)
+    public function setTestRequest(string $testRequest): TransactionResponseType
     {
         $this->testRequest = $testRequest;
         return $this;
     }
 
-    /**
-     * Gets as accountNumber
-     *
-     * @return string
-     */
-    public function getAccountNumber()
+    public function getAccountNumber(): ?string
     {
         return $this->accountNumber;
     }
 
-    /**
-     * Sets a new accountNumber
-     *
-     * @param string $accountNumber
-     * @return self
-     */
-    public function setAccountNumber($accountNumber)
+    public function setAccountNumber(string $accountNumber): TransactionResponseType
     {
         $this->accountNumber = $accountNumber;
         return $this;
     }
 
-    /**
-     * Gets as entryMode
-     *
-     * @return string
-     */
-    public function getEntryMode()
+    public function getEntryMode(): ?string
     {
         return $this->entryMode;
     }
 
-    /**
-     * Sets a new entryMode
-     *
-     * @param string $entryMode
-     * @return self
-     */
-    public function setEntryMode($entryMode)
+    public function setEntryMode(string $entryMode): TransactionResponseType
     {
         $this->entryMode = $entryMode;
         return $this;
     }
 
-    /**
-     * Gets as accountType
-     *
-     * @return string
-     */
-    public function getAccountType()
+    public function getAccountType(): ?string
     {
         return $this->accountType;
     }
 
-    /**
-     * Sets a new accountType
-     *
-     * @param string $accountType
-     * @return self
-     */
-    public function setAccountType($accountType)
+    public function setAccountType(string $accountType): TransactionResponseType
     {
         $this->accountType = $accountType;
         return $this;
     }
 
-    /**
-     * Gets as splitTenderId
-     *
-     * @return string
-     */
-    public function getSplitTenderId()
+    public function getSplitTenderId(): ?string
     {
         return $this->splitTenderId;
     }
 
-    /**
-     * Sets a new splitTenderId
-     *
-     * @param string $splitTenderId
-     * @return self
-     */
-    public function setSplitTenderId($splitTenderId)
+    public function setSplitTenderId(string $splitTenderId): TransactionResponseType
     {
         $this->splitTenderId = $splitTenderId;
         return $this;
     }
 
-    /**
-     * Gets as prePaidCard
-     *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\PrePaidCardAType
-     */
-    public function getPrePaidCard()
+    public function getPrePaidCard(): ?TransactionResponseType\PrePaidCardAType
     {
         return $this->prePaidCard;
     }
 
-    /**
-     * Sets a new prePaidCard
-     *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\PrePaidCardAType
-     * $prePaidCard
-     * @return self
-     */
-    public function setPrePaidCard(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\PrePaidCardAType $prePaidCard)
+    public function setPrePaidCard(PrePaidCardAType $prePaidCard): TransactionResponseType
     {
         $this->prePaidCard = $prePaidCard;
         return $this;
     }
 
-    /**
-     * Adds as message
-     *
-     * @return self
-     * @param
-     * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\MessagesAType\MessageAType
-     * $message
-     */
-    public function addToMessages(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\MessagesAType\MessageAType $message)
+    public function addToMessages(MessageAType $message): TransactionResponseType
     {
         $this->messages[] = $message;
         return $this;
@@ -499,7 +274,7 @@ class TransactionResponseType implements \JsonSerializable
      * @param scalar $index
      * @return boolean
      */
-    public function issetMessages($index)
+    public function issetMessages($index): bool
     {
         return isset($this->messages[$index]);
     }
@@ -534,7 +309,7 @@ class TransactionResponseType implements \JsonSerializable
      * $messages
      * @return self
      */
-    public function setMessages(array $messages)
+    public function setMessages(array $messages): TransactionResponseType
     {
         $this->messages = $messages;
         return $this;
@@ -543,12 +318,12 @@ class TransactionResponseType implements \JsonSerializable
     /**
      * Adds as error
      *
-     * @return self
      * @param
      * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\ErrorsAType\ErrorAType
      * $error
+     * @return self
      */
-    public function addToErrors(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\ErrorsAType\ErrorAType $error)
+    public function addToErrors(ErrorAType $error): TransactionResponseType
     {
         $this->errors[] = $error;
         return $this;
@@ -560,7 +335,7 @@ class TransactionResponseType implements \JsonSerializable
      * @param scalar $index
      * @return boolean
      */
-    public function issetErrors($index)
+    public function issetErrors($index): bool
     {
         return isset($this->errors[$index]);
     }
@@ -595,7 +370,7 @@ class TransactionResponseType implements \JsonSerializable
      * $errors
      * @return self
      */
-    public function setErrors(array $errors)
+    public function setErrors(array $errors): TransactionResponseType
     {
         $this->errors = $errors;
         return $this;
@@ -604,12 +379,12 @@ class TransactionResponseType implements \JsonSerializable
     /**
      * Adds as splitTenderPayment
      *
-     * @return self
      * @param
      * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\SplitTenderPaymentsAType\SplitTenderPaymentAType
      * $splitTenderPayment
+     * @return self
      */
-    public function addToSplitTenderPayments(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\SplitTenderPaymentsAType\SplitTenderPaymentAType $splitTenderPayment)
+    public function addToSplitTenderPayments(SplitTenderPaymentAType $splitTenderPayment): TransactionResponseType
     {
         $this->splitTenderPayments[] = $splitTenderPayment;
         return $this;
@@ -621,7 +396,7 @@ class TransactionResponseType implements \JsonSerializable
      * @param scalar $index
      * @return boolean
      */
-    public function issetSplitTenderPayments($index)
+    public function issetSplitTenderPayments($index): bool
     {
         return isset($this->splitTenderPayments[$index]);
     }
@@ -656,7 +431,7 @@ class TransactionResponseType implements \JsonSerializable
      * $splitTenderPayments
      * @return self
      */
-    public function setSplitTenderPayments(array $splitTenderPayments)
+    public function setSplitTenderPayments(array $splitTenderPayments): TransactionResponseType
     {
         $this->splitTenderPayments = $splitTenderPayments;
         return $this;
@@ -665,10 +440,10 @@ class TransactionResponseType implements \JsonSerializable
     /**
      * Adds as userField
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\UserFieldType $userField
-     *@return self
+     * @param UserFieldType $userField
+     * @return self
      */
-    public function addToUserFields(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\UserFieldType $userField)
+    public function addToUserFields(UserFieldType $userField): TransactionResponseType
     {
         $this->userFields[] = $userField;
         return $this;
@@ -680,7 +455,7 @@ class TransactionResponseType implements \JsonSerializable
      * @param scalar $index
      * @return boolean
      */
-    public function issetUserFields($index)
+    public function issetUserFields($index): bool
     {
         return isset($this->userFields[$index]);
     }
@@ -699,9 +474,9 @@ class TransactionResponseType implements \JsonSerializable
     /**
      * Gets as userFields
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\UserFieldType[]
+     * @return UserFieldType[]
      */
-    public function getUserFields()
+    public function getUserFields(): ?array
     {
         return $this->userFields;
     }
@@ -709,10 +484,10 @@ class TransactionResponseType implements \JsonSerializable
     /**
      * Sets a new userFields
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\UserFieldType[] $userFields
+     * @param UserFieldType[] $userFields
      * @return self
      */
-    public function setUserFields(array $userFields)
+    public function setUserFields(array $userFields): TransactionResponseType
     {
         $this->userFields = $userFields;
         return $this;
@@ -721,9 +496,9 @@ class TransactionResponseType implements \JsonSerializable
     /**
      * Gets as shipTo
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\NameAndAddressType
+     * @return NameAndAddressType
      */
-    public function getShipTo()
+    public function getShipTo(): ?NameAndAddressType
     {
         return $this->shipTo;
     }
@@ -731,10 +506,10 @@ class TransactionResponseType implements \JsonSerializable
     /**
      * Sets a new shipTo
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\NameAndAddressType $shipTo
+     * @param NameAndAddressType $shipTo
      * @return self
      */
-    public function setShipTo(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\NameAndAddressType $shipTo)
+    public function setShipTo(NameAndAddressType $shipTo): TransactionResponseType
     {
         $this->shipTo = $shipTo;
         return $this;
@@ -759,7 +534,7 @@ class TransactionResponseType implements \JsonSerializable
      * $secureAcceptance
      * @return self
      */
-    public function setSecureAcceptance(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\SecureAcceptanceAType $secureAcceptance)
+    public function setSecureAcceptance(SecureAcceptanceAType $secureAcceptance): TransactionResponseType
     {
         $this->secureAcceptance = $secureAcceptance;
         return $this;
@@ -768,9 +543,9 @@ class TransactionResponseType implements \JsonSerializable
     /**
      * Gets as emvResponse
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\EmvResponseAType
+     * @return EmvResponseAType
      */
-    public function getEmvResponse()
+    public function getEmvResponse(): ?EmvResponseAType
     {
         return $this->emvResponse;
     }
@@ -778,11 +553,11 @@ class TransactionResponseType implements \JsonSerializable
     /**
      * Sets a new emvResponse
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\EmvResponseAType
+     * @param EmvResponseAType
      * $emvResponse
      * @return self
      */
-    public function setEmvResponse(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\EmvResponseAType $emvResponse)
+    public function setEmvResponse(EmvResponseAType $emvResponse): TransactionResponseType
     {
         $this->emvResponse = $emvResponse;
         return $this;
@@ -793,7 +568,7 @@ class TransactionResponseType implements \JsonSerializable
      *
      * @return string
      */
-    public function getTransHashSha2()
+    public function getTransHashSha2(): ?string
     {
         return $this->transHashSha2;
     }
@@ -804,7 +579,7 @@ class TransactionResponseType implements \JsonSerializable
      * @param string $transHashSha2
      * @return self
      */
-    public function setTransHashSha2($transHashSha2)
+    public function setTransHashSha2(string $transHashSha2): TransactionResponseType
     {
         $this->transHashSha2 = $transHashSha2;
         return $this;
@@ -813,9 +588,9 @@ class TransactionResponseType implements \JsonSerializable
     /**
      * Gets as profile
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileIdType
+     * @return CustomerProfileIdType
      */
-    public function getProfile()
+    public function getProfile(): ?CustomerProfileIdType
     {
         return $this->profile;
     }
@@ -823,10 +598,10 @@ class TransactionResponseType implements \JsonSerializable
     /**
      * Sets a new profile
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileIdType $profile
+     * @param CustomerProfileIdType $profile
      * @return self
      */
-    public function setProfile(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileIdType $profile)
+    public function setProfile(CustomerProfileIdType $profile): TransactionResponseType
     {
         $this->profile = $profile;
         return $this;
@@ -837,7 +612,7 @@ class TransactionResponseType implements \JsonSerializable
      *
      * @return string
      */
-    public function getNetworkTransId()
+    public function getNetworkTransId(): ?string
     {
         return $this->networkTransId;
     }
@@ -848,7 +623,7 @@ class TransactionResponseType implements \JsonSerializable
      * @param string $networkTransId
      * @return self
      */
-    public function setNetworkTransId($networkTransId)
+    public function setNetworkTransId(string $networkTransId): TransactionResponseType
     {
         $this->networkTransId = $networkTransId;
         return $this;
@@ -856,31 +631,31 @@ class TransactionResponseType implements \JsonSerializable
 
 
     // Json Serialize Code
-    public function jsonSerialize(){
+    public function jsonSerialize()
+    {
         $values = array_filter((array)get_object_vars($this),
-        function ($val){
-            return !is_null($val);
-        });
+            function ($val) {
+                return !is_null($val);
+            });
         $mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
-        foreach($values as $key => $value){
-            $classDetails = $mapper->getClass(get_class() , $key);
-            \Log::channel('authorize')->info('ClassDetails');
+        foreach ($values as $key => $value) {
+            $classDetails = $mapper->getClass(get_class(), $key);
+            /*\Log::channel('authorize')->info('ClassDetails');
             \Log::channel('authorize')->info($classDetails->className ?? '');
             \Log::channel('authorize')->info($key);
-            \Log::channel('authorize')->info($value);
-            $classDetails = $mapper->getClass(get_class() , $key);
-            if (isset($value)){
-                if ($classDetails->className === 'Date'){
+            \Log::channel('authorize')->info($value);*/
+            $classDetails = $mapper->getClass(get_class(), $key);
+            if (isset($value)) {
+                if ($classDetails->className === 'Date') {
                     $dateTime = $value->format('Y-m-d');
                     $values[$key] = $dateTime;
-                }
-                else if ($classDetails->className === 'DateTime'){
+                } else if ($classDetails->className === 'DateTime') {
                     $dateTime = $value->format('Y-m-d\TH:i:s\Z');
                     $values[$key] = $dateTime;
                 }
-                if (is_array($value)){
-                    if (!$classDetails->isInlineArray){
-                        $subKey = $classDetails->arrayEntryname;
+                if (is_array($value)) {
+                    if (!$classDetails->isInlineArray) {
+                        $subKey = $classDetails->arrayEntryName;
                         $subArray = [$subKey => $value];
                         $values[$key] = $subArray;
                     }
@@ -888,54 +663,6 @@ class TransactionResponseType implements \JsonSerializable
             }
         }
         return $values;
-    }
-
-    // Json Set Code
-    public function set($data)
-    {
-        if(is_array($data) || is_object($data)) {
-			$mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
-			foreach($data AS $key => $value) {
-				$classDetails = $mapper->getClass(get_class() , $key);
-
-				if($classDetails !== NULL ) {
-					if ($classDetails->isArray) {
-						if ($classDetails->isCustomDefined) {
-							foreach($value AS $keyChild => $valueChild) {
-								$type = new $classDetails->className;
-								$type->set($valueChild);
-								$this->{'addTo' . $key}($type);
-							}
-						}
-						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
-							foreach($value AS $keyChild => $valueChild) {
-								$type = new \DateTime($valueChild);
-								$this->{'addTo' . $key}($type);
-							}
-						}
-						else {
-							foreach($value AS $keyChild => $valueChild) {
-								$this->{'addTo' . $key}($valueChild);
-							}
-						}
-					}
-					else {
-						if ($classDetails->isCustomDefined){
-							$type = new $classDetails->className;
-							$type->set($value);
-							$this->{'set' . $key}($type);
-						}
-						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
-							$type = new \DateTime($value);
-							$this->{'set' . $key}($type);
-						}
-						else {
-							$this->{'set' . $key}($value);
-						}
-					}
-				}
-			}
-		}
     }
 
 }

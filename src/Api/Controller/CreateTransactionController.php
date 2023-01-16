@@ -15,7 +15,6 @@ class CreateTransactionController extends ApiOperationBase
     protected function validateRequest()
     {
         //validate required fields of $this->apiRequest->
-
         //validate non-required fields of $this->apiRequest->
     }
 }

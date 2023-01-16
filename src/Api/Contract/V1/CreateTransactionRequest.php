@@ -34,7 +34,7 @@ class CreateTransactionRequest extends ANetApiRequestType
      * @param TransactionRequestType $transactionRequest
      * @return self
      */
-    public function setTransactionRequest(TransactionRequestType $transactionRequest)
+    public function setTransactionRequest(TransactionRequestType $transactionRequest): CreateTransactionRequest
     {
         $this->transactionRequest = $transactionRequest;
         return $this;

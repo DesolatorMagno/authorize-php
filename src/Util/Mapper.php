@@ -83,7 +83,7 @@ class Mapper
                     // echo $propKey." :: ".$prop['serialized_name']." - ".$prop['xml_list']['entry_name']." - ".$prop['xml_list']['inline'];
                     // echo "\n";
                     $obj->isInlineArray = $this->classes[$class]['properties'][$property]['xml_list']['inline'];
-                    $obj->arrayEntryname = $this->classes[$class]['properties'][$property]['xml_list']['entry_name'];
+                    $obj->arrayEntryName = $this->classes[$class]['properties'][$property]['xml_list']['entry_name'];
                 }
             }
             $obj->className = $className;

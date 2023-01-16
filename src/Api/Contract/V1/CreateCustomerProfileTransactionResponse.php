@@ -2,7 +2,7 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
-use DesolatorMagno\AuthorizePhp\Api\Contract\V1\ANetApiResponseType;
+use DesolatorMagno\AuthorizePhp\Traits\SetSerializeTrait;
 
 /**
  * Class representing CreateCustomerProfileTransactionResponse
@@ -10,109 +10,33 @@ use DesolatorMagno\AuthorizePhp\Api\Contract\V1\ANetApiResponseType;
 class CreateCustomerProfileTransactionResponse extends ANetApiResponseType
 {
 
-    /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType
-     * $transactionResponse
-     */
-    private $transactionResponse = null;
+    use SetSerializeTrait;
 
-    /**
-     * @property string $directResponse
-     */
-    private $directResponse = null;
+    private ?TransactionResponseType $transactionResponse = null;
 
-    /**
-     * Gets as transactionResponse
-     *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType
-     */
-    public function getTransactionResponse()
+    private ?string $directResponse = null;
+
+    public function getTransactionResponse(): ?TransactionResponseType
     {
         return $this->transactionResponse;
     }
 
-    /**
-     * Sets a new transactionResponse
-     *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType
-     * $transactionResponse
-     * @return self
-     */
-    public function setTransactionResponse(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType $transactionResponse)
+    public function setTransactionResponse(TransactionResponseType $transactionResponse): CreateCustomerProfileTransactionResponse
     {
         $this->transactionResponse = $transactionResponse;
         return $this;
     }
 
-    /**
-     * Gets as directResponse
-     *
-     * @return string
-     */
-    public function getDirectResponse()
+
+    public function getDirectResponse(): ?string
     {
         return $this->directResponse;
     }
 
-    /**
-     * Sets a new directResponse
-     *
-     * @param string $directResponse
-     * @return self
-     */
-    public function setDirectResponse($directResponse)
+    public function setDirectResponse(string $directResponse): CreateCustomerProfileTransactionResponse
     {
         $this->directResponse = $directResponse;
         return $this;
-    }
-
-
-    // Json Set Code
-    public function set($data)
-    {
-        if(is_array($data) || is_object($data)) {
-			$mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
-			foreach($data AS $key => $value) {
-				$classDetails = $mapper->getClass(get_class() , $key);
-
-				if($classDetails !== NULL ) {
-					if ($classDetails->isArray) {
-						if ($classDetails->isCustomDefined) {
-							foreach($value AS $keyChild => $valueChild) {
-								$type = new $classDetails->className;
-								$type->set($valueChild);
-								$this->{'addTo' . $key}($type);
-							}
-						}
-						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
-							foreach($value AS $keyChild => $valueChild) {
-								$type = new \DateTime($valueChild);
-								$this->{'addTo' . $key}($type);
-							}
-						}
-						else {
-							foreach($value AS $keyChild => $valueChild) {
-								$this->{'addTo' . $key}($valueChild);
-							}
-						}
-					}
-					else {
-						if ($classDetails->isCustomDefined){
-							$type = new $classDetails->className;
-							$type->set($value);
-							$this->{'set' . $key}($type);
-						}
-						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
-							$type = new \DateTime($value);
-							$this->{'set' . $key}($type);
-						}
-						else {
-							$this->{'set' . $key}($value);
-						}
-					}
-				}
-			}
-		}
     }
 
 }

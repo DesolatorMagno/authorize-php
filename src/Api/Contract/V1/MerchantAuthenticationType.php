@@ -2,13 +2,15 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
+use JsonSerializable;
+
 /**
  * Class representing MerchantAuthenticationType
  *
  *
  * XSD Type: merchantAuthenticationType
  */
-class MerchantAuthenticationType implements \JsonSerializable
+class MerchantAuthenticationType implements JsonSerializable
 {
 
     /**
@@ -277,7 +279,7 @@ class MerchantAuthenticationType implements \JsonSerializable
                 }
                 if (is_array($value)){
                     if (!$classDetails->isInlineArray){
-                        $subKey = $classDetails->arrayEntryname;
+                        $subKey = $classDetails->arrayEntryName;
                         $subArray = [$subKey => $value];
                         $values[$key] = $subArray;
                     }
@@ -290,10 +292,10 @@ class MerchantAuthenticationType implements \JsonSerializable
     // Json Set Code
     public function set($data)
     {
-        \Log::channel('authorize')->debug('Inside Setting Data to Merchant');
+        //\Log::channel('authorize')->debug('Inside Setting Data to Merchant');
 
         if(is_array($data) || is_object($data)) {
-            \Log::channel('authorize')->debug('Setting Data to Merchant');
+            //\Log::channel('authorize')->debug('Setting Data to Merchant');
 			$mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
 			foreach($data AS $key => $value) {
 				$classDetails = $mapper->getClass(get_class() , $key);

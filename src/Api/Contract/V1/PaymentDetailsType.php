@@ -302,7 +302,7 @@ class PaymentDetailsType implements \JsonSerializable
                 }
                 if (is_array($value)){
                     if (!$classDetails->isInlineArray){
-                        $subKey = $classDetails->arrayEntryname;
+                        $subKey = $classDetails->arrayEntryName;
                         $subArray = [$subKey => $value];
                         $values[$key] = $subArray;
                     }
