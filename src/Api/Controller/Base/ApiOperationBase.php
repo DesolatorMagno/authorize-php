@@ -90,7 +90,7 @@ abstract class ApiOperationBase implements IApiOperation
 
         $jsonResponse = $this->httpClient->sendRequest($requestData);
         //\Log::channel('authorize')->info('Request Data');
-        \Log::channel('authorize')->info($jsonResponse);
+        //\Log::channel('authorize')->info($jsonResponse);
 
         if (is_null($jsonResponse)) {
             \Log::channel('authorize')->error('Error getting response from API');
@@ -99,17 +99,17 @@ abstract class ApiOperationBase implements IApiOperation
             return;
         }
 
-        \Log::channel('authorize')->info(gettype($jsonResponse));
+/*        \Log::channel('authorize')->info(gettype($jsonResponse));
 
         $response = json_decode($jsonResponse, true);
         \Log::channel('authorize')->info(gettype($response));
-        \Log::channel('authorize')->info($response);
+        \Log::channel('authorize')->info($response);*/
 
         $this->apiResponse = new $this->apiResponseType();
         $this->apiResponse->set($jsonResponse);
         \Log::channel('authorize')->info($this->apiResponse->jsonSerialize());
         //\Log::channel('authorize')->info(serialize($this->apiResponse));
-
+        //$this->apiResponse->getMessages();
         $this->afterExecute();
     }
 

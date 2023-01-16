@@ -11,6 +11,7 @@ use GuzzleHttp\Client;
 class AuthorizeApiClient
 {
 
+    use BoomRemover;
     private string $url;
     private Client $client;
     private bool $verify_peer = true; // attempt trust validation of SSL certificates when establishing secure connections.
@@ -82,8 +83,10 @@ class AuthorizeApiClient
             //\Log::channel('authorize')->info($options);
 
             $xmlResponse = $apiResponse->getBody();
-            //\Log::channel('authorize')->info("Code: {$apiResponse->getStatusCode()}");
             \Log::channel('authorize')->info("Response from AnetApi: $xmlResponse");
+            $response = $this->removeBoom($xmlResponse);
+            \Log::channel('authorize')->info($response);
+            return $response;
 
         } catch (GuzzleException $ex) {
             \Log::channel('authorize')->error($ex->getMessage());
@@ -95,9 +98,17 @@ class AuthorizeApiClient
             \Log::channel('authorize')->error($e->getMessage());
         }
 
-        \Log::channel('authorize')->error($xmlResponse);
-        \Log::channel('authorize')->error(json_encode(trim($xmlResponse)));
-        return str_replace("\xEF\xBB\xBF", '', trim($xmlResponse));
+
+        /*//$response = str_replace("\xEF\xBB\xBF", '',json_encode(trim($xmlResponse)));
+        $response = str_replace(['\xE2\x80\x8C','&#8203;','\xEF\xBB\xBF','\xE2\x80\x8B', '/\xE2\x80\x8B/'], "", $xmlResponse);
+
+        \Log::channel('authorize')->info($response);
+        \Log::channel('authorize')->info(gettype($response));
+        \Log::channel('authorize')->info($response[0]);
+
+        $response = substr($response, 1);
+        \Log::channel('authorize')->info($response);
+        */
 
     }
 

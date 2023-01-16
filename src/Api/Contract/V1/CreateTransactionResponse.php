@@ -3,6 +3,7 @@
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
 use DesolatorMagno\AuthorizePhp\Traits\SerializeResponseTrait;
+//use DesolatorMagno\AuthorizePhp\Traits\SetSerializeTrait;
 use DesolatorMagno\AuthorizePhp\Util\Mapper;
 use Log;
 
@@ -14,7 +15,7 @@ class CreateTransactionResponse extends ANetApiResponseType
     use SerializeResponseTrait;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType
+     * @property TransactionResponseType
      * $transactionResponse
      */
     private $transactionResponse = null;
@@ -28,22 +29,18 @@ class CreateTransactionResponse extends ANetApiResponseType
     /**
      * Gets as transactionResponse
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType
+     * @return TransactionResponseType
      */
     public function getTransactionResponse()
     {
         return $this->transactionResponse;
     }
 
-    /**
-     * Sets a new transactionResponse
-     *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType
-     * $transactionResponse
-     * @return self
-     */
-    public function setTransactionResponse(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType $transactionResponse)
+    public function setTransactionResponse(TransactionResponseType $transactionResponse): CreateTransactionResponse
     {
+        \Log::channel('authorize')->debug('Settin transaction');
+        \Log::channel('authorize')->debug($transactionResponse->jsonSerialize());
+
         $this->transactionResponse = $transactionResponse;
         return $this;
     }
@@ -78,47 +75,49 @@ class CreateTransactionResponse extends ANetApiResponseType
 			$mapper = Mapper::Instance();
 			foreach($data AS $key => $value) {
 				$classDetails = $mapper->getClass(get_class() , $key);
-                Log::channel('authorize')->info('ClassDetails');
-                Log::channel('authorize')->info($classDetails);
-                Log::channel('authorize')->info($key);
-                Log::channel('authorize')->info($value);
+                \Log::channel('authorize')->info('ClassDetails');
+                \Log::channel('authorize')->info($classDetails->className ?? '');
+                \Log::channel('authorize')->info($key);
+                \Log::channel('authorize')->info($value);
 
-				if($classDetails !== NULL ) {
-					if ($classDetails->isArray) {
-						if ($classDetails->isCustomDefined) {
-							foreach($value AS $keyChild => $valueChild) {
-								$type = new $classDetails->className;
-								$type->set($valueChild);
-								$this->{'addTo' . $key}($type);
-							}
-						}
-						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
-							foreach($value AS $keyChild => $valueChild) {
-								$type = new \DateTime($valueChild);
-								$this->{'addTo' . $key}($type);
-							}
-						}
-						else {
-							foreach($value AS $keyChild => $valueChild) {
-								$this->{'addTo' . $key}($valueChild);
-							}
-						}
-					}
-					else {
-						if ($classDetails->isCustomDefined){
-							$type = new $classDetails->className;
-							$type->set($value);
-							$this->{'set' . $key}($type);
-						}
-						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
-							$type = new \DateTime($value);
-							$this->{'set' . $key}($type);
-						}
-						else {
-							$this->{'set' . $key}($value);
-						}
-					}
-				}
+                if ($classDetails == null) {
+                    continue;
+                }
+
+                if ($classDetails->isArray) {
+                    if ($classDetails->isCustomDefined) {
+                        foreach($value AS $keyChild => $valueChild) {
+                            $type = new $classDetails->className;
+                            $type->set($valueChild);
+                            $this->{'addTo' . $key}($type);
+                        }
+                    }
+                    else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
+                        foreach($value AS $keyChild => $valueChild) {
+                            $type = new \DateTime($valueChild);
+                            $this->{'addTo' . $key}($type);
+                        }
+                    }
+                    else {
+                        foreach($value AS $keyChild => $valueChild) {
+                            $this->{'addTo' . $key}($valueChild);
+                        }
+                    }
+                }
+                else {
+                    if ($classDetails->isCustomDefined){
+                        $type = new $classDetails->className;
+                        $type->set($value);
+                        $this->{'set' . $key}($type);
+                    }
+                    else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
+                        $type = new \DateTime($value);
+                        $this->{'set' . $key}($type);
+                    }
+                    else {
+                        $this->{'set' . $key}($value);
+                    }
+                }
 			}
 		}
     }
