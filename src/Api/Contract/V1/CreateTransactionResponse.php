@@ -2,6 +2,7 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
+use DesolatorMagno\AuthorizePhp\Traits\SerializeAnetResponseTrait;
 use DesolatorMagno\AuthorizePhp\Traits\SerializeResponseTrait;
 use DesolatorMagno\AuthorizePhp\Traits\SetSerializeTrait;
 
@@ -10,7 +11,6 @@ use DesolatorMagno\AuthorizePhp\Traits\SetSerializeTrait;
  */
 class CreateTransactionResponse extends ANetApiResponseType
 {
-    use SerializeResponseTrait, SetSerializeTrait;
 
     /**
      * @property TransactionResponseType

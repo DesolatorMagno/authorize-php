@@ -639,12 +639,12 @@ class TransactionResponseType implements JsonSerializable
             });
         $mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
         foreach ($values as $key => $value) {
-            $classDetails = $mapper->getClass(get_class(), $key);
+            $classDetails = $mapper->getClass(get_class($this), $key);
             /*\Log::channel('authorize')->info('ClassDetails');
             \Log::channel('authorize')->info($classDetails->className ?? '');
             \Log::channel('authorize')->info($key);
             \Log::channel('authorize')->info($value);*/
-            $classDetails = $mapper->getClass(get_class(), $key);
+            $classDetails = $mapper->getClass(get_class($this), $key);
             if (isset($value)) {
                 if ($classDetails->className === 'Date') {
                     $dateTime = $value->format('Y-m-d');

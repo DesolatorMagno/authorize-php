@@ -8,7 +8,7 @@ namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
  *
  * XSD Type: customerAddressExType
  */
-class CustomerAddressExType extends CustomerAddressType implements \JsonSerializable
+class CustomerAddressExType extends CustomerAddressType
 {
 
     /**
@@ -39,7 +39,8 @@ class CustomerAddressExType extends CustomerAddressType implements \JsonSerializ
     }
 
 
-    // Json Serialize Code
+  // Json Serialize Code
+   #[\ReturnTypeWillChange]
     public function jsonSerialize(){
         $values = array_filter((array)get_object_vars($this),
         function ($val){
@@ -47,7 +48,7 @@ class CustomerAddressExType extends CustomerAddressType implements \JsonSerializ
         });
         $mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
         foreach($values as $key => $value){
-            $classDetails = $mapper->getClass(get_class() , $key);
+            $classDetails = $mapper->getClass(get_class($this) , $key);
             if (isset($value)){
                 if ($classDetails->className === 'Date'){
                     $dateTime = $value->format('Y-m-d');
@@ -67,54 +68,6 @@ class CustomerAddressExType extends CustomerAddressType implements \JsonSerializ
             }
         }
         return array_merge(parent::jsonSerialize(), $values);
-    }
-
-    // Json Set Code
-    public function set($data)
-    {
-        if(is_array($data) || is_object($data)) {
-			$mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
-			foreach($data AS $key => $value) {
-				$classDetails = $mapper->getClass(get_class() , $key);
-
-				if($classDetails !== NULL ) {
-					if ($classDetails->isArray) {
-						if ($classDetails->isCustomDefined) {
-							foreach($value AS $keyChild => $valueChild) {
-								$type = new $classDetails->className;
-								$type->set($valueChild);
-								$this->{'addTo' . $key}($type);
-							}
-						}
-						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
-							foreach($value AS $keyChild => $valueChild) {
-								$type = new \DateTime($valueChild);
-								$this->{'addTo' . $key}($type);
-							}
-						}
-						else {
-							foreach($value AS $keyChild => $valueChild) {
-								$this->{'addTo' . $key}($valueChild);
-							}
-						}
-					}
-					else {
-						if ($classDetails->isCustomDefined){
-							$type = new $classDetails->className;
-							$type->set($value);
-							$this->{'set' . $key}($type);
-						}
-						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
-							$type = new \DateTime($value);
-							$this->{'set' . $key}($type);
-						}
-						else {
-							$this->{'set' . $key}($value);
-						}
-					}
-				}
-			}
-		}
     }
 
 }

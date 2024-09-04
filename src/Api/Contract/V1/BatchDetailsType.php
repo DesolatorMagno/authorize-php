@@ -2,6 +2,9 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
+use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeGlobalTrait;
+use DesolatorMagno\AuthorizePhp\Traits\SetGlobalTrait;
+
 /**
  * Class representing BatchDetailsType
  *
@@ -10,7 +13,7 @@ namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
  */
 class BatchDetailsType implements \JsonSerializable
 {
-
+    use JsonSerializeGlobalTrait, SetGlobalTrait;
     /**
      * @property string $batchId
      */
@@ -67,7 +70,7 @@ class BatchDetailsType implements \JsonSerializable
      * @param string $batchId
      * @return self
      */
-    public function setBatchId($batchId)
+    public function setBatchId($batchId): self
     {
         $this->batchId = $batchId;
         return $this;
@@ -89,7 +92,7 @@ class BatchDetailsType implements \JsonSerializable
      * @param \DateTime $settlementTimeUTC
      * @return self
      */
-    public function setSettlementTimeUTC(\DateTime $settlementTimeUTC)
+    public function setSettlementTimeUTC(\DateTime $settlementTimeUTC): self
     {
         $this->settlementTimeUTC = $settlementTimeUTC;
         return $this;
@@ -111,7 +114,7 @@ class BatchDetailsType implements \JsonSerializable
      * @param \DateTime $settlementTimeLocal
      * @return self
      */
-    public function setSettlementTimeLocal(\DateTime $settlementTimeLocal)
+    public function setSettlementTimeLocal(\DateTime $settlementTimeLocal): self
     {
         $this->settlementTimeLocal = $settlementTimeLocal;
         return $this;
@@ -133,7 +136,7 @@ class BatchDetailsType implements \JsonSerializable
      * @param string $settlementState
      * @return self
      */
-    public function setSettlementState($settlementState)
+    public function setSettlementState($settlementState): self
     {
         $this->settlementState = $settlementState;
         return $this;
@@ -155,7 +158,7 @@ class BatchDetailsType implements \JsonSerializable
      * @param string $paymentMethod
      * @return self
      */
-    public function setPaymentMethod($paymentMethod)
+    public function setPaymentMethod($paymentMethod): self
     {
         $this->paymentMethod = $paymentMethod;
         return $this;
@@ -177,7 +180,7 @@ class BatchDetailsType implements \JsonSerializable
      * @param string $marketType
      * @return self
      */
-    public function setMarketType($marketType)
+    public function setMarketType($marketType): self
     {
         $this->marketType = $marketType;
         return $this;
@@ -199,7 +202,7 @@ class BatchDetailsType implements \JsonSerializable
      * @param string $product
      * @return self
      */
-    public function setProduct($product)
+    public function setProduct($product): self
     {
         $this->product = $product;
         return $this;
@@ -211,7 +214,7 @@ class BatchDetailsType implements \JsonSerializable
      * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\BatchStatisticType $statistic
      *@return self
      */
-    public function addToStatistics(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\BatchStatisticType $statistic)
+    public function addToStatistics(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\BatchStatisticType $statistic): self
     {
         $this->statistics[] = $statistic;
         return $this;
@@ -255,89 +258,9 @@ class BatchDetailsType implements \JsonSerializable
      * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\BatchStatisticType[] $statistics
      * @return self
      */
-    public function setStatistics(array $statistics)
+    public function setStatistics(array $statistics): self
     {
         $this->statistics = $statistics;
         return $this;
     }
-
-
-    // Json Serialize Code
-    public function jsonSerialize(){
-        $values = array_filter((array)get_object_vars($this),
-        function ($val){
-            return !is_null($val);
-        });
-        $mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
-        foreach($values as $key => $value){
-            $classDetails = $mapper->getClass(get_class() , $key);
-            if (isset($value)){
-                if ($classDetails->className === 'Date'){
-                    $dateTime = $value->format('Y-m-d');
-                    $values[$key] = $dateTime;
-                }
-                else if ($classDetails->className === 'DateTime'){
-                    $dateTime = $value->format('Y-m-d\TH:i:s\Z');
-                    $values[$key] = $dateTime;
-                }
-                if (is_array($value)){
-                    if (!$classDetails->isInlineArray){
-                        $subKey = $classDetails->arrayEntryName;
-                        $subArray = [$subKey => $value];
-                        $values[$key] = $subArray;
-                    }
-                }
-            }
-        }
-        return $values;
-    }
-
-    // Json Set Code
-    public function set($data)
-    {
-        if(is_array($data) || is_object($data)) {
-			$mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
-			foreach($data AS $key => $value) {
-				$classDetails = $mapper->getClass(get_class() , $key);
-
-				if($classDetails !== NULL ) {
-					if ($classDetails->isArray) {
-						if ($classDetails->isCustomDefined) {
-							foreach($value AS $keyChild => $valueChild) {
-								$type = new $classDetails->className;
-								$type->set($valueChild);
-								$this->{'addTo' . $key}($type);
-							}
-						}
-						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
-							foreach($value AS $keyChild => $valueChild) {
-								$type = new \DateTime($valueChild);
-								$this->{'addTo' . $key}($type);
-							}
-						}
-						else {
-							foreach($value AS $keyChild => $valueChild) {
-								$this->{'addTo' . $key}($valueChild);
-							}
-						}
-					}
-					else {
-						if ($classDetails->isCustomDefined){
-							$type = new $classDetails->className;
-							$type->set($value);
-							$this->{'set' . $key}($type);
-						}
-						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
-							$type = new \DateTime($value);
-							$this->{'set' . $key}($type);
-						}
-						else {
-							$this->{'set' . $key}($value);
-						}
-					}
-				}
-			}
-		}
-    }
-
 }

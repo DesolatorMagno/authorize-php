@@ -2,33 +2,36 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType;
 
+use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeGlobalTrait;
+use DesolatorMagno\AuthorizePhp\Traits\SetGlobalTrait;
+
 /**
  * Class representing SecureAcceptanceAType
  */
 class SecureAcceptanceAType implements \JsonSerializable
 {
-
+    use JsonSerializeGlobalTrait, SetGlobalTrait;
     /**
      * @property string $secureAcceptanceUrl
      */
-    private $secureAcceptanceUrl = null;
+    private ?string $secureAcceptanceUrl = null;
 
     /**
      * @property string $payerID
      */
-    private $payerID = null;
+    private ?string $payerID = null;
 
     /**
      * @property string $payerEmail
      */
-    private $payerEmail = null;
+    private ?string $payerEmail = null;
 
     /**
      * Gets as secureAcceptanceUrl
      *
      * @return string
      */
-    public function getSecureAcceptanceUrl()
+    public function getSecureAcceptanceUrl(): ?string
     {
         return $this->secureAcceptanceUrl;
     }
@@ -39,7 +42,7 @@ class SecureAcceptanceAType implements \JsonSerializable
      * @param string $secureAcceptanceUrl
      * @return self
      */
-    public function setSecureAcceptanceUrl($secureAcceptanceUrl)
+    public function setSecureAcceptanceUrl(string $secureAcceptanceUrl): self
     {
         $this->secureAcceptanceUrl = $secureAcceptanceUrl;
         return $this;
@@ -50,7 +53,7 @@ class SecureAcceptanceAType implements \JsonSerializable
      *
      * @return string
      */
-    public function getPayerID()
+    public function getPayerID(): ?string
     {
         return $this->payerID;
     }
@@ -61,7 +64,7 @@ class SecureAcceptanceAType implements \JsonSerializable
      * @param string $payerID
      * @return self
      */
-    public function setPayerID($payerID)
+    public function setPayerID(string $payerID): self
     {
         $this->payerID = $payerID;
         return $this;
@@ -72,7 +75,7 @@ class SecureAcceptanceAType implements \JsonSerializable
      *
      * @return string
      */
-    public function getPayerEmail()
+    public function getPayerEmail(): string
     {
         return $this->payerEmail;
     }
@@ -83,89 +86,10 @@ class SecureAcceptanceAType implements \JsonSerializable
      * @param string $payerEmail
      * @return self
      */
-    public function setPayerEmail($payerEmail)
+    public function setPayerEmail(string $payerEmail): self
     {
         $this->payerEmail = $payerEmail;
         return $this;
-    }
-
-
-    // Json Serialize Code
-    public function jsonSerialize(){
-        $values = array_filter((array)get_object_vars($this),
-        function ($val){
-            return !is_null($val);
-        });
-        $mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
-        foreach($values as $key => $value){
-            $classDetails = $mapper->getClass(get_class() , $key);
-            if (isset($value)){
-                if ($classDetails->className === 'Date'){
-                    $dateTime = $value->format('Y-m-d');
-                    $values[$key] = $dateTime;
-                }
-                else if ($classDetails->className === 'DateTime'){
-                    $dateTime = $value->format('Y-m-d\TH:i:s\Z');
-                    $values[$key] = $dateTime;
-                }
-                if (is_array($value)){
-                    if (!$classDetails->isInlineArray){
-                        $subKey = $classDetails->arrayEntryName;
-                        $subArray = [$subKey => $value];
-                        $values[$key] = $subArray;
-                    }
-                }
-            }
-        }
-        return $values;
-    }
-
-    // Json Set Code
-    public function set($data)
-    {
-        if(is_array($data) || is_object($data)) {
-			$mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
-			foreach($data AS $key => $value) {
-				$classDetails = $mapper->getClass(get_class() , $key);
-
-				if($classDetails !== NULL ) {
-					if ($classDetails->isArray) {
-						if ($classDetails->isCustomDefined) {
-							foreach($value AS $keyChild => $valueChild) {
-								$type = new $classDetails->className;
-								$type->set($valueChild);
-								$this->{'addTo' . $key}($type);
-							}
-						}
-						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
-							foreach($value AS $keyChild => $valueChild) {
-								$type = new \DateTime($valueChild);
-								$this->{'addTo' . $key}($type);
-							}
-						}
-						else {
-							foreach($value AS $keyChild => $valueChild) {
-								$this->{'addTo' . $key}($valueChild);
-							}
-						}
-					}
-					else {
-						if ($classDetails->isCustomDefined){
-							$type = new $classDetails->className;
-							$type->set($value);
-							$this->{'set' . $key}($type);
-						}
-						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
-							$type = new \DateTime($value);
-							$this->{'set' . $key}($type);
-						}
-						else {
-							$this->{'set' . $key}($value);
-						}
-					}
-				}
-			}
-		}
     }
 
 }

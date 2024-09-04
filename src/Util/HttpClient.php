@@ -1,6 +1,8 @@
 <?php
 namespace DesolatorMagno\AuthorizePhp\Util;
 
+use DesolatorMagno\AuthorizePhp\Api\Constants\ANetEnvironment;
+
 /**
  * A class to send a request to the XML API.
  *
@@ -19,7 +21,7 @@ class HttpClient
      */
     public function __construct()
     {
-        $this->logger = \DesolatorMagno\AuthorizePhp\Util\LogFactory::getLog(get_class($this));
+        $this->logger = LogFactory::getLog(get_class($this));
     }
 
     /**
@@ -27,7 +29,7 @@ class HttpClient
      *
      * @param string $endPoint end point to hit from  \DesolatorMagno\AuthorizePhp\Api\Constants\ANetEnvironment
      */
-    public function setPostUrl( $endPoint = \DesolatorMagno\AuthorizePhp\Api\Constants\ANetEnvironment::CUSTOM)
+    public function setPostUrl(string $endPoint = ANetEnvironment::CUSTOM)
     {
         $this->_Url = sprintf( "%s/xml/v1/request.api", $endPoint);
     }

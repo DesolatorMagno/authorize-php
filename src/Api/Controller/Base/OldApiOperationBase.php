@@ -66,7 +66,7 @@ abstract class OldApiOperationBase implements IApiOperation
         $this->httpClient = new HttpClient;
 
 /*        $serializerBuilder = SerializerBuilder::create();
-        $serializerBuilder->addMetadataDir( __DIR__ . '/../../yml/v1', 'net\authorize\api\contract\V1');//..\..\yml\V1\ //'/../lib/net/authorize/api/yml/v1'
+        $serializerBuilder->addMetadataDir( __DIR__ . '/../../yml/v1', 'DesolatorMagno\AuthorizePhp\Api\Contract\V1');//..\..\yml\V1\ //'/../lib/net/authorize/api/yml/v1'
         $serializerBuilder->configureHandlers(
             function (HandlerRegistryInterface $h)
 

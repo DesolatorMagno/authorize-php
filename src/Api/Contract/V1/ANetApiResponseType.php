@@ -2,8 +2,8 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
-use DesolatorMagno\AuthorizePhp\Traits\SerializeSingleTrait;
-use DesolatorMagno\AuthorizePhp\Traits\SetSerializeTrait;
+use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeGlobalTrait;
+use DesolatorMagno\AuthorizePhp\Traits\SetGlobalTrait;
 
 /**
  * Class representing ANetApiResponseType
@@ -14,7 +14,7 @@ use DesolatorMagno\AuthorizePhp\Traits\SetSerializeTrait;
 class ANetApiResponseType implements \JsonSerializable
 {
 
-    use SerializeSingleTrait, SetSerializeTrait;
+    use JsonSerializeGlobalTrait, SetGlobalTrait;
 
     /**
      * @property string $refId
@@ -47,7 +47,7 @@ class ANetApiResponseType implements \JsonSerializable
      * @param string $refId
      * @return self
      */
-    public function setRefId($refId)
+    public function setRefId($refId): self
     {
         $this->refId = $refId;
         return $this;
@@ -69,7 +69,7 @@ class ANetApiResponseType implements \JsonSerializable
      * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\MessagesType $messages
      * @return self
      */
-    public function setMessages(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\MessagesType $messages)
+    public function setMessages(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\MessagesType $messages): self
     {
         $this->messages = $messages;
         return $this;
@@ -91,7 +91,7 @@ class ANetApiResponseType implements \JsonSerializable
      * @param string $sessionToken
      * @return self
      */
-    public function setSessionToken($sessionToken)
+    public function setSessionToken($sessionToken): self
     {
         $this->sessionToken = $sessionToken;
         return $this;

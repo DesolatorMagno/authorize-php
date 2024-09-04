@@ -2,33 +2,36 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType;
 
+use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeGlobalTrait;
+use DesolatorMagno\AuthorizePhp\Traits\SetGlobalTrait;
+
 /**
  * Class representing PrePaidCardAType
  */
 class PrePaidCardAType implements \JsonSerializable
 {
-
+    use JsonSerializeGlobalTrait, SetGlobalTrait;
     /**
      * @property string $requestedAmount
      */
-    private $requestedAmount = null;
+    private ?string $requestedAmount = null;
 
     /**
      * @property string $approvedAmount
      */
-    private $approvedAmount = null;
+    private ?string $approvedAmount = null;
 
     /**
      * @property string $balanceOnCard
      */
-    private $balanceOnCard = null;
+    private ?string $balanceOnCard = null;
 
     /**
      * Gets as requestedAmount
      *
      * @return string
      */
-    public function getRequestedAmount()
+    public function getRequestedAmount(): ?string
     {
         return $this->requestedAmount;
     }
@@ -39,7 +42,7 @@ class PrePaidCardAType implements \JsonSerializable
      * @param string $requestedAmount
      * @return self
      */
-    public function setRequestedAmount($requestedAmount)
+    public function setRequestedAmount(string $requestedAmount): self
     {
         $this->requestedAmount = $requestedAmount;
         return $this;
@@ -50,7 +53,7 @@ class PrePaidCardAType implements \JsonSerializable
      *
      * @return string
      */
-    public function getApprovedAmount()
+    public function getApprovedAmount(): ?string
     {
         return $this->approvedAmount;
     }
@@ -61,7 +64,7 @@ class PrePaidCardAType implements \JsonSerializable
      * @param string $approvedAmount
      * @return self
      */
-    public function setApprovedAmount($approvedAmount)
+    public function setApprovedAmount(string $approvedAmount): self
     {
         $this->approvedAmount = $approvedAmount;
         return $this;
@@ -72,7 +75,7 @@ class PrePaidCardAType implements \JsonSerializable
      *
      * @return string
      */
-    public function getBalanceOnCard()
+    public function getBalanceOnCard(): ?string
     {
         return $this->balanceOnCard;
     }
@@ -83,89 +86,10 @@ class PrePaidCardAType implements \JsonSerializable
      * @param string $balanceOnCard
      * @return self
      */
-    public function setBalanceOnCard($balanceOnCard)
+    public function setBalanceOnCard(string $balanceOnCard): self
     {
         $this->balanceOnCard = $balanceOnCard;
         return $this;
-    }
-
-
-    // Json Serialize Code
-    public function jsonSerialize(){
-        $values = array_filter((array)get_object_vars($this),
-        function ($val){
-            return !is_null($val);
-        });
-        $mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
-        foreach($values as $key => $value){
-            $classDetails = $mapper->getClass(get_class() , $key);
-            if (isset($value)){
-                if ($classDetails->className === 'Date'){
-                    $dateTime = $value->format('Y-m-d');
-                    $values[$key] = $dateTime;
-                }
-                else if ($classDetails->className === 'DateTime'){
-                    $dateTime = $value->format('Y-m-d\TH:i:s\Z');
-                    $values[$key] = $dateTime;
-                }
-                if (is_array($value)){
-                    if (!$classDetails->isInlineArray){
-                        $subKey = $classDetails->arrayEntryName;
-                        $subArray = [$subKey => $value];
-                        $values[$key] = $subArray;
-                    }
-                }
-            }
-        }
-        return $values;
-    }
-
-    // Json Set Code
-    public function set($data)
-    {
-        if(is_array($data) || is_object($data)) {
-			$mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
-			foreach($data AS $key => $value) {
-				$classDetails = $mapper->getClass(get_class() , $key);
-
-				if($classDetails !== NULL ) {
-					if ($classDetails->isArray) {
-						if ($classDetails->isCustomDefined) {
-							foreach($value AS $keyChild => $valueChild) {
-								$type = new $classDetails->className;
-								$type->set($valueChild);
-								$this->{'addTo' . $key}($type);
-							}
-						}
-						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
-							foreach($value AS $keyChild => $valueChild) {
-								$type = new \DateTime($valueChild);
-								$this->{'addTo' . $key}($type);
-							}
-						}
-						else {
-							foreach($value AS $keyChild => $valueChild) {
-								$this->{'addTo' . $key}($valueChild);
-							}
-						}
-					}
-					else {
-						if ($classDetails->isCustomDefined){
-							$type = new $classDetails->className;
-							$type->set($value);
-							$this->{'set' . $key}($type);
-						}
-						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
-							$type = new \DateTime($value);
-							$this->{'set' . $key}($type);
-						}
-						else {
-							$this->{'set' . $key}($value);
-						}
-					}
-				}
-			}
-		}
     }
 
 }

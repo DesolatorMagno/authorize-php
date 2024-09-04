@@ -2,10 +2,9 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
-use DesolatorMagno\AuthorizePhp\Traits\SerializeSingleTrait;
-use DesolatorMagno\AuthorizePhp\Traits\SetSerializeTrait;
+use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeGlobalTrait;
+use DesolatorMagno\AuthorizePhp\Traits\SetGlobalTrait;
 use JsonSerializable;
-
 
 /**
  * Class representing ANetApiRequestType
@@ -16,7 +15,7 @@ use JsonSerializable;
 class ANetApiRequestType implements JsonSerializable
 {
 
-    use SetSerializeTrait, SerializeSingleTrait;
+    use JsonSerializeGlobalTrait, SetGlobalTrait;
 
     private ?MerchantAuthenticationType $merchantAuthentication = null;
 
@@ -30,7 +29,7 @@ class ANetApiRequestType implements JsonSerializable
         return $this->merchantAuthentication;
     }
 
-    public function setMerchantAuthentication(MerchantAuthenticationType $merchantAuthentication): ANetApiRequestType
+    public function setMerchantAuthentication(MerchantAuthenticationType $merchantAuthentication): self
     {
         $this->merchantAuthentication = $merchantAuthentication;
         return $this;
@@ -46,7 +45,7 @@ class ANetApiRequestType implements JsonSerializable
         return $this->clientId;
     }
 
-    public function setClientId(string $clientId): ANetApiRequestType
+    public function setClientId(string $clientId): self
     {
         $this->clientId = $clientId;
         return $this;
@@ -57,11 +56,10 @@ class ANetApiRequestType implements JsonSerializable
         return $this->refId;
     }
 
-    public function setRefId(string $refId): ANetApiRequestType
+    public function setRefId(string $refId): self
     {
         $this->refId = $refId;
         return $this;
     }
-
 
 }

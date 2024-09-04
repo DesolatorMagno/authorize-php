@@ -15,7 +15,7 @@ trait SerializeTrait
             });
         $mapper = Mapper::Instance();
         foreach ($values as $key => $value) {
-            $classDetails = $mapper->getClass(get_class(), $key);
+            $classDetails = $mapper->getClass(get_class($this), $key);
             if (is_null($value)) continue;
 
             if ($classDetails->className === 'Date') {

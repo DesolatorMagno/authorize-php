@@ -2,15 +2,14 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
-use DesolatorMagno\AuthorizePhp\Traits\SerializeRequestTrait;
+use DesolatorMagno\AuthorizePhp\Traits\SerializeAnetRequestTrait;
 
 /**
  * Class representing CreateTransactionRequest
  */
 class CreateTransactionRequest extends ANetApiRequestType
 {
-
-    use SerializeRequestTrait;
+    use SerializeAnetRequestTrait;
 
     /**
      * @property TransactionRequestType

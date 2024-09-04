@@ -9,6 +9,6 @@ class MapperObj{
 	public bool $isInlineArray = false;
 	public ?string $arrayEntryName = null;
 }
-//echo $classes['net\authorize\api\contract\v1\ANetApiRequestType']['properties']['merchantAuthentication']['type']."\n";
+//echo $classes['DesolatorMagno\AuthorizePhp\Api\Contract\V1\ANetApiRequestType']['properties']['merchantAuthentication']['type']."\n";
 
 //$value = Yaml::parseFile('/*.yaml');

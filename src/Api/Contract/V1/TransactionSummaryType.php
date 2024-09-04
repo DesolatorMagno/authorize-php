@@ -471,7 +471,8 @@ class TransactionSummaryType implements \JsonSerializable
     }
 
 
-    // Json Serialize Code
+  // Json Serialize Code
+   #[\ReturnTypeWillChange]
     public function jsonSerialize(){
         $values = array_filter((array)get_object_vars($this),
         function ($val){
@@ -479,7 +480,7 @@ class TransactionSummaryType implements \JsonSerializable
         });
         $mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
         foreach($values as $key => $value){
-            $classDetails = $mapper->getClass(get_class() , $key);
+            $classDetails = $mapper->getClass(get_class($this) , $key);
             if (isset($value)){
                 if ($classDetails->className === 'Date'){
                     $dateTime = $value->format('Y-m-d');
@@ -507,7 +508,7 @@ class TransactionSummaryType implements \JsonSerializable
         if(is_array($data) || is_object($data)) {
 			$mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
 			foreach($data AS $key => $value) {
-				$classDetails = $mapper->getClass(get_class() , $key);
+				$classDetails = $mapper->getClass(get_class($this) , $key);
 
 				if($classDetails !== NULL ) {
 					if ($classDetails->isArray) {

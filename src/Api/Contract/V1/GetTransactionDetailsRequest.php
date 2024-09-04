@@ -3,13 +3,14 @@
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
 use DesolatorMagno\AuthorizePhp\Api\Contract\V1\ANetApiRequestType;
+use DesolatorMagno\AuthorizePhp\Traits\SerializeAnetRequestTrait;
 
 /**
  * Class representing GetTransactionDetailsRequest
  */
 class GetTransactionDetailsRequest extends ANetApiRequestType
 {
-
+    use SerializeAnetRequestTrait;
     /**
      * @property string $transId
      */
@@ -38,7 +39,8 @@ class GetTransactionDetailsRequest extends ANetApiRequestType
     }
 
 
-    // Json Serialize Code
+  // Json Serialize Code
+   #[\ReturnTypeWillChange]
     public function jsonSerialize(){
         $values = array_filter((array)get_object_vars($this),
         function ($val){
@@ -46,7 +48,7 @@ class GetTransactionDetailsRequest extends ANetApiRequestType
         });
         $mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
         foreach($values as $key => $value){
-            $classDetails = $mapper->getClass(get_class() , $key);
+            $classDetails = $mapper->getClass(get_class($this) , $key);
             if (isset($value)){
                 if ($classDetails->className === 'Date'){
                     $dateTime = $value->format('Y-m-d');

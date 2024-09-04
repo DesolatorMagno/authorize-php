@@ -1,24 +1,29 @@
 <?php
 namespace DesolatorMagno\AuthorizePhp\Util;
 
+use Exception;
+use ReflectionException;
 use ReflectionObject;
 use ReflectionProperty;
 
-define("ANET_LOG_FILES_APPEND", true);
+define('ANET_LOG_FILES_APPEND', true);
 
-define("ANET_LOG_DEBUG_PREFIX", "DEBUG");
-define("ANET_LOG_INFO_PREFIX", "INFO");
-define("ANET_LOG_WARN_PREFIX", "WARN");
-define("ANET_LOG_ERROR_PREFIX", "ERROR");
+define('AUTHORIZENET_LOG_FILE', 'phplog');
+
+define('ANET_LOG_DEBUG_PREFIX', 'DEBUG');
+define('ANET_LOG_INFO_PREFIX', 'INFO');
+define('ANET_LOG_WARN_PREFIX', 'WARN');
+define('ANET_LOG_ERROR_PREFIX', 'ERROR');
 
 //log levels
 define('ANET_LOG_DEBUG', 1);
-define("ANET_LOG_INFO", 2);
-define("ANET_LOG_WARN", 3);
-define("ANET_LOG_ERROR", 4);
+define('ANET_LOG_INFO', 2);
+define('ANET_LOG_WARN', 3);
+define('ANET_LOG_ERROR', 4);
 
 //set level
-define("ANET_LOG_LEVEL", ANET_LOG_DEBUG);
+define('ANET_LOG_LEVEL', ANET_LOG_DEBUG);
+
 
 /**
  * A class to implement logging.
@@ -29,6 +34,7 @@ define("ANET_LOG_LEVEL", ANET_LOG_DEBUG);
 class Log
 {
     private $sensitiveXmlTags = NULL;
+    private $sensitiveStringRegexes = NULL;
     private $logFile = '';
     private $logLevel = ANET_LOG_LEVEL;
 
@@ -40,7 +46,7 @@ class Log
      *
      * @return string
      */
-    private function addDelimiterFwdSlash($regexPattern): string
+    private function addDelimiterFwdSlash(string $regexPattern): string
     {
         return '/' . $regexPattern . '/u';
     }
@@ -52,26 +58,26 @@ class Log
      *
      * @return string        The xml as a string after masking sensitive fields
      */
-    private function maskSensitiveXmlString($rawString)
+    private function maskSensitiveXmlString(string $rawString): string
     {
-        $patterns = array();
-        $replacements = array();
+        $patterns = [];
+        $replacements = [];
 
         foreach ($this->sensitiveXmlTags as $i => $sensitiveTag) {
             $tag = $sensitiveTag->tagName;
-            $inputPattern = "(.+)"; //no need to mask null data
-            $inputReplacement = "xxxx";
+            $inputPattern = '(.+)'; //no need to mask null data
+            $inputReplacement = 'xxxx';
 
             if (trim($sensitiveTag->pattern)) {
                 $inputPattern = $sensitiveTag->pattern;
             }
-            $pattern = "<" . $tag . ">(?:.*)" . $inputPattern . "(?:.*)<\/" . $tag . ">";
+            $pattern = '<' . $tag . '>(?:.*)' . $inputPattern . '(?:.*)<\/' . $tag . '>';
             $pattern = $this->addDelimiterFwdSlash($pattern);
 
             if (trim($sensitiveTag->replacement)) {
                 $inputReplacement = $sensitiveTag->replacement;
             }
-            $replacement = "<" . $tag . ">" . $inputReplacement . "</" . $tag . ">";
+            $replacement = '<' . $tag . '>' . $inputReplacement . '</' . $tag . '>';
 
             $patterns [$i] = $pattern;
             $replacements[$i] = $replacement;
@@ -87,7 +93,7 @@ class Log
      *
      * @return string        The string after masking credit card regex matching parts.
      */
-    private function maskCreditCards($rawString)
+    private function maskCreditCards(string $rawString): string
     {
         $patterns = array();
         $replacements = array();
@@ -96,7 +102,7 @@ class Log
             $pattern = $creditCardRegex;
             $pattern = $this->addDelimiterFwdSlash($pattern);
 
-            $replacement = "xxxx";
+            $replacement = 'xxxx';
             $patterns [$i] = $pattern;
             $replacements[$i] = $replacement;
         }
@@ -117,7 +123,7 @@ class Log
      *
      * @param ReflectionObject $reflClass
      *
-     * @return \ReflectionProperty[]
+     * @return ReflectionProperty[]
      */
     private function getPropertiesInclBase($reflClass)
     {
@@ -130,7 +136,7 @@ class Log
                 }
                 $properties = array_merge($curClassPropList, $properties);
             } while ($reflClass = $reflClass->getParentClass());
-        } catch (\ReflectionException $e) {
+        } catch (ReflectionException $e) {
         }
         return $properties;
     }
@@ -148,8 +154,8 @@ class Log
     private function checkPropertyAndMask(ReflectionProperty $prop, object $obj)
     {
         foreach ($this->sensitiveXmlTags as $i => $sensitiveField) {
-            $inputPattern = "(.+)";
-            $inputReplacement = "xxxx";
+            $inputPattern = '(.+)';
+            $inputReplacement = 'xxxx';
 
             if (trim($sensitiveField->pattern)) {
                 $inputPattern = $sensitiveField->pattern;
@@ -178,7 +184,7 @@ class Log
     private function maskSensitiveProperties($obj)
     {
         // first retrieve all properties of the passed object
-        $reflectObj = new \ReflectionObject($obj);
+        $reflectObj = new ReflectionObject($obj);
         $props = $this->getPropertiesInclBase($reflectObj);
 
         // for composite property recursively execute; for scalars, do a check and mask
@@ -221,11 +227,11 @@ class Log
     private function getMasked($raw)
     { //always returns string
         $messageType = gettype($raw);
-        $message = "";
-        if ($messageType == "object") {
+        $message = '';
+        if ($messageType == 'object') {
             $obj = unserialize(serialize($raw)); // deep copying the object
             $message = print_r($this->maskSensitiveProperties($obj), true); //object to string
-        } else if ($messageType == "array") {
+        } else if ($messageType == 'array') {
             $copyArray = unserialize(serialize($raw));
             foreach ($copyArray as $i => $element) {
                 $copyArray[$i] = $this->getMasked($element);
@@ -235,7 +241,7 @@ class Log
             $primtiveTypeAsString = strval($raw);
 
             $maskedXml = $primtiveTypeAsString;
-            if ($messageType == "string") {
+            if ($messageType == 'string') {
                 $maskedXml = $this->maskSensitiveXmlString($primtiveTypeAsString);
             }
             //mask credit card numbers
@@ -262,7 +268,7 @@ class Log
         if (isset($debugTrace[2])) $methodName = $debugTrace[2]['function'] ? $debugTrace[2]['function'] : 'n/a';
 
         //Add timestamp, log level, method, file, line
-        $logString = sprintf("\n %s %s : [%s] (%s : %s) - %s", \DesolatorMagno\AuthorizePhp\Util\Helpers::now(), $logLevelPrefix,
+        $logString = sprintf("\n %s %s : [%s] (%s : %s) - %s", Helpers::now(), $logLevelPrefix,
             $methodName, $fileName, $lineNumber, $logMessage);
         file_put_contents($this->logFile, $logString, $flags);
     }
@@ -303,8 +309,8 @@ class Log
             }
             $logMessage = vsprintf($format, $objects);
             $this->log($logLevelPrefix, $logMessage, $flags);
-        } catch (\Exception $e) {
-            $this->debug("Incorrect log message format: " . $e->getMessage());
+        } catch (Exception $e) {
+            $this->debug('Incorrect log message format: ' . $e->getMessage());
         }
     }
 
@@ -371,8 +377,8 @@ class Log
 
     public function __construct()
     {
-        $this->sensitiveXmlTags = \DesolatorMagno\AuthorizePhp\Util\ANetSensitiveFields::getSensitiveXmlTags();
-        $this->sensitiveStringRegexes = \DesolatorMagno\AuthorizePhp\Util\ANetSensitiveFields::getSensitiveStringRegexes();
+        $this->sensitiveXmlTags = ANetSensitiveFields::getSensitiveXmlTags();
+        $this->sensitiveStringRegexes = ANetSensitiveFields::getSensitiveStringRegexes();
     }
 }
 

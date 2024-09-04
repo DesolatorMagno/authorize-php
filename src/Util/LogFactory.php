@@ -5,7 +5,7 @@ class LogFactory
 {
     private static $logger = NULL;
     public static function getLog($classType){
-        if(NULL == self::$logger){
+        if(is_null(self::$logger)){
             self::$logger = new Log();
             if(defined('AUTHORIZENET_LOG_FILE')){
                 self::$logger->setLogFile(AUTHORIZENET_LOG_FILE);
@@ -14,4 +14,3 @@ class LogFactory
         return self::$logger;
     }
 }
-?>

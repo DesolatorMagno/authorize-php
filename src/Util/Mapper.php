@@ -18,7 +18,7 @@ class Mapper
     // 			//var_dump($value);
     // 			//array_push($classes, $value);
     // 			//var_dump($classes);
-    // 			//echo $value['net\authorize\api\contract\v1\ANetApiRequestType']['properties']['merchantAuthentication']['type']."\n";
+    // 			//echo $value['DesolatorMagno\AuthorizePhp\Api\Contract\V1\ANetApiRequestType']['properties']['merchantAuthentication']['type']."\n";
     // 			$key = key($value);
     // 			$this->classes[$key] = $value[$key];
     // 			//break;
@@ -49,7 +49,7 @@ class Mapper
     // 			return 'string';
     // 	}
     // 	else if ($property == "messages" ){
-    // 			return 'net\authorize\api\contract\v1\MessagesType';
+    // 			return 'DesolatorMagno\AuthorizePhp\Api\Contract\V1\MessagesType';
     // 	}
     // 	else{
     // 		echo "Error finding in YAML - ".$classname." ".$property."\n";
@@ -99,7 +99,7 @@ class Mapper
 //		 }
 //		 else if ($property == "messages" ){
 //
-//		 		$className = 'net\authorize\api\contract\v1\MessagesType';
+//		 		$className = 'DesolatorMagno\AuthorizePhp\Api\Contract\V1\MessagesType';
 //             $obj->className = $className;
 //            $obj->isCustomDefined = stripos($className, '\\') !== false;
 //
@@ -118,10 +118,11 @@ class Mapper
         if (isset($this->classes[$class]['xml_root_name'])) {
             return $this->classes[$class]['xml_root_name'];
         }
+        return null;
     }
 }
 
-//echo $classes['net\authorize\api\contract\v1\ANetApiRequestType']['properties']['merchantAuthentication']['type']."\n";
+//echo $classes['DesolatorMagno\AuthorizePhp\Api\Contract\V1\ANetApiRequestType']['properties']['merchantAuthentication']['type']."\n";
 
 //$value = Yaml::parseFile('/*.yaml');
 

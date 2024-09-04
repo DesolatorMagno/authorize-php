@@ -9,12 +9,12 @@ namespace DesolatorMagno\AuthorizePhp\Util;
  */
 class Helpers
 {
-    private static $initialized = false;
+    private static bool $initialized = false;
 
     /**
      * @return string current date-time
      */
-    public static function now()
+    public static function now(): string
     {
         //init only once
         if ( ! self::$initialized)

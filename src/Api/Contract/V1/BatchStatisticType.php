@@ -2,6 +2,9 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
+use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeGlobalTrait;
+use DesolatorMagno\AuthorizePhp\Traits\SetGlobalTrait;
+
 /**
  * Class representing BatchStatisticType
  *
@@ -10,7 +13,7 @@ namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
  */
 class BatchStatisticType implements \JsonSerializable
 {
-
+    use JsonSerializeGlobalTrait, SetGlobalTrait;
     /**
      * @property string $accountType
      */
@@ -132,7 +135,7 @@ class BatchStatisticType implements \JsonSerializable
      * @param string $accountType
      * @return self
      */
-    public function setAccountType($accountType)
+    public function setAccountType($accountType): self
     {
         $this->accountType = $accountType;
         return $this;
@@ -154,7 +157,7 @@ class BatchStatisticType implements \JsonSerializable
      * @param float $chargeAmount
      * @return self
      */
-    public function setChargeAmount($chargeAmount)
+    public function setChargeAmount($chargeAmount): self
     {
         $this->chargeAmount = $chargeAmount;
         return $this;
@@ -176,7 +179,7 @@ class BatchStatisticType implements \JsonSerializable
      * @param integer $chargeCount
      * @return self
      */
-    public function setChargeCount($chargeCount)
+    public function setChargeCount($chargeCount): self
     {
         $this->chargeCount = $chargeCount;
         return $this;
@@ -198,7 +201,7 @@ class BatchStatisticType implements \JsonSerializable
      * @param float $refundAmount
      * @return self
      */
-    public function setRefundAmount($refundAmount)
+    public function setRefundAmount($refundAmount): self
     {
         $this->refundAmount = $refundAmount;
         return $this;
@@ -220,7 +223,7 @@ class BatchStatisticType implements \JsonSerializable
      * @param integer $refundCount
      * @return self
      */
-    public function setRefundCount($refundCount)
+    public function setRefundCount($refundCount): self
     {
         $this->refundCount = $refundCount;
         return $this;
@@ -242,7 +245,7 @@ class BatchStatisticType implements \JsonSerializable
      * @param integer $voidCount
      * @return self
      */
-    public function setVoidCount($voidCount)
+    public function setVoidCount($voidCount): self
     {
         $this->voidCount = $voidCount;
         return $this;
@@ -264,7 +267,7 @@ class BatchStatisticType implements \JsonSerializable
      * @param integer $declineCount
      * @return self
      */
-    public function setDeclineCount($declineCount)
+    public function setDeclineCount($declineCount): self
     {
         $this->declineCount = $declineCount;
         return $this;
@@ -286,7 +289,7 @@ class BatchStatisticType implements \JsonSerializable
      * @param integer $errorCount
      * @return self
      */
-    public function setErrorCount($errorCount)
+    public function setErrorCount($errorCount): self
     {
         $this->errorCount = $errorCount;
         return $this;
@@ -308,7 +311,7 @@ class BatchStatisticType implements \JsonSerializable
      * @param float $returnedItemAmount
      * @return self
      */
-    public function setReturnedItemAmount($returnedItemAmount)
+    public function setReturnedItemAmount($returnedItemAmount): self
     {
         $this->returnedItemAmount = $returnedItemAmount;
         return $this;
@@ -330,7 +333,7 @@ class BatchStatisticType implements \JsonSerializable
      * @param integer $returnedItemCount
      * @return self
      */
-    public function setReturnedItemCount($returnedItemCount)
+    public function setReturnedItemCount($returnedItemCount): self
     {
         $this->returnedItemCount = $returnedItemCount;
         return $this;
@@ -352,7 +355,7 @@ class BatchStatisticType implements \JsonSerializable
      * @param float $chargebackAmount
      * @return self
      */
-    public function setChargebackAmount($chargebackAmount)
+    public function setChargebackAmount($chargebackAmount): self
     {
         $this->chargebackAmount = $chargebackAmount;
         return $this;
@@ -374,7 +377,7 @@ class BatchStatisticType implements \JsonSerializable
      * @param integer $chargebackCount
      * @return self
      */
-    public function setChargebackCount($chargebackCount)
+    public function setChargebackCount($chargebackCount): self
     {
         $this->chargebackCount = $chargebackCount;
         return $this;
@@ -396,7 +399,7 @@ class BatchStatisticType implements \JsonSerializable
      * @param integer $correctionNoticeCount
      * @return self
      */
-    public function setCorrectionNoticeCount($correctionNoticeCount)
+    public function setCorrectionNoticeCount($correctionNoticeCount): self
     {
         $this->correctionNoticeCount = $correctionNoticeCount;
         return $this;
@@ -418,7 +421,7 @@ class BatchStatisticType implements \JsonSerializable
      * @param float $chargeChargeBackAmount
      * @return self
      */
-    public function setChargeChargeBackAmount($chargeChargeBackAmount)
+    public function setChargeChargeBackAmount($chargeChargeBackAmount): self
     {
         $this->chargeChargeBackAmount = $chargeChargeBackAmount;
         return $this;
@@ -440,7 +443,7 @@ class BatchStatisticType implements \JsonSerializable
      * @param integer $chargeChargeBackCount
      * @return self
      */
-    public function setChargeChargeBackCount($chargeChargeBackCount)
+    public function setChargeChargeBackCount($chargeChargeBackCount): self
     {
         $this->chargeChargeBackCount = $chargeChargeBackCount;
         return $this;
@@ -462,7 +465,7 @@ class BatchStatisticType implements \JsonSerializable
      * @param float $refundChargeBackAmount
      * @return self
      */
-    public function setRefundChargeBackAmount($refundChargeBackAmount)
+    public function setRefundChargeBackAmount($refundChargeBackAmount): self
     {
         $this->refundChargeBackAmount = $refundChargeBackAmount;
         return $this;
@@ -484,7 +487,7 @@ class BatchStatisticType implements \JsonSerializable
      * @param integer $refundChargeBackCount
      * @return self
      */
-    public function setRefundChargeBackCount($refundChargeBackCount)
+    public function setRefundChargeBackCount($refundChargeBackCount): self
     {
         $this->refundChargeBackCount = $refundChargeBackCount;
         return $this;
@@ -506,7 +509,7 @@ class BatchStatisticType implements \JsonSerializable
      * @param float $chargeReturnedItemsAmount
      * @return self
      */
-    public function setChargeReturnedItemsAmount($chargeReturnedItemsAmount)
+    public function setChargeReturnedItemsAmount($chargeReturnedItemsAmount): self
     {
         $this->chargeReturnedItemsAmount = $chargeReturnedItemsAmount;
         return $this;
@@ -528,7 +531,7 @@ class BatchStatisticType implements \JsonSerializable
      * @param integer $chargeReturnedItemsCount
      * @return self
      */
-    public function setChargeReturnedItemsCount($chargeReturnedItemsCount)
+    public function setChargeReturnedItemsCount($chargeReturnedItemsCount): self
     {
         $this->chargeReturnedItemsCount = $chargeReturnedItemsCount;
         return $this;
@@ -550,7 +553,7 @@ class BatchStatisticType implements \JsonSerializable
      * @param float $refundReturnedItemsAmount
      * @return self
      */
-    public function setRefundReturnedItemsAmount($refundReturnedItemsAmount)
+    public function setRefundReturnedItemsAmount($refundReturnedItemsAmount): self
     {
         $this->refundReturnedItemsAmount = $refundReturnedItemsAmount;
         return $this;
@@ -572,89 +575,10 @@ class BatchStatisticType implements \JsonSerializable
      * @param integer $refundReturnedItemsCount
      * @return self
      */
-    public function setRefundReturnedItemsCount($refundReturnedItemsCount)
+    public function setRefundReturnedItemsCount($refundReturnedItemsCount): self
     {
         $this->refundReturnedItemsCount = $refundReturnedItemsCount;
         return $this;
-    }
-
-
-    // Json Serialize Code
-    public function jsonSerialize(){
-        $values = array_filter((array)get_object_vars($this),
-        function ($val){
-            return !is_null($val);
-        });
-        $mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
-        foreach($values as $key => $value){
-            $classDetails = $mapper->getClass(get_class() , $key);
-            if (isset($value)){
-                if ($classDetails->className === 'Date'){
-                    $dateTime = $value->format('Y-m-d');
-                    $values[$key] = $dateTime;
-                }
-                else if ($classDetails->className === 'DateTime'){
-                    $dateTime = $value->format('Y-m-d\TH:i:s\Z');
-                    $values[$key] = $dateTime;
-                }
-                if (is_array($value)){
-                    if (!$classDetails->isInlineArray){
-                        $subKey = $classDetails->arrayEntryName;
-                        $subArray = [$subKey => $value];
-                        $values[$key] = $subArray;
-                    }
-                }
-            }
-        }
-        return $values;
-    }
-
-    // Json Set Code
-    public function set($data)
-    {
-        if(is_array($data) || is_object($data)) {
-			$mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
-			foreach($data AS $key => $value) {
-				$classDetails = $mapper->getClass(get_class() , $key);
-
-				if($classDetails !== NULL ) {
-					if ($classDetails->isArray) {
-						if ($classDetails->isCustomDefined) {
-							foreach($value AS $keyChild => $valueChild) {
-								$type = new $classDetails->className;
-								$type->set($valueChild);
-								$this->{'addTo' . $key}($type);
-							}
-						}
-						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
-							foreach($value AS $keyChild => $valueChild) {
-								$type = new \DateTime($valueChild);
-								$this->{'addTo' . $key}($type);
-							}
-						}
-						else {
-							foreach($value AS $keyChild => $valueChild) {
-								$this->{'addTo' . $key}($valueChild);
-							}
-						}
-					}
-					else {
-						if ($classDetails->isCustomDefined){
-							$type = new $classDetails->className;
-							$type->set($value);
-							$this->{'set' . $key}($type);
-						}
-						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
-							$type = new \DateTime($value);
-							$this->{'set' . $key}($type);
-						}
-						else {
-							$this->{'set' . $key}($value);
-						}
-					}
-				}
-			}
-		}
     }
 
 }

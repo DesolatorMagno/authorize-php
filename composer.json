@@ -15,11 +15,13 @@
         }
     ],
     "require": {
-        "php": "^7.4",
+        "php": "^7.4|^8.0",
         "ext-curl": "*",
         "ext-json": "*",
         "guzzlehttp/guzzle": "^7.5",
-        "illuminate/log": "^8.83"
+        "illuminate/log": "^8.83",
+        "symfony/yaml" : "^5.4",
+        "jms/serializer": "^3.5.0"
     },
     "require-dev": {
         "phpstan/phpstan": "^1.9",
