@@ -19,7 +19,6 @@
         "ext-curl": "*",
         "ext-json": "*",
         "guzzlehttp/guzzle": "^7.5",
-        "illuminate/log": "^8.83",
         "symfony/yaml": "^5.4|^6.0|^7.0",
         "jms/serializer": "^3.5.0"
     },
