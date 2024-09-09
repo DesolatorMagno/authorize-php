@@ -4,6 +4,7 @@ namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
 use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeGlobalTrait;
 use DesolatorMagno\AuthorizePhp\Traits\SetGlobalTrait;
+use JsonSerializable;
 
 /**
  * Class representing CreditCardSimpleType
@@ -11,7 +12,7 @@ use DesolatorMagno\AuthorizePhp\Traits\SetGlobalTrait;
  *
  * XSD Type: creditCardSimpleType
  */
-class CreditCardSimpleType implements \JsonSerializable
+class CreditCardSimpleType implements JsonSerializable
 {
     use JsonSerializeGlobalTrait, SetGlobalTrait;
     /**

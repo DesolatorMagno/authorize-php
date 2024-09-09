@@ -2,24 +2,29 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
+use DateTime;
+use DesolatorMagno\AuthorizePhp\Util\Mapper;
+use JsonSerializable;
+use ReturnTypeWillChange;
+
 /**
  * Class representing KeyBlockType
  *
  *
  * XSD Type: KeyBlock
  */
-class KeyBlockType implements \JsonSerializable
+class KeyBlockType implements JsonSerializable
 {
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\KeyValueType $value
+     * @property KeyValueType $value
      */
     private $value = null;
 
     /**
      * Gets as value
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\KeyValueType
+     * @return KeyValueType
      */
     public function getValue()
     {
@@ -29,10 +34,10 @@ class KeyBlockType implements \JsonSerializable
     /**
      * Sets a new value
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\KeyValueType $value
+     * @param KeyValueType $value
      * @return self
      */
-    public function setValue(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\KeyValueType $value)
+    public function setValue(KeyValueType $value)
     {
         $this->value = $value;
         return $this;
@@ -40,13 +45,13 @@ class KeyBlockType implements \JsonSerializable
 
 
   // Json Serialize Code
-   #[\ReturnTypeWillChange]
+   #[ReturnTypeWillChange]
     public function jsonSerialize(){
         $values = array_filter((array)get_object_vars($this),
         function ($val){
             return !is_null($val);
         });
-        $mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
+        $mapper = Mapper::Instance();
         foreach($values as $key => $value){
             $classDetails = $mapper->getClass(get_class($this) , $key);
             if (isset($value)){
@@ -74,11 +79,11 @@ class KeyBlockType implements \JsonSerializable
     public function set($data)
     {
         if(is_array($data) || is_object($data)) {
-			$mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
+			$mapper = Mapper::Instance();
 			foreach($data AS $key => $value) {
 				$classDetails = $mapper->getClass(get_class($this) , $key);
 
-				if($classDetails !== NULL ) {
+				if(!is_null($classDetails)) {
 					if ($classDetails->isArray) {
 						if ($classDetails->isCustomDefined) {
 							foreach($value AS $keyChild => $valueChild) {
@@ -89,7 +94,7 @@ class KeyBlockType implements \JsonSerializable
 						}
 						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
 							foreach($value AS $keyChild => $valueChild) {
-								$type = new \DateTime($valueChild);
+								$type = new DateTime($valueChild);
 								$this->{'addTo' . $key}($type);
 							}
 						}
@@ -106,7 +111,7 @@ class KeyBlockType implements \JsonSerializable
 							$this->{'set' . $key}($type);
 						}
 						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
-							$type = new \DateTime($value);
+							$type = new DateTime($value);
 							$this->{'set' . $key}($type);
 						}
 						else {

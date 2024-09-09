@@ -19,16 +19,16 @@ class AuthorizeApiClient
 
     public function __construct()
     {
-        $this->url = sprintf("%s/xml/v1/request.api", ANetEnvironment::CUSTOM);
+        $this->url = sprintf('%s/xml/v1/request.api', ANetEnvironment::CUSTOM);
         $this->client = new Client();
     }
 
-    protected function setUrl(string $endPoint)
+    protected function setUrl(string $endPoint): void
     {
-        $this->url = sprintf("%s/xml/v1/request.api", $endPoint);
+        $this->url = sprintf('%s/xml/v1/request.api', $endPoint);
     }
 
-    public function setPostUrl(string $endPoint)
+    public function setPostUrl(string $endPoint): void
     {
         $this->setUrl($endPoint);
     }
@@ -49,8 +49,6 @@ class AuthorizeApiClient
 
         if ($this->verify_peer) {
             $options[CURLOPT_CAINFO] = dirname(__FILE__, 2) . '/ssl/cert.pem';
-            //\Log::channel('authorize')->info('SSL Path:');
-            //\Log::channel('authorize')->info(dirname(__FILE__, 2) . '/ssl/cert.pem');
 
         } else {
             Log::channel('authorize')->error('Invalid SSL option for the request');
@@ -59,22 +57,19 @@ class AuthorizeApiClient
             return [];
         }
 
-        if (preg_match('/xml/', $this->url)) {
-            $options[CURLOPT_HTTPHEADER] = array("Content-Type: text/json");
-            //\Log::channel('authorize')->info("Sending 'XML' Request type");
+        if (str_contains($this->url, 'xml')) {
+            $options[CURLOPT_HTTPHEADER] = ['Content-Type: text/json'];
         }
 
         return $options;
     }
 
-    public function sendRequest(string $xmlRequest): ?array
+    public function sendRequest(string $xmlRequest): array|null
     {
         $options = $this->getCurlOptions($xmlRequest);
         if ($options == []) return [];
 
         try {
-
-            //\Log::channel('authorize')->info("Sending http request via Guzzle");
             Log::channel('authorize')->debug("Url:  {$this->url}");
 
             $apiResponse = $this->client->post($this->url, [
@@ -101,7 +96,7 @@ class AuthorizeApiClient
 
     }
 
-    protected function now()
+    protected function now(): string
     {
         return date(DATE_RFC2822);
     }

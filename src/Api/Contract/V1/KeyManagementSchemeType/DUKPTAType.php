@@ -2,13 +2,17 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1\KeyManagementSchemeType;
 
+use DesolatorMagno\AuthorizePhp\Api\Contract\V1\KeyManagementSchemeType\DUKPTAType\DeviceInfoAType;
+use DesolatorMagno\AuthorizePhp\Api\Contract\V1\KeyManagementSchemeType\DUKPTAType\EncryptedDataAType;
+use DesolatorMagno\AuthorizePhp\Api\Contract\V1\KeyManagementSchemeType\DUKPTAType\ModeAType;
 use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeGlobalTrait;
 use DesolatorMagno\AuthorizePhp\Traits\SetGlobalTrait;
+use JsonSerializable;
 
 /**
  * Class representing DUKPTAType
  */
-class DUKPTAType implements \JsonSerializable
+class DUKPTAType implements JsonSerializable
 {
     use SetGlobalTrait, JsonSerializeGlobalTrait;
 
@@ -79,7 +83,7 @@ class DUKPTAType implements \JsonSerializable
      * $mode
      * @return self
      */
-    public function setMode(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\KeyManagementSchemeType\DUKPTAType\ModeAType $mode)
+    public function setMode(ModeAType $mode)
     {
         $this->mode = $mode;
         return $this;
@@ -104,7 +108,7 @@ class DUKPTAType implements \JsonSerializable
      * $deviceInfo
      * @return self
      */
-    public function setDeviceInfo(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\KeyManagementSchemeType\DUKPTAType\DeviceInfoAType $deviceInfo)
+    public function setDeviceInfo(DeviceInfoAType $deviceInfo)
     {
         $this->deviceInfo = $deviceInfo;
         return $this;
@@ -129,7 +133,7 @@ class DUKPTAType implements \JsonSerializable
      * $encryptedData
      * @return self
      */
-    public function setEncryptedData(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\KeyManagementSchemeType\DUKPTAType\EncryptedDataAType $encryptedData)
+    public function setEncryptedData(EncryptedDataAType $encryptedData)
     {
         $this->encryptedData = $encryptedData;
         return $this;

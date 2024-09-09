@@ -9,29 +9,29 @@ class DecryptPaymentDataResponse extends ANetApiResponseType
 {
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressType $shippingInfo
+     * @property CustomerAddressType $shippingInfo
      */
     private $shippingInfo = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressType $billingInfo
+     * @property CustomerAddressType $billingInfo
      */
     private $billingInfo = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CreditCardMaskedType $cardInfo
+     * @property CreditCardMaskedType $cardInfo
      */
     private $cardInfo = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentDetailsType $paymentDetails
+     * @property PaymentDetailsType $paymentDetails
      */
     private $paymentDetails = null;
 
     /**
      * Gets as shippingInfo
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressType
+     * @return CustomerAddressType
      */
     public function getShippingInfo()
     {
@@ -41,10 +41,10 @@ class DecryptPaymentDataResponse extends ANetApiResponseType
     /**
      * Sets a new shippingInfo
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressType $shippingInfo
+     * @param CustomerAddressType $shippingInfo
      * @return self
      */
-    public function setShippingInfo(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressType $shippingInfo)
+    public function setShippingInfo(CustomerAddressType $shippingInfo)
     {
         $this->shippingInfo = $shippingInfo;
         return $this;
@@ -53,7 +53,7 @@ class DecryptPaymentDataResponse extends ANetApiResponseType
     /**
      * Gets as billingInfo
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressType
+     * @return CustomerAddressType
      */
     public function getBillingInfo()
     {
@@ -63,10 +63,10 @@ class DecryptPaymentDataResponse extends ANetApiResponseType
     /**
      * Sets a new billingInfo
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressType $billingInfo
+     * @param CustomerAddressType $billingInfo
      * @return self
      */
-    public function setBillingInfo(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressType $billingInfo)
+    public function setBillingInfo(CustomerAddressType $billingInfo)
     {
         $this->billingInfo = $billingInfo;
         return $this;
@@ -75,7 +75,7 @@ class DecryptPaymentDataResponse extends ANetApiResponseType
     /**
      * Gets as cardInfo
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CreditCardMaskedType
+     * @return CreditCardMaskedType
      */
     public function getCardInfo()
     {
@@ -85,10 +85,10 @@ class DecryptPaymentDataResponse extends ANetApiResponseType
     /**
      * Sets a new cardInfo
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CreditCardMaskedType $cardInfo
+     * @param CreditCardMaskedType $cardInfo
      * @return self
      */
-    public function setCardInfo(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\CreditCardMaskedType $cardInfo)
+    public function setCardInfo(CreditCardMaskedType $cardInfo)
     {
         $this->cardInfo = $cardInfo;
         return $this;
@@ -97,7 +97,7 @@ class DecryptPaymentDataResponse extends ANetApiResponseType
     /**
      * Gets as paymentDetails
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentDetailsType
+     * @return PaymentDetailsType
      */
     public function getPaymentDetails()
     {
@@ -107,10 +107,10 @@ class DecryptPaymentDataResponse extends ANetApiResponseType
     /**
      * Sets a new paymentDetails
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentDetailsType $paymentDetails
+     * @param PaymentDetailsType $paymentDetails
      * @return self
      */
-    public function setPaymentDetails(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentDetailsType $paymentDetails)
+    public function setPaymentDetails(PaymentDetailsType $paymentDetails)
     {
         $this->paymentDetails = $paymentDetails;
         return $this;

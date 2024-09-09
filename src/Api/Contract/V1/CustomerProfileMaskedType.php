@@ -3,6 +3,9 @@
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
 use DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileExType;
+use DesolatorMagno\AuthorizePhp\Util\Mapper;
+use JsonSerializable;
+use ReturnTypeWillChange;
 
 /**
  * Class representing CustomerProfileMaskedType
@@ -10,17 +13,17 @@ use DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileExType;
  *
  * XSD Type: customerProfileMaskedType
  */
-class CustomerProfileMaskedType extends CustomerProfileExType implements \JsonSerializable
+class CustomerProfileMaskedType extends CustomerProfileExType implements JsonSerializable
 {
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerPaymentProfileMaskedType[]
+     * @property CustomerPaymentProfileMaskedType[]
      * $paymentProfiles
      */
     private $paymentProfiles = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressExType[] $shipToList
+     * @property CustomerAddressExType[] $shipToList
      */
     private $shipToList = null;
 
@@ -32,11 +35,11 @@ class CustomerProfileMaskedType extends CustomerProfileExType implements \JsonSe
     /**
      * Adds as paymentProfiles
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerPaymentProfileMaskedType
+     * @param CustomerPaymentProfileMaskedType
      * $paymentProfiles
      *@return self
      */
-    public function addToPaymentProfiles(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerPaymentProfileMaskedType $paymentProfiles)
+    public function addToPaymentProfiles(CustomerPaymentProfileMaskedType $paymentProfiles)
     {
         $this->paymentProfiles[] = $paymentProfiles;
         return $this;
@@ -67,7 +70,7 @@ class CustomerProfileMaskedType extends CustomerProfileExType implements \JsonSe
     /**
      * Gets as paymentProfiles
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerPaymentProfileMaskedType[]
+     * @return CustomerPaymentProfileMaskedType[]
      */
     public function getPaymentProfiles()
     {
@@ -77,7 +80,7 @@ class CustomerProfileMaskedType extends CustomerProfileExType implements \JsonSe
     /**
      * Sets a new paymentProfiles
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerPaymentProfileMaskedType[]
+     * @param CustomerPaymentProfileMaskedType[]
      * $paymentProfiles
      * @return self
      */
@@ -90,10 +93,10 @@ class CustomerProfileMaskedType extends CustomerProfileExType implements \JsonSe
     /**
      * Adds as shipToList
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressExType $shipToList
+     * @param CustomerAddressExType $shipToList
      *@return self
      */
-    public function addToShipToList(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressExType $shipToList)
+    public function addToShipToList(CustomerAddressExType $shipToList)
     {
         $this->shipToList[] = $shipToList;
         return $this;
@@ -124,7 +127,7 @@ class CustomerProfileMaskedType extends CustomerProfileExType implements \JsonSe
     /**
      * Gets as shipToList
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressExType[]
+     * @return CustomerAddressExType[]
      */
     public function getShipToList()
     {
@@ -134,7 +137,7 @@ class CustomerProfileMaskedType extends CustomerProfileExType implements \JsonSe
     /**
      * Sets a new shipToList
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressExType[] $shipToList
+     * @param CustomerAddressExType[] $shipToList
      * @return self
      */
     public function setShipToList(array $shipToList)
@@ -166,13 +169,13 @@ class CustomerProfileMaskedType extends CustomerProfileExType implements \JsonSe
     }
 
   // Json Serialize Code
-   #[\ReturnTypeWillChange]
+   #[ReturnTypeWillChange]
     public function jsonSerialize(){
         $values = array_filter((array)get_object_vars($this),
         function ($val){
             return !is_null($val);
         });
-        $mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
+        $mapper = Mapper::Instance();
         foreach($values as $key => $value){
             $classDetails = $mapper->getClass(get_class($this) , $key);
             if (isset($value)){

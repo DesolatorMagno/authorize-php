@@ -3,6 +3,7 @@
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
 use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeExtendTrait;
+use JsonSerializable;
 
 /**
  * Class representing CustomerPaymentProfileType
@@ -10,17 +11,17 @@ use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeExtendTrait;
  *
  * XSD Type: customerPaymentProfileType
  */
-class CustomerPaymentProfileType extends CustomerPaymentProfileBaseType implements \JsonSerializable
+class CustomerPaymentProfileType extends CustomerPaymentProfileBaseType implements JsonSerializable
 {
     use JsonSerializeExtendTrait;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentType $payment
+     * @property PaymentType $payment
      */
     private $payment = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\DriversLicenseType $driversLicense
+     * @property DriversLicenseType $driversLicense
      */
     private $driversLicense = null;
 
@@ -35,7 +36,7 @@ class CustomerPaymentProfileType extends CustomerPaymentProfileBaseType implemen
     private $defaultPaymentProfile = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\SubsequentAuthInformationType
+     * @property SubsequentAuthInformationType
      * $subsequentAuthInformation
      */
     private $subsequentAuthInformation = null;
@@ -43,7 +44,7 @@ class CustomerPaymentProfileType extends CustomerPaymentProfileBaseType implemen
     /**
      * Gets as payment
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentType
+     * @return PaymentType
      */
     public function getPayment()
     {
@@ -53,10 +54,10 @@ class CustomerPaymentProfileType extends CustomerPaymentProfileBaseType implemen
     /**
      * Sets a new payment
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentType $payment
+     * @param PaymentType $payment
      * @return self
      */
-    public function setPayment(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentType $payment)
+    public function setPayment(PaymentType $payment)
     {
         $this->payment = $payment;
         return $this;
@@ -65,7 +66,7 @@ class CustomerPaymentProfileType extends CustomerPaymentProfileBaseType implemen
     /**
      * Gets as driversLicense
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\DriversLicenseType
+     * @return DriversLicenseType
      */
     public function getDriversLicense()
     {
@@ -75,10 +76,10 @@ class CustomerPaymentProfileType extends CustomerPaymentProfileBaseType implemen
     /**
      * Sets a new driversLicense
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\DriversLicenseType $driversLicense
+     * @param DriversLicenseType $driversLicense
      * @return self
      */
-    public function setDriversLicense(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\DriversLicenseType $driversLicense)
+    public function setDriversLicense(DriversLicenseType $driversLicense)
     {
         $this->driversLicense = $driversLicense;
         return $this;
@@ -131,7 +132,7 @@ class CustomerPaymentProfileType extends CustomerPaymentProfileBaseType implemen
     /**
      * Gets as subsequentAuthInformation
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\SubsequentAuthInformationType
+     * @return SubsequentAuthInformationType
      */
     public function getSubsequentAuthInformation()
     {
@@ -141,11 +142,11 @@ class CustomerPaymentProfileType extends CustomerPaymentProfileBaseType implemen
     /**
      * Sets a new subsequentAuthInformation
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\SubsequentAuthInformationType
+     * @param SubsequentAuthInformationType
      * $subsequentAuthInformation
      * @return self
      */
-    public function setSubsequentAuthInformation(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\SubsequentAuthInformationType $subsequentAuthInformation)
+    public function setSubsequentAuthInformation(SubsequentAuthInformationType $subsequentAuthInformation)
     {
         $this->subsequentAuthInformation = $subsequentAuthInformation;
         return $this;

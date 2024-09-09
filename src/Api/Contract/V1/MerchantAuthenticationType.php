@@ -2,7 +2,10 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
+use DateTime;
+use DesolatorMagno\AuthorizePhp\Util\Mapper;
 use JsonSerializable;
+use ReturnTypeWillChange;
 
 /**
  * Class representing MerchantAuthenticationType
@@ -34,13 +37,13 @@ class MerchantAuthenticationType implements JsonSerializable
     private $password = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ImpersonationAuthenticationType
+     * @property ImpersonationAuthenticationType
      * $impersonationAuthentication
      */
     private $impersonationAuthentication = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\FingerPrintType $fingerPrint
+     * @property FingerPrintType $fingerPrint
      */
     private $fingerPrint = null;
 
@@ -150,7 +153,7 @@ class MerchantAuthenticationType implements JsonSerializable
     /**
      * Gets as impersonationAuthentication
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ImpersonationAuthenticationType
+     * @return ImpersonationAuthenticationType
      */
     public function getImpersonationAuthentication()
     {
@@ -160,11 +163,11 @@ class MerchantAuthenticationType implements JsonSerializable
     /**
      * Sets a new impersonationAuthentication
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ImpersonationAuthenticationType
+     * @param ImpersonationAuthenticationType
      * $impersonationAuthentication
      * @return self
      */
-    public function setImpersonationAuthentication(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\ImpersonationAuthenticationType $impersonationAuthentication)
+    public function setImpersonationAuthentication(ImpersonationAuthenticationType $impersonationAuthentication)
     {
         $this->impersonationAuthentication = $impersonationAuthentication;
         return $this;
@@ -173,7 +176,7 @@ class MerchantAuthenticationType implements JsonSerializable
     /**
      * Gets as fingerPrint
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\FingerPrintType
+     * @return FingerPrintType
      */
     public function getFingerPrint()
     {
@@ -183,10 +186,10 @@ class MerchantAuthenticationType implements JsonSerializable
     /**
      * Sets a new fingerPrint
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\FingerPrintType $fingerPrint
+     * @param FingerPrintType $fingerPrint
      * @return self
      */
-    public function setFingerPrint(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\FingerPrintType $fingerPrint)
+    public function setFingerPrint(FingerPrintType $fingerPrint)
     {
         $this->fingerPrint = $fingerPrint;
         return $this;
@@ -260,13 +263,13 @@ class MerchantAuthenticationType implements JsonSerializable
 
 
   // Json Serialize Code
-   #[\ReturnTypeWillChange]
+   #[ReturnTypeWillChange]
     public function jsonSerialize(){
         $values = array_filter((array)get_object_vars($this),
         function ($val){
             return !is_null($val);
         });
-        $mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
+        $mapper = Mapper::Instance();
         foreach($values as $key => $value){
             $classDetails = $mapper->getClass(get_class($this) , $key);
             if (isset($value)){
@@ -297,11 +300,11 @@ class MerchantAuthenticationType implements JsonSerializable
 
         if(is_array($data) || is_object($data)) {
             //\Log::channel('authorize')->debug('Setting Data to Merchant');
-			$mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
+			$mapper = Mapper::Instance();
 			foreach($data AS $key => $value) {
 				$classDetails = $mapper->getClass(get_class($this) , $key);
 
-				if($classDetails !== NULL ) {
+				if(!is_null($classDetails)) {
 					if ($classDetails->isArray) {
 						if ($classDetails->isCustomDefined) {
 							foreach($value AS $keyChild => $valueChild) {
@@ -312,7 +315,7 @@ class MerchantAuthenticationType implements JsonSerializable
 						}
 						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
 							foreach($value AS $keyChild => $valueChild) {
-								$type = new \DateTime($valueChild);
+								$type = new DateTime($valueChild);
 								$this->{'addTo' . $key}($type);
 							}
 						}
@@ -329,7 +332,7 @@ class MerchantAuthenticationType implements JsonSerializable
 							$this->{'set' . $key}($type);
 						}
 						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
-							$type = new \DateTime($value);
+							$type = new DateTime($value);
 							$this->{'set' . $key}($type);
 						}
 						else {

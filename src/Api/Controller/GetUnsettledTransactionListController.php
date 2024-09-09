@@ -8,7 +8,7 @@ class GetUnsettledTransactionListController extends ApiOperationBase
 {
     public function __construct(AnetApiRequestType $request)
     {
-        $responseType = 'DesolatorMagno\AuthorizePhp\Api\Contract\V1\GetUnsettledTransactionListResponse';
+        $responseType = \DesolatorMagno\AuthorizePhp\Api\Contract\V1\GetUnsettledTransactionListResponse::class;
         parent::__construct($request, $responseType);
     }
 

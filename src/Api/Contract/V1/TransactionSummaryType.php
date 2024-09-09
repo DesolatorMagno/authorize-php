@@ -2,13 +2,18 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
+use DateTime;
+use DesolatorMagno\AuthorizePhp\Util\Mapper;
+use JsonSerializable;
+use ReturnTypeWillChange;
+
 /**
  * Class representing TransactionSummaryType
  *
  *
  * XSD Type: transactionSummaryType
  */
-class TransactionSummaryType implements \JsonSerializable
+class TransactionSummaryType implements JsonSerializable
 {
 
     /**
@@ -17,12 +22,12 @@ class TransactionSummaryType implements \JsonSerializable
     private $transId = null;
 
     /**
-     * @property \DateTime $submitTimeUTC
+     * @property DateTime $submitTimeUTC
      */
     private $submitTimeUTC = null;
 
     /**
-     * @property \DateTime $submitTimeLocal
+     * @property DateTime $submitTimeLocal
      */
     private $submitTimeLocal = null;
 
@@ -77,7 +82,7 @@ class TransactionSummaryType implements \JsonSerializable
     private $mobileDeviceId = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\SubscriptionPaymentType $subscription
+     * @property SubscriptionPaymentType $subscription
      */
     private $subscription = null;
 
@@ -87,12 +92,12 @@ class TransactionSummaryType implements \JsonSerializable
     private $hasReturnedItems = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\FraudInformationType $fraudInformation
+     * @property FraudInformationType $fraudInformation
      */
     private $fraudInformation = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileIdType $profile
+     * @property CustomerProfileIdType $profile
      */
     private $profile = null;
 
@@ -121,7 +126,7 @@ class TransactionSummaryType implements \JsonSerializable
     /**
      * Gets as submitTimeUTC
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getSubmitTimeUTC()
     {
@@ -131,10 +136,10 @@ class TransactionSummaryType implements \JsonSerializable
     /**
      * Sets a new submitTimeUTC
      *
-     * @param \DateTime $submitTimeUTC
+     * @param DateTime $submitTimeUTC
      * @return self
      */
-    public function setSubmitTimeUTC(\DateTime $submitTimeUTC)
+    public function setSubmitTimeUTC(DateTime $submitTimeUTC)
     {
         $this->submitTimeUTC = $submitTimeUTC;
         return $this;
@@ -143,7 +148,7 @@ class TransactionSummaryType implements \JsonSerializable
     /**
      * Gets as submitTimeLocal
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getSubmitTimeLocal()
     {
@@ -153,10 +158,10 @@ class TransactionSummaryType implements \JsonSerializable
     /**
      * Sets a new submitTimeLocal
      *
-     * @param \DateTime $submitTimeLocal
+     * @param DateTime $submitTimeLocal
      * @return self
      */
-    public function setSubmitTimeLocal(\DateTime $submitTimeLocal)
+    public function setSubmitTimeLocal(DateTime $submitTimeLocal)
     {
         $this->submitTimeLocal = $submitTimeLocal;
         return $this;
@@ -385,7 +390,7 @@ class TransactionSummaryType implements \JsonSerializable
     /**
      * Gets as subscription
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\SubscriptionPaymentType
+     * @return SubscriptionPaymentType
      */
     public function getSubscription()
     {
@@ -395,10 +400,10 @@ class TransactionSummaryType implements \JsonSerializable
     /**
      * Sets a new subscription
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\SubscriptionPaymentType $subscription
+     * @param SubscriptionPaymentType $subscription
      * @return self
      */
-    public function setSubscription(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\SubscriptionPaymentType $subscription)
+    public function setSubscription(SubscriptionPaymentType $subscription)
     {
         $this->subscription = $subscription;
         return $this;
@@ -429,7 +434,7 @@ class TransactionSummaryType implements \JsonSerializable
     /**
      * Gets as fraudInformation
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\FraudInformationType
+     * @return FraudInformationType
      */
     public function getFraudInformation()
     {
@@ -439,10 +444,10 @@ class TransactionSummaryType implements \JsonSerializable
     /**
      * Sets a new fraudInformation
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\FraudInformationType $fraudInformation
+     * @param FraudInformationType $fraudInformation
      * @return self
      */
-    public function setFraudInformation(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\FraudInformationType $fraudInformation)
+    public function setFraudInformation(FraudInformationType $fraudInformation)
     {
         $this->fraudInformation = $fraudInformation;
         return $this;
@@ -451,7 +456,7 @@ class TransactionSummaryType implements \JsonSerializable
     /**
      * Gets as profile
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileIdType
+     * @return CustomerProfileIdType
      */
     public function getProfile()
     {
@@ -461,10 +466,10 @@ class TransactionSummaryType implements \JsonSerializable
     /**
      * Sets a new profile
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileIdType $profile
+     * @param CustomerProfileIdType $profile
      * @return self
      */
-    public function setProfile(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileIdType $profile)
+    public function setProfile(CustomerProfileIdType $profile)
     {
         $this->profile = $profile;
         return $this;
@@ -472,13 +477,13 @@ class TransactionSummaryType implements \JsonSerializable
 
 
   // Json Serialize Code
-   #[\ReturnTypeWillChange]
+   #[ReturnTypeWillChange]
     public function jsonSerialize(){
         $values = array_filter((array)get_object_vars($this),
         function ($val){
             return !is_null($val);
         });
-        $mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
+        $mapper = Mapper::Instance();
         foreach($values as $key => $value){
             $classDetails = $mapper->getClass(get_class($this) , $key);
             if (isset($value)){
@@ -506,11 +511,11 @@ class TransactionSummaryType implements \JsonSerializable
     public function set($data)
     {
         if(is_array($data) || is_object($data)) {
-			$mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
+			$mapper = Mapper::Instance();
 			foreach($data AS $key => $value) {
 				$classDetails = $mapper->getClass(get_class($this) , $key);
 
-				if($classDetails !== NULL ) {
+				if(!is_null($classDetails)) {
 					if ($classDetails->isArray) {
 						if ($classDetails->isCustomDefined) {
 							foreach($value AS $keyChild => $valueChild) {
@@ -521,7 +526,7 @@ class TransactionSummaryType implements \JsonSerializable
 						}
 						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
 							foreach($value AS $keyChild => $valueChild) {
-								$type = new \DateTime($valueChild);
+								$type = new DateTime($valueChild);
 								$this->{'addTo' . $key}($type);
 							}
 						}
@@ -538,7 +543,7 @@ class TransactionSummaryType implements \JsonSerializable
 							$this->{'set' . $key}($type);
 						}
 						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
-							$type = new \DateTime($value);
+							$type = new DateTime($value);
 							$this->{'set' . $key}($type);
 						}
 						else {

@@ -16,7 +16,7 @@ class ARBGetSubscriptionListResponse extends ANetApiResponseType
     private $totalNumInResultSet = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\SubscriptionDetailType[]
+     * @property SubscriptionDetailType[]
      * $subscriptionDetails
      */
     private $subscriptionDetails = null;
@@ -46,10 +46,10 @@ class ARBGetSubscriptionListResponse extends ANetApiResponseType
     /**
      * Adds as subscriptionDetail
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\SubscriptionDetailType $subscriptionDetail
+     * @param SubscriptionDetailType $subscriptionDetail
      *@return self
      */
-    public function addToSubscriptionDetails(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\SubscriptionDetailType $subscriptionDetail)
+    public function addToSubscriptionDetails(SubscriptionDetailType $subscriptionDetail)
     {
         $this->subscriptionDetails[] = $subscriptionDetail;
         return $this;
@@ -80,7 +80,7 @@ class ARBGetSubscriptionListResponse extends ANetApiResponseType
     /**
      * Gets as subscriptionDetails
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\SubscriptionDetailType[]
+     * @return SubscriptionDetailType[]
      */
     public function getSubscriptionDetails()
     {
@@ -90,7 +90,7 @@ class ARBGetSubscriptionListResponse extends ANetApiResponseType
     /**
      * Sets a new subscriptionDetails
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\SubscriptionDetailType[]
+     * @param SubscriptionDetailType[]
      * $subscriptionDetails
      * @return self
      */

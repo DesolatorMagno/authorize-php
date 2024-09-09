@@ -9,14 +9,14 @@ class ARBGetSubscriptionResponse extends ANetApiResponseType
 {
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ARBSubscriptionMaskedType $subscription
+     * @property ARBSubscriptionMaskedType $subscription
      */
     private $subscription = null;
 
     /**
      * Gets as subscription
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ARBSubscriptionMaskedType
+     * @return ARBSubscriptionMaskedType
      */
     public function getSubscription()
     {
@@ -26,10 +26,10 @@ class ARBGetSubscriptionResponse extends ANetApiResponseType
     /**
      * Sets a new subscription
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ARBSubscriptionMaskedType $subscription
+     * @param ARBSubscriptionMaskedType $subscription
      * @return self
      */
-    public function setSubscription(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\ARBSubscriptionMaskedType $subscription)
+    public function setSubscription(ARBSubscriptionMaskedType $subscription)
     {
         $this->subscription = $subscription;
         return $this;

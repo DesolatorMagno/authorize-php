@@ -2,13 +2,15 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionDetailsType;
 
+use DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionDetailsType\EmvDetailsAType\TagAType;
 use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeGlobalTrait;
 use DesolatorMagno\AuthorizePhp\Traits\SetGlobalTrait;
+use JsonSerializable;
 
 /**
  * Class representing EmvDetailsAType
  */
-class EmvDetailsAType implements \JsonSerializable
+class EmvDetailsAType implements JsonSerializable
 {
     Use JsonSerializeGlobalTrait, SetGlobalTrait;
     /**
@@ -26,7 +28,7 @@ class EmvDetailsAType implements \JsonSerializable
      * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionDetailsType\EmvDetailsAType\TagAType
      * $tag
      */
-    public function addToTag(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionDetailsType\EmvDetailsAType\TagAType $tag): self
+    public function addToTag(TagAType $tag): self
     {
         $this->tag[] = $tag;
         return $this;

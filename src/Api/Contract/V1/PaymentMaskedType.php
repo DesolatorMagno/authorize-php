@@ -2,34 +2,39 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
+use DateTime;
+use DesolatorMagno\AuthorizePhp\Util\Mapper;
+use JsonSerializable;
+use ReturnTypeWillChange;
+
 /**
  * Class representing PaymentMaskedType
  *
  *
  * XSD Type: paymentMaskedType
  */
-class PaymentMaskedType implements \JsonSerializable
+class PaymentMaskedType implements JsonSerializable
 {
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CreditCardMaskedType $creditCard
+     * @property CreditCardMaskedType $creditCard
      */
     private $creditCard = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\BankAccountMaskedType $bankAccount
+     * @property BankAccountMaskedType $bankAccount
      */
     private $bankAccount = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TokenMaskedType $tokenInformation
+     * @property TokenMaskedType $tokenInformation
      */
     private $tokenInformation = null;
 
     /**
      * Gets as creditCard
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CreditCardMaskedType
+     * @return CreditCardMaskedType
      */
     public function getCreditCard()
     {
@@ -39,10 +44,10 @@ class PaymentMaskedType implements \JsonSerializable
     /**
      * Sets a new creditCard
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CreditCardMaskedType $creditCard
+     * @param CreditCardMaskedType $creditCard
      * @return self
      */
-    public function setCreditCard(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\CreditCardMaskedType $creditCard)
+    public function setCreditCard(CreditCardMaskedType $creditCard)
     {
         $this->creditCard = $creditCard;
         return $this;
@@ -51,7 +56,7 @@ class PaymentMaskedType implements \JsonSerializable
     /**
      * Gets as bankAccount
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\BankAccountMaskedType
+     * @return BankAccountMaskedType
      */
     public function getBankAccount()
     {
@@ -61,10 +66,10 @@ class PaymentMaskedType implements \JsonSerializable
     /**
      * Sets a new bankAccount
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\BankAccountMaskedType $bankAccount
+     * @param BankAccountMaskedType $bankAccount
      * @return self
      */
-    public function setBankAccount(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\BankAccountMaskedType $bankAccount)
+    public function setBankAccount(BankAccountMaskedType $bankAccount)
     {
         $this->bankAccount = $bankAccount;
         return $this;
@@ -73,7 +78,7 @@ class PaymentMaskedType implements \JsonSerializable
     /**
      * Gets as tokenInformation
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TokenMaskedType
+     * @return TokenMaskedType
      */
     public function getTokenInformation()
     {
@@ -83,10 +88,10 @@ class PaymentMaskedType implements \JsonSerializable
     /**
      * Sets a new tokenInformation
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TokenMaskedType $tokenInformation
+     * @param TokenMaskedType $tokenInformation
      * @return self
      */
-    public function setTokenInformation(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\TokenMaskedType $tokenInformation)
+    public function setTokenInformation(TokenMaskedType $tokenInformation)
     {
         $this->tokenInformation = $tokenInformation;
         return $this;
@@ -94,13 +99,13 @@ class PaymentMaskedType implements \JsonSerializable
 
 
   // Json Serialize Code
-   #[\ReturnTypeWillChange]
+   #[ReturnTypeWillChange]
     public function jsonSerialize(){
         $values = array_filter((array)get_object_vars($this),
         function ($val){
             return !is_null($val);
         });
-        $mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
+        $mapper = Mapper::Instance();
         foreach($values as $key => $value){
             $classDetails = $mapper->getClass(get_class($this) , $key);
             if (isset($value)){
@@ -128,11 +133,11 @@ class PaymentMaskedType implements \JsonSerializable
     public function set($data)
     {
         if(is_array($data) || is_object($data)) {
-			$mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
+			$mapper = Mapper::Instance();
 			foreach($data AS $key => $value) {
 				$classDetails = $mapper->getClass(get_class($this) , $key);
 
-				if($classDetails !== NULL ) {
+				if(!is_null($classDetails)) {
 					if ($classDetails->isArray) {
 						if ($classDetails->isCustomDefined) {
 							foreach($value AS $keyChild => $valueChild) {
@@ -143,7 +148,7 @@ class PaymentMaskedType implements \JsonSerializable
 						}
 						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
 							foreach($value AS $keyChild => $valueChild) {
-								$type = new \DateTime($valueChild);
+								$type = new DateTime($valueChild);
 								$this->{'addTo' . $key}($type);
 							}
 						}
@@ -160,7 +165,7 @@ class PaymentMaskedType implements \JsonSerializable
 							$this->{'set' . $key}($type);
 						}
 						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
-							$type = new \DateTime($value);
+							$type = new DateTime($value);
 							$this->{'set' . $key}($type);
 						}
 						else {

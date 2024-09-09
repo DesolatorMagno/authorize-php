@@ -2,27 +2,29 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\EmvResponseAType;
 
+use DesolatorMagno\AuthorizePhp\Api\Contract\V1\EmvTagType;
 use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeGlobalTrait;
 use DesolatorMagno\AuthorizePhp\Traits\SetGlobalTrait;
+use JsonSerializable;
 
 /**
  * Class representing TagsAType
  */
-class TagsAType implements \JsonSerializable
+class TagsAType implements JsonSerializable
 {
     use JsonSerializeGlobalTrait, SetGlobalTrait;
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\EmvTagType[] $tag
+     * @property EmvTagType[] $tag
      */
     private $tag = null;
 
     /**
      * Adds as tag
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\EmvTagType $tag
+     * @param EmvTagType $tag
      *@return self
      */
-    public function addToTag(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\EmvTagType $tag)
+    public function addToTag(EmvTagType $tag)
     {
         $this->tag[] = $tag;
         return $this;
@@ -53,7 +55,7 @@ class TagsAType implements \JsonSerializable
     /**
      * Gets as tag
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\EmvTagType[]
+     * @return EmvTagType[]
      */
     public function getTag()
     {
@@ -63,7 +65,7 @@ class TagsAType implements \JsonSerializable
     /**
      * Sets a new tag
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\EmvTagType[] $tag
+     * @param EmvTagType[] $tag
      * @return self
      */
     public function setTag(array $tag)

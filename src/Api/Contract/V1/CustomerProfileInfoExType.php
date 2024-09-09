@@ -3,6 +3,9 @@
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
 use DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileExType;
+use DesolatorMagno\AuthorizePhp\Util\Mapper;
+use JsonSerializable;
+use ReturnTypeWillChange;
 
 /**
  * Class representing CustomerProfileInfoExType
@@ -10,7 +13,7 @@ use DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileExType;
  *
  * XSD Type: customerProfileInfoExType
  */
-class CustomerProfileInfoExType extends CustomerProfileExType implements \JsonSerializable
+class CustomerProfileInfoExType extends CustomerProfileExType implements JsonSerializable
 {
 
     /**
@@ -42,13 +45,13 @@ class CustomerProfileInfoExType extends CustomerProfileExType implements \JsonSe
 
 
   // Json Serialize Code
-   #[\ReturnTypeWillChange]
+   #[ReturnTypeWillChange]
     public function jsonSerialize(){
         $values = array_filter((array)get_object_vars($this),
         function ($val){
             return !is_null($val);
         });
-        $mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
+        $mapper = Mapper::Instance();
         foreach($values as $key => $value){
             $classDetails = $mapper->getClass(get_class($this) , $key);
             if (isset($value)){

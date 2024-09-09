@@ -16,7 +16,7 @@ class GetCustomerPaymentProfileListResponse extends ANetApiResponseType
     private $totalNumInResultSet = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerPaymentProfileListItemType[]
+     * @property CustomerPaymentProfileListItemType[]
      * $paymentProfiles
      */
     private $paymentProfiles = null;
@@ -46,11 +46,11 @@ class GetCustomerPaymentProfileListResponse extends ANetApiResponseType
     /**
      * Adds as paymentProfile
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerPaymentProfileListItemType
+     * @param CustomerPaymentProfileListItemType
      * $paymentProfile
      *@return self
      */
-    public function addToPaymentProfiles(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerPaymentProfileListItemType $paymentProfile)
+    public function addToPaymentProfiles(CustomerPaymentProfileListItemType $paymentProfile)
     {
         $this->paymentProfiles[] = $paymentProfile;
         return $this;
@@ -81,7 +81,7 @@ class GetCustomerPaymentProfileListResponse extends ANetApiResponseType
     /**
      * Gets as paymentProfiles
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerPaymentProfileListItemType[]
+     * @return CustomerPaymentProfileListItemType[]
      */
     public function getPaymentProfiles()
     {
@@ -91,7 +91,7 @@ class GetCustomerPaymentProfileListResponse extends ANetApiResponseType
     /**
      * Sets a new paymentProfiles
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerPaymentProfileListItemType[]
+     * @param CustomerPaymentProfileListItemType[]
      * $paymentProfiles
      * @return self
      */

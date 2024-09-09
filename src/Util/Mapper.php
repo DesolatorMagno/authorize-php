@@ -5,7 +5,7 @@ use DesolatorMagno\AuthorizePhp\Util\MapperObj;
 
 class Mapper
 {
-    private $classes = array();
+    private $classes = [];
     // private $dir = __DIR__ . "/../../yml/v1/";
 
     // private function __construct() {
@@ -34,8 +34,8 @@ class Mapper
     public static function Instance()
     {
         static $inst = null;
-        if ($inst === null) {
-            $inst = new Mapper();
+        if (is_null($inst)) {
+            $inst = new self();
         }
         return $inst;
     }
@@ -73,7 +73,7 @@ class Mapper
             } else if (stripos($className, "DateTime") !== false) {
                 $className = 'DateTime';
             }
-            if (substr($className, 0, 5) === "array") {
+            if (str_starts_with($className, 'array')) {
                 $className = ltrim($className, 'array<');
                 $className = rtrim($className, '>');
                 $obj->isArray = true;
@@ -125,5 +125,3 @@ class Mapper
 //echo $classes['DesolatorMagno\AuthorizePhp\Api\Contract\V1\ANetApiRequestType']['properties']['merchantAuthentication']['type']."\n";
 
 //$value = Yaml::parseFile('/*.yaml');
-
-?>

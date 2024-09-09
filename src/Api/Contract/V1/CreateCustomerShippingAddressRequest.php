@@ -17,7 +17,7 @@ class CreateCustomerShippingAddressRequest extends ANetApiRequestType
     private $customerProfileId = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressType $address
+     * @property CustomerAddressType $address
      */
     private $address = null;
 
@@ -51,7 +51,7 @@ class CreateCustomerShippingAddressRequest extends ANetApiRequestType
     /**
      * Gets as address
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressType
+     * @return CustomerAddressType
      */
     public function getAddress()
     {
@@ -61,10 +61,10 @@ class CreateCustomerShippingAddressRequest extends ANetApiRequestType
     /**
      * Sets a new address
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressType $address
+     * @param CustomerAddressType $address
      * @return self
      */
-    public function setAddress(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressType $address)
+    public function setAddress(CustomerAddressType $address)
     {
         $this->address = $address;
         return $this;

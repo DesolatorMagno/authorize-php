@@ -4,6 +4,7 @@ namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
 use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeGlobalTrait;
 use DesolatorMagno\AuthorizePhp\Traits\SetGlobalTrait;
+use JsonSerializable;
 
 /**
  * Class representing CcAuthenticationType
@@ -11,7 +12,7 @@ use DesolatorMagno\AuthorizePhp\Traits\SetGlobalTrait;
  *
  * XSD Type: ccAuthenticationType
  */
-class CcAuthenticationType implements \JsonSerializable
+class CcAuthenticationType implements JsonSerializable
 {
     use JsonSerializeGlobalTrait, SetGlobalTrait;
     /**

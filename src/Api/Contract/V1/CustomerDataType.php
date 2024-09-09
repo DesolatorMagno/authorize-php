@@ -2,13 +2,18 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
+use DateTime;
+use DesolatorMagno\AuthorizePhp\Util\Mapper;
+use JsonSerializable;
+use ReturnTypeWillChange;
+
 /**
  * Class representing CustomerDataType
  *
  *
  * XSD Type: customerDataType
  */
-class CustomerDataType implements \JsonSerializable
+class CustomerDataType implements JsonSerializable
 {
 
     /**
@@ -27,7 +32,7 @@ class CustomerDataType implements \JsonSerializable
     private $email = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\DriversLicenseType $driversLicense
+     * @property DriversLicenseType $driversLicense
      */
     private $driversLicense = null;
 
@@ -105,7 +110,7 @@ class CustomerDataType implements \JsonSerializable
     /**
      * Gets as driversLicense
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\DriversLicenseType
+     * @return DriversLicenseType
      */
     public function getDriversLicense()
     {
@@ -115,10 +120,10 @@ class CustomerDataType implements \JsonSerializable
     /**
      * Sets a new driversLicense
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\DriversLicenseType $driversLicense
+     * @param DriversLicenseType $driversLicense
      * @return self
      */
-    public function setDriversLicense(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\DriversLicenseType $driversLicense)
+    public function setDriversLicense(DriversLicenseType $driversLicense)
     {
         $this->driversLicense = $driversLicense;
         return $this;
@@ -148,13 +153,13 @@ class CustomerDataType implements \JsonSerializable
 
 
   // Json Serialize Code
-   #[\ReturnTypeWillChange]
+   #[ReturnTypeWillChange]
     public function jsonSerialize(){
         $values = array_filter((array)get_object_vars($this),
         function ($val){
             return !is_null($val);
         });
-        $mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
+        $mapper = Mapper::Instance();
         foreach($values as $key => $value){
             $classDetails = $mapper->getClass(get_class($this) , $key);
             if (isset($value)){
@@ -182,11 +187,11 @@ class CustomerDataType implements \JsonSerializable
     public function set($data)
     {
         if(is_array($data) || is_object($data)) {
-			$mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
+			$mapper = Mapper::Instance();
 			foreach($data AS $key => $value) {
 				$classDetails = $mapper->getClass(get_class($this) , $key);
 
-				if($classDetails !== NULL ) {
+				if(!is_null($classDetails)) {
 					if ($classDetails->isArray) {
 						if ($classDetails->isCustomDefined) {
 							foreach($value AS $keyChild => $valueChild) {
@@ -197,7 +202,7 @@ class CustomerDataType implements \JsonSerializable
 						}
 						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
 							foreach($value AS $keyChild => $valueChild) {
-								$type = new \DateTime($valueChild);
+								$type = new DateTime($valueChild);
 								$this->{'addTo' . $key}($type);
 							}
 						}
@@ -214,7 +219,7 @@ class CustomerDataType implements \JsonSerializable
 							$this->{'set' . $key}($type);
 						}
 						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
-							$type = new \DateTime($value);
+							$type = new DateTime($value);
 							$this->{'set' . $key}($type);
 						}
 						else {

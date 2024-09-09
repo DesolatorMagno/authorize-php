@@ -12,7 +12,7 @@ class DecryptPaymentDataRequest extends ANetApiRequestType
 {
     use SerializeAnetRequestTrait;
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\OpaqueDataType $opaqueData
+     * @property OpaqueDataType $opaqueData
      */
     private $opaqueData = null;
 
@@ -24,7 +24,7 @@ class DecryptPaymentDataRequest extends ANetApiRequestType
     /**
      * Gets as opaqueData
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\OpaqueDataType
+     * @return OpaqueDataType
      */
     public function getOpaqueData()
     {
@@ -34,10 +34,10 @@ class DecryptPaymentDataRequest extends ANetApiRequestType
     /**
      * Sets a new opaqueData
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\OpaqueDataType $opaqueData
+     * @param OpaqueDataType $opaqueData
      * @return self
      */
-    public function setOpaqueData(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\OpaqueDataType $opaqueData)
+    public function setOpaqueData(OpaqueDataType $opaqueData)
     {
         $this->opaqueData = $opaqueData;
         return $this;

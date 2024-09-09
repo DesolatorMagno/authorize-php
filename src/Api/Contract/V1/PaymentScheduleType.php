@@ -2,23 +2,29 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
+use DateTime;
+use DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentScheduleType\IntervalAType;
+use DesolatorMagno\AuthorizePhp\Util\Mapper;
+use JsonSerializable;
+use ReturnTypeWillChange;
+
 /**
  * Class representing PaymentScheduleType
  *
  *
  * XSD Type: paymentScheduleType
  */
-class PaymentScheduleType implements \JsonSerializable
+class PaymentScheduleType implements JsonSerializable
 {
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentScheduleType\IntervalAType
+     * @property IntervalAType
      * $interval
      */
     private $interval = null;
 
     /**
-     * @property \DateTime $startDate
+     * @property DateTime $startDate
      */
     private $startDate = null;
 
@@ -35,7 +41,7 @@ class PaymentScheduleType implements \JsonSerializable
     /**
      * Gets as interval
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentScheduleType\IntervalAType
+     * @return IntervalAType
      */
     public function getInterval()
     {
@@ -45,11 +51,11 @@ class PaymentScheduleType implements \JsonSerializable
     /**
      * Sets a new interval
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentScheduleType\IntervalAType
+     * @param IntervalAType
      * $interval
      * @return self
      */
-    public function setInterval(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentScheduleType\IntervalAType $interval)
+    public function setInterval(IntervalAType $interval)
     {
         $this->interval = $interval;
         return $this;
@@ -58,7 +64,7 @@ class PaymentScheduleType implements \JsonSerializable
     /**
      * Gets as startDate
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getStartDate()
     {
@@ -68,13 +74,13 @@ class PaymentScheduleType implements \JsonSerializable
     /**
      * Sets a new startDate
      *
-     * @param \DateTime $startDate
+     * @param DateTime $startDate
      * @return self
      */
-    public function setStartDate(\DateTime $startDate)
+    public function setStartDate(DateTime $startDate)
     {
-        $strDateOnly = $startDate->format("Y-m-d");
-        $this->startDate = \DateTime::createFromFormat("!Y-m-d", $strDateOnly);
+        $strDateOnly = $startDate->format('Y-m-d');
+        $this->startDate = DateTime::createFromFormat('!Y-m-d', $strDateOnly);
         return $this;
     }
 
@@ -124,13 +130,13 @@ class PaymentScheduleType implements \JsonSerializable
 
 
   // Json Serialize Code
-   #[\ReturnTypeWillChange]
+   #[ReturnTypeWillChange]
     public function jsonSerialize(){
         $values = array_filter((array)get_object_vars($this),
         function ($val){
             return !is_null($val);
         });
-        $mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
+        $mapper = Mapper::Instance();
         foreach($values as $key => $value){
             $classDetails = $mapper->getClass(get_class($this) , $key);
             if (isset($value)){
@@ -158,11 +164,11 @@ class PaymentScheduleType implements \JsonSerializable
     public function set($data)
     {
         if(is_array($data) || is_object($data)) {
-			$mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
+			$mapper = Mapper::Instance();
 			foreach($data AS $key => $value) {
 				$classDetails = $mapper->getClass(get_class($this) , $key);
 
-				if($classDetails !== NULL ) {
+				if(!is_null($classDetails)) {
 					if ($classDetails->isArray) {
 						if ($classDetails->isCustomDefined) {
 							foreach($value AS $keyChild => $valueChild) {
@@ -173,7 +179,7 @@ class PaymentScheduleType implements \JsonSerializable
 						}
 						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
 							foreach($value AS $keyChild => $valueChild) {
-								$type = new \DateTime($valueChild);
+								$type = new DateTime($valueChild);
 								$this->{'addTo' . $key}($type);
 							}
 						}
@@ -190,7 +196,7 @@ class PaymentScheduleType implements \JsonSerializable
 							$this->{'set' . $key}($type);
 						}
 						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
-							$type = new \DateTime($value);
+							$type = new DateTime($value);
 							$this->{'set' . $key}($type);
 						}
 						else {

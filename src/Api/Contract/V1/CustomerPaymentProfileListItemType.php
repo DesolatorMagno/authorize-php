@@ -2,13 +2,18 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
+use DateTime;
+use DesolatorMagno\AuthorizePhp\Util\Mapper;
+use JsonSerializable;
+use ReturnTypeWillChange;
+
 /**
  * Class representing CustomerPaymentProfileListItemType
  *
  *
  * XSD Type: customerPaymentProfileListItemType
  */
-class CustomerPaymentProfileListItemType implements \JsonSerializable
+class CustomerPaymentProfileListItemType implements JsonSerializable
 {
 
     /**
@@ -27,12 +32,12 @@ class CustomerPaymentProfileListItemType implements \JsonSerializable
     private $customerProfileId = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressType $billTo
+     * @property CustomerAddressType $billTo
      */
     private $billTo = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentMaskedType $payment
+     * @property PaymentMaskedType $payment
      */
     private $payment = null;
 
@@ -115,7 +120,7 @@ class CustomerPaymentProfileListItemType implements \JsonSerializable
     /**
      * Gets as billTo
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressType
+     * @return CustomerAddressType
      */
     public function getBillTo()
     {
@@ -125,10 +130,10 @@ class CustomerPaymentProfileListItemType implements \JsonSerializable
     /**
      * Sets a new billTo
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressType $billTo
+     * @param CustomerAddressType $billTo
      * @return self
      */
-    public function setBillTo(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressType $billTo)
+    public function setBillTo(CustomerAddressType $billTo)
     {
         $this->billTo = $billTo;
         return $this;
@@ -137,7 +142,7 @@ class CustomerPaymentProfileListItemType implements \JsonSerializable
     /**
      * Gets as payment
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentMaskedType
+     * @return PaymentMaskedType
      */
     public function getPayment()
     {
@@ -147,10 +152,10 @@ class CustomerPaymentProfileListItemType implements \JsonSerializable
     /**
      * Sets a new payment
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentMaskedType $payment
+     * @param PaymentMaskedType $payment
      * @return self
      */
-    public function setPayment(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentMaskedType $payment)
+    public function setPayment(PaymentMaskedType $payment)
     {
         $this->payment = $payment;
         return $this;
@@ -202,13 +207,13 @@ class CustomerPaymentProfileListItemType implements \JsonSerializable
 
 
   // Json Serialize Code
-   #[\ReturnTypeWillChange]
+   #[ReturnTypeWillChange]
     public function jsonSerialize(){
         $values = array_filter((array)get_object_vars($this),
         function ($val){
             return !is_null($val);
         });
-        $mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
+        $mapper = Mapper::Instance();
         foreach($values as $key => $value){
             $classDetails = $mapper->getClass(get_class($this) , $key);
             if (isset($value)){
@@ -236,11 +241,11 @@ class CustomerPaymentProfileListItemType implements \JsonSerializable
     public function set($data)
     {
         if(is_array($data) || is_object($data)) {
-			$mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
+			$mapper = Mapper::Instance();
 			foreach($data AS $key => $value) {
 				$classDetails = $mapper->getClass(get_class($this) , $key);
 
-				if($classDetails !== NULL ) {
+				if(!is_null($classDetails)) {
 					if ($classDetails->isArray) {
 						if ($classDetails->isCustomDefined) {
 							foreach($value AS $keyChild => $valueChild) {
@@ -251,7 +256,7 @@ class CustomerPaymentProfileListItemType implements \JsonSerializable
 						}
 						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
 							foreach($value AS $keyChild => $valueChild) {
-								$type = new \DateTime($valueChild);
+								$type = new DateTime($valueChild);
 								$this->{'addTo' . $key}($type);
 							}
 						}
@@ -268,7 +273,7 @@ class CustomerPaymentProfileListItemType implements \JsonSerializable
 							$this->{'set' . $key}($type);
 						}
 						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
-							$type = new \DateTime($value);
+							$type = new DateTime($value);
 							$this->{'set' . $key}($type);
 						}
 						else {

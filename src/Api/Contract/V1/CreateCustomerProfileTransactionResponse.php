@@ -2,38 +2,33 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
-use DesolatorMagno\AuthorizePhp\Traits\SetSerializeTrait;
-
 /**
  * Class representing CreateCustomerProfileTransactionResponse
  */
 class CreateCustomerProfileTransactionResponse extends ANetApiResponseType
 {
 
-    use SetSerializeTrait;
+    private TransactionResponseType|null $transactionResponse = null;
 
-    private ?TransactionResponseType $transactionResponse = null;
+    private string|null $directResponse = null;
 
-    private ?string $directResponse = null;
-
-    public function getTransactionResponse(): ?TransactionResponseType
+    public function getTransactionResponse(): TransactionResponseType|null
     {
         return $this->transactionResponse;
     }
 
-    public function setTransactionResponse(TransactionResponseType $transactionResponse): CreateCustomerProfileTransactionResponse
+    public function setTransactionResponse(TransactionResponseType $transactionResponse): self
     {
         $this->transactionResponse = $transactionResponse;
         return $this;
     }
 
-
-    public function getDirectResponse(): ?string
+    public function getDirectResponse(): string|null
     {
         return $this->directResponse;
     }
 
-    public function setDirectResponse(string $directResponse): CreateCustomerProfileTransactionResponse
+    public function setDirectResponse(string $directResponse): self
     {
         $this->directResponse = $directResponse;
         return $this;

@@ -4,7 +4,7 @@ use JMS\Serializer\Annotation\Type;
 use JMS\Serializer\Annotation\SerializedName;
 
 $type=new Type;
-$serializedName=new SerializedName(array("value"=>"Loading-SerializedName-Class"));
+$serializedName=new SerializedName(["value" => "Loading-SerializedName-Class"]);
 //to do: use Doctrine\Common\Annotations\AnnotationRegistry::registerAutoloadNamespace to auto load classes
 
 class SensitiveTag
@@ -33,11 +33,10 @@ class SensitiveTag
      */
     public $disableMask;
 
-    public function __construct($tagName, $pattern="", $replace="",$disableMask = false){
+    public function __construct($tagName, $pattern= "", $replace= "", $disableMask = false){
         $this->tagName = $tagName;
         $this->pattern=$pattern;
         $this->replacement = $replace;
         $this->disableMask = $disableMask;
     }
 }
-?>

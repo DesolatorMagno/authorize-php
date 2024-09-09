@@ -3,6 +3,7 @@
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
 use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeExtendTrait;
+use JsonSerializable;
 
 /**
  * Class representing ProfileTransPriorAuthCaptureType
@@ -10,7 +11,7 @@ use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeExtendTrait;
  *
  * XSD Type: profileTransPriorAuthCaptureType
  */
-class ProfileTransPriorAuthCaptureType extends ProfileTransAmountType implements \JsonSerializable
+class ProfileTransPriorAuthCaptureType extends ProfileTransAmountType implements JsonSerializable
 {
     use JsonSerializeExtendTrait;
     /**

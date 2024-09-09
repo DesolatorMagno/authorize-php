@@ -4,24 +4,25 @@ namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1\KeyManagementSchemeType\DU
 
 use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeGlobalTrait;
 use DesolatorMagno\AuthorizePhp\Traits\SetGlobalTrait;
+use JsonSerializable;
 
 /**
  * Class representing EncryptedDataAType
  */
-class EncryptedDataAType implements \JsonSerializable
+class EncryptedDataAType implements JsonSerializable
 {
     use JsonSerializeGlobalTrait, SetGlobalTrait;
     /**
      * @property string $value
      */
-    private ?string $value = null;
+    private string|null $value = null;
 
     /**
      * Gets as value
      *
      * @return string
      */
-    public function getValue(): ?string
+    public function getValue(): string|null
     {
         return $this->value;
     }

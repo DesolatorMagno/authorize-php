@@ -8,7 +8,7 @@ class DeleteCustomerProfileController extends ApiOperationBase
 {
     public function __construct(AnetApiRequestType $request)
     {
-        $responseType = 'DesolatorMagno\AuthorizePhp\Api\Contract\V1\DeleteCustomerProfileResponse';
+        $responseType = \DesolatorMagno\AuthorizePhp\Api\Contract\V1\DeleteCustomerProfileResponse::class;
         parent::__construct($request, $responseType);
     }
 

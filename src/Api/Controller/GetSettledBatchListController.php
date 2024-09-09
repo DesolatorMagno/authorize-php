@@ -8,7 +8,7 @@ class GetSettledBatchListController extends ApiOperationBase
 {
     public function __construct(AnetApiRequestType $request)
     {
-        $responseType = 'DesolatorMagno\AuthorizePhp\Api\Contract\V1\GetSettledBatchListResponse';
+        $responseType = \DesolatorMagno\AuthorizePhp\Api\Contract\V1\GetSettledBatchListResponse::class;
         parent::__construct($request, $responseType);
     }
 

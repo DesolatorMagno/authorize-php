@@ -3,13 +3,13 @@ require 'vendor/autoload.php';
 
 use Symfony\Component\Yaml\Yaml as YamlLib;
 
-	$classes = array();
-	$dir = __DIR__ . "/../api/yml/v1/";
+	$classes = [];
+	$dir = __DIR__ . '/../api/yml/v1/';
 	$files = scandir($dir);
 		foreach ($files as $file) {
 			// echo "filename:" . $file . "\n";
 			// Elementing the ..
-			if($file != "." && $file != ".." ){
+			if($file != '.' && $file != '..'){
 				$value = YamlLib::parseFile($dir.$file);
 				//var_dump($value);
 				//array_push($classes, $value);
@@ -20,17 +20,17 @@ use Symfony\Component\Yaml\Yaml as YamlLib;
 				//break;
 			}
 		}
-		file_put_contents(__DIR__ ."/classes.json",json_encode($classes));
+		file_put_contents(__DIR__ . '/classes.json',json_encode($classes));
 		# array.json => {"a":1,"b":2,"c":3,"d":4,"e":5}
-		$classes2 = json_decode(file_get_contents(__DIR__ ."/classes.json"), true);
+		$classes2 = json_decode(file_get_contents(__DIR__ . '/classes.json'), true);
 		//Validate the JSON
 		if($classes === $classes2) # => true
 		{
-			echo "JSON Created out of XML Successfully! - ".__DIR__ ."/classes.json\n";
+			echo 'JSON Created out of XML Successfully! - ' .__DIR__ ."/classes.json\n";
 		}
 
 // class MapperGen{
-// 	private $classes = array();
+// 	private $classes = [];
 // 	private $dir = __DIR__ . "/../../yml/v1/";
 
 // 	private function __construct() {
@@ -69,5 +69,3 @@ use Symfony\Component\Yaml\Yaml as YamlLib;
 // 			echo "All Good!";
 // 		}
 // 	}
-
-?>

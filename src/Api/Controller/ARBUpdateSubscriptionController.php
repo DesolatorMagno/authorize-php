@@ -8,7 +8,7 @@ class ARBUpdateSubscriptionController extends ApiOperationBase
 {
     public function __construct(AnetApiRequestType $request)
     {
-        $responseType = 'DesolatorMagno\AuthorizePhp\Api\Contract\V1\ARBUpdateSubscriptionResponse';
+        $responseType = \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ARBUpdateSubscriptionResponse::class;
         parent::__construct($request, $responseType);
     }
 

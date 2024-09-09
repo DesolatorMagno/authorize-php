@@ -2,13 +2,19 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
+use DateTime;
+use DesolatorMagno\AuthorizePhp\Api\Contract\V1\MessagesType\MessageAType;
+use DesolatorMagno\AuthorizePhp\Util\Mapper;
+use JsonSerializable;
+use ReturnTypeWillChange;
+
 /**
  * Class representing MessagesType
  *
  *
  * XSD Type: messagesType
  */
-class MessagesType implements \JsonSerializable
+class MessagesType implements JsonSerializable
 {
 
     /**
@@ -17,7 +23,7 @@ class MessagesType implements \JsonSerializable
     private $resultCode = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\MessagesType\MessageAType[] $message
+     * @property MessageAType[] $message
      */
     private $message = null;
 
@@ -46,10 +52,10 @@ class MessagesType implements \JsonSerializable
     /**
      * Adds as message
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\MessagesType\MessageAType $message
+     * @param MessageAType $message
      *@return self
      */
-    public function addToMessage(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\MessagesType\MessageAType $message)
+    public function addToMessage(MessageAType $message)
     {
         $this->message[] = $message;
         return $this;
@@ -80,7 +86,7 @@ class MessagesType implements \JsonSerializable
     /**
      * Gets as message
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\MessagesType\MessageAType[]
+     * @return MessageAType[]
      */
     public function getMessage()
     {
@@ -90,7 +96,7 @@ class MessagesType implements \JsonSerializable
     /**
      * Sets a new message
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\MessagesType\MessageAType[] $message
+     * @param MessageAType[] $message
      * @return self
      */
     public function setMessage(array $message)
@@ -101,13 +107,13 @@ class MessagesType implements \JsonSerializable
 
 
   // Json Serialize Code
-   #[\ReturnTypeWillChange]
+   #[ReturnTypeWillChange]
     public function jsonSerialize(){
         $values = array_filter((array)get_object_vars($this),
         function ($val){
             return !is_null($val);
         });
-        $mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
+        $mapper = Mapper::Instance();
         foreach($values as $key => $value){
             $classDetails = $mapper->getClass(get_class($this) , $key);
             if (isset($value)){
@@ -135,11 +141,11 @@ class MessagesType implements \JsonSerializable
     public function set($data)
     {
         if(is_array($data) || is_object($data)) {
-			$mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
+			$mapper = Mapper::Instance();
 			foreach($data AS $key => $value) {
 				$classDetails = $mapper->getClass(get_class($this) , $key);
 
-				if($classDetails !== NULL ) {
+				if(!is_null($classDetails)) {
 					if ($classDetails->isArray) {
 						if ($classDetails->isCustomDefined) {
 							foreach($value AS $keyChild => $valueChild) {
@@ -150,7 +156,7 @@ class MessagesType implements \JsonSerializable
 						}
 						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
 							foreach($value AS $keyChild => $valueChild) {
-								$type = new \DateTime($valueChild);
+								$type = new DateTime($valueChild);
 								$this->{'addTo' . $key}($type);
 							}
 						}
@@ -167,7 +173,7 @@ class MessagesType implements \JsonSerializable
 							$this->{'set' . $key}($type);
 						}
 						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
-							$type = new \DateTime($value);
+							$type = new DateTime($value);
 							$this->{'set' . $key}($type);
 						}
 						else {

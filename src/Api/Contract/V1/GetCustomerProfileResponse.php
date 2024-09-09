@@ -9,7 +9,7 @@ class GetCustomerProfileResponse extends ANetApiResponseType
 {
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileMaskedType $profile
+     * @property CustomerProfileMaskedType $profile
      */
     private $profile = null;
 
@@ -21,7 +21,7 @@ class GetCustomerProfileResponse extends ANetApiResponseType
     /**
      * Gets as profile
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileMaskedType
+     * @return CustomerProfileMaskedType
      */
     public function getProfile()
     {
@@ -31,10 +31,10 @@ class GetCustomerProfileResponse extends ANetApiResponseType
     /**
      * Sets a new profile
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileMaskedType $profile
+     * @param CustomerProfileMaskedType $profile
      * @return self
      */
-    public function setProfile(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileMaskedType $profile)
+    public function setProfile(CustomerProfileMaskedType $profile)
     {
         $this->profile = $profile;
         return $this;

@@ -12,14 +12,14 @@ class SecurePaymentContainerRequest extends ANetApiRequestType
 {
     use SerializeAnetRequestTrait;
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\WebCheckOutDataType $data
+     * @property WebCheckOutDataType $data
      */
     private $data = null;
 
     /**
      * Gets as data
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\WebCheckOutDataType
+     * @return WebCheckOutDataType
      */
     public function getData()
     {
@@ -29,10 +29,10 @@ class SecurePaymentContainerRequest extends ANetApiRequestType
     /**
      * Sets a new data
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\WebCheckOutDataType $data
+     * @param WebCheckOutDataType $data
      * @return self
      */
-    public function setData(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\WebCheckOutDataType $data)
+    public function setData(WebCheckOutDataType $data)
     {
         $this->data = $data;
         return $this;

@@ -4,34 +4,35 @@ namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType;
 
 use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeGlobalTrait;
 use DesolatorMagno\AuthorizePhp\Traits\SetGlobalTrait;
+use JsonSerializable;
 
 /**
  * Class representing PrePaidCardAType
  */
-class PrePaidCardAType implements \JsonSerializable
+class PrePaidCardAType implements JsonSerializable
 {
     use JsonSerializeGlobalTrait, SetGlobalTrait;
     /**
      * @property string $requestedAmount
      */
-    private ?string $requestedAmount = null;
+    private string|null $requestedAmount = null;
 
     /**
      * @property string $approvedAmount
      */
-    private ?string $approvedAmount = null;
+    private string|null $approvedAmount = null;
 
     /**
      * @property string $balanceOnCard
      */
-    private ?string $balanceOnCard = null;
+    private string|null $balanceOnCard = null;
 
     /**
      * Gets as requestedAmount
      *
      * @return string
      */
-    public function getRequestedAmount(): ?string
+    public function getRequestedAmount(): string|null
     {
         return $this->requestedAmount;
     }
@@ -53,7 +54,7 @@ class PrePaidCardAType implements \JsonSerializable
      *
      * @return string
      */
-    public function getApprovedAmount(): ?string
+    public function getApprovedAmount(): string|null
     {
         return $this->approvedAmount;
     }
@@ -75,7 +76,7 @@ class PrePaidCardAType implements \JsonSerializable
      *
      * @return string
      */
-    public function getBalanceOnCard(): ?string
+    public function getBalanceOnCard(): string|null
     {
         return $this->balanceOnCard;
     }

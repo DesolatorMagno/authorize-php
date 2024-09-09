@@ -2,13 +2,19 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
+use DateTime;
+use DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionDetailsType\EmvDetailsAType\TagAType;
+use DesolatorMagno\AuthorizePhp\Util\Mapper;
+use JsonSerializable;
+use ReturnTypeWillChange;
+
 /**
  * Class representing TransactionDetailsType
  *
  *
  * XSD Type: transactionDetailsType
  */
-class TransactionDetailsType implements \JsonSerializable
+class TransactionDetailsType implements JsonSerializable
 {
 
     /**
@@ -27,12 +33,12 @@ class TransactionDetailsType implements \JsonSerializable
     private $splitTenderId = null;
 
     /**
-     * @property \DateTime $submitTimeUTC
+     * @property DateTime $submitTimeUTC
      */
     private $submitTimeUTC = null;
 
     /**
-     * @property \DateTime $submitTimeLocal
+     * @property DateTime $submitTimeLocal
      */
     private $submitTimeLocal = null;
 
@@ -57,7 +63,7 @@ class TransactionDetailsType implements \JsonSerializable
     private $responseReasonCode = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\SubscriptionPaymentType $subscription
+     * @property SubscriptionPaymentType $subscription
      */
     private $subscription = null;
 
@@ -92,17 +98,17 @@ class TransactionDetailsType implements \JsonSerializable
     private $fDSFilterAction = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\FDSFilterType[] $fDSFilters
+     * @property FDSFilterType[] $fDSFilters
      */
     private $fDSFilters = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\BatchDetailsType $batch
+     * @property BatchDetailsType $batch
      */
     private $batch = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\OrderExType $order
+     * @property OrderExType $order
      */
     private $order = null;
 
@@ -122,22 +128,22 @@ class TransactionDetailsType implements \JsonSerializable
     private $settleAmount = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ExtendedAmountType $tax
+     * @property ExtendedAmountType $tax
      */
     private $tax = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ExtendedAmountType $shipping
+     * @property ExtendedAmountType $shipping
      */
     private $shipping = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ExtendedAmountType $duty
+     * @property ExtendedAmountType $duty
      */
     private $duty = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\LineItemType[] $lineItems
+     * @property LineItemType[] $lineItems
      */
     private $lineItems = null;
 
@@ -152,22 +158,22 @@ class TransactionDetailsType implements \JsonSerializable
     private $taxExempt = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentMaskedType $payment
+     * @property PaymentMaskedType $payment
      */
     private $payment = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerDataType $customer
+     * @property CustomerDataType $customer
      */
     private $customer = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressType $billTo
+     * @property CustomerAddressType $billTo
      */
     private $billTo = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\NameAndAddressType $shipTo
+     * @property NameAndAddressType $shipTo
      */
     private $shipTo = null;
 
@@ -207,12 +213,12 @@ class TransactionDetailsType implements \JsonSerializable
     private $customerSignature = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ReturnedItemType[] $returnedItems
+     * @property ReturnedItemType[] $returnedItems
      */
     private $returnedItems = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\SolutionType $solution
+     * @property SolutionType $solution
      */
     private $solution = null;
 
@@ -224,12 +230,12 @@ class TransactionDetailsType implements \JsonSerializable
     private $emvDetails = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileIdType $profile
+     * @property CustomerProfileIdType $profile
      */
     private $profile = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ExtendedAmountType $surcharge
+     * @property ExtendedAmountType $surcharge
      */
     private $surcharge = null;
 
@@ -239,17 +245,17 @@ class TransactionDetailsType implements \JsonSerializable
     private $employeeId = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ExtendedAmountType $tip
+     * @property ExtendedAmountType $tip
      */
     private $tip = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\OtherTaxType $otherTax
+     * @property OtherTaxType $otherTax
      */
     private $otherTax = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\NameAndAddressType $shipFrom
+     * @property NameAndAddressType $shipFrom
      */
     private $shipFrom = null;
 
@@ -342,7 +348,7 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Gets as submitTimeUTC
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getSubmitTimeUTC()
     {
@@ -352,10 +358,10 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Sets a new submitTimeUTC
      *
-     * @param \DateTime $submitTimeUTC
+     * @param DateTime $submitTimeUTC
      * @return self
      */
-    public function setSubmitTimeUTC(\DateTime $submitTimeUTC)
+    public function setSubmitTimeUTC(DateTime $submitTimeUTC)
     {
         $this->submitTimeUTC = $submitTimeUTC;
         return $this;
@@ -364,7 +370,7 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Gets as submitTimeLocal
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getSubmitTimeLocal()
     {
@@ -374,10 +380,10 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Sets a new submitTimeLocal
      *
-     * @param \DateTime $submitTimeLocal
+     * @param DateTime $submitTimeLocal
      * @return self
      */
-    public function setSubmitTimeLocal(\DateTime $submitTimeLocal)
+    public function setSubmitTimeLocal(DateTime $submitTimeLocal)
     {
         $this->submitTimeLocal = $submitTimeLocal;
         return $this;
@@ -474,7 +480,7 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Gets as subscription
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\SubscriptionPaymentType
+     * @return SubscriptionPaymentType
      */
     public function getSubscription()
     {
@@ -484,10 +490,10 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Sets a new subscription
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\SubscriptionPaymentType $subscription
+     * @param SubscriptionPaymentType $subscription
      * @return self
      */
-    public function setSubscription(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\SubscriptionPaymentType $subscription)
+    public function setSubscription(SubscriptionPaymentType $subscription)
     {
         $this->subscription = $subscription;
         return $this;
@@ -628,10 +634,10 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Adds as fDSFilter
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\FDSFilterType $fDSFilter
+     * @param FDSFilterType $fDSFilter
      *@return self
      */
-    public function addToFDSFilters(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\FDSFilterType $fDSFilter)
+    public function addToFDSFilters(FDSFilterType $fDSFilter)
     {
         $this->fDSFilters[] = $fDSFilter;
         return $this;
@@ -662,7 +668,7 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Gets as fDSFilters
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\FDSFilterType[]
+     * @return FDSFilterType[]
      */
     public function getFDSFilters()
     {
@@ -672,7 +678,7 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Sets a new fDSFilters
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\FDSFilterType[] $fDSFilters
+     * @param FDSFilterType[] $fDSFilters
      * @return self
      */
     public function setFDSFilters(array $fDSFilters)
@@ -684,7 +690,7 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Gets as batch
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\BatchDetailsType
+     * @return BatchDetailsType
      */
     public function getBatch()
     {
@@ -694,10 +700,10 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Sets a new batch
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\BatchDetailsType $batch
+     * @param BatchDetailsType $batch
      * @return self
      */
-    public function setBatch(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\BatchDetailsType $batch)
+    public function setBatch(BatchDetailsType $batch)
     {
         $this->batch = $batch;
         return $this;
@@ -706,7 +712,7 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Gets as order
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\OrderExType
+     * @return OrderExType
      */
     public function getOrder()
     {
@@ -716,10 +722,10 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Sets a new order
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\OrderExType $order
+     * @param OrderExType $order
      * @return self
      */
-    public function setOrder(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\OrderExType $order)
+    public function setOrder(OrderExType $order)
     {
         $this->order = $order;
         return $this;
@@ -794,7 +800,7 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Gets as tax
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ExtendedAmountType
+     * @return ExtendedAmountType
      */
     public function getTax()
     {
@@ -804,10 +810,10 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Sets a new tax
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ExtendedAmountType $tax
+     * @param ExtendedAmountType $tax
      * @return self
      */
-    public function setTax(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\ExtendedAmountType $tax)
+    public function setTax(ExtendedAmountType $tax)
     {
         $this->tax = $tax;
         return $this;
@@ -816,7 +822,7 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Gets as shipping
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ExtendedAmountType
+     * @return ExtendedAmountType
      */
     public function getShipping()
     {
@@ -826,10 +832,10 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Sets a new shipping
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ExtendedAmountType $shipping
+     * @param ExtendedAmountType $shipping
      * @return self
      */
-    public function setShipping(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\ExtendedAmountType $shipping)
+    public function setShipping(ExtendedAmountType $shipping)
     {
         $this->shipping = $shipping;
         return $this;
@@ -838,7 +844,7 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Gets as duty
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ExtendedAmountType
+     * @return ExtendedAmountType
      */
     public function getDuty()
     {
@@ -848,10 +854,10 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Sets a new duty
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ExtendedAmountType $duty
+     * @param ExtendedAmountType $duty
      * @return self
      */
-    public function setDuty(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\ExtendedAmountType $duty)
+    public function setDuty(ExtendedAmountType $duty)
     {
         $this->duty = $duty;
         return $this;
@@ -860,10 +866,10 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Adds as lineItem
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\LineItemType $lineItem
+     * @param LineItemType $lineItem
      *@return self
      */
-    public function addToLineItems(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\LineItemType $lineItem)
+    public function addToLineItems(LineItemType $lineItem)
     {
         $this->lineItems[] = $lineItem;
         return $this;
@@ -894,7 +900,7 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Gets as lineItems
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\LineItemType[]
+     * @return LineItemType[]
      */
     public function getLineItems()
     {
@@ -904,7 +910,7 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Sets a new lineItems
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\LineItemType[] $lineItems
+     * @param LineItemType[] $lineItems
      * @return self
      */
     public function setLineItems(array $lineItems)
@@ -960,7 +966,7 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Gets as payment
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentMaskedType
+     * @return PaymentMaskedType
      */
     public function getPayment()
     {
@@ -970,10 +976,10 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Sets a new payment
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentMaskedType $payment
+     * @param PaymentMaskedType $payment
      * @return self
      */
-    public function setPayment(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentMaskedType $payment)
+    public function setPayment(PaymentMaskedType $payment)
     {
         $this->payment = $payment;
         return $this;
@@ -982,7 +988,7 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Gets as customer
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerDataType
+     * @return CustomerDataType
      */
     public function getCustomer()
     {
@@ -992,10 +998,10 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Sets a new customer
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerDataType $customer
+     * @param CustomerDataType $customer
      * @return self
      */
-    public function setCustomer(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerDataType $customer)
+    public function setCustomer(CustomerDataType $customer)
     {
         $this->customer = $customer;
         return $this;
@@ -1004,7 +1010,7 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Gets as billTo
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressType
+     * @return CustomerAddressType
      */
     public function getBillTo()
     {
@@ -1014,10 +1020,10 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Sets a new billTo
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressType $billTo
+     * @param CustomerAddressType $billTo
      * @return self
      */
-    public function setBillTo(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressType $billTo)
+    public function setBillTo(CustomerAddressType $billTo)
     {
         $this->billTo = $billTo;
         return $this;
@@ -1026,7 +1032,7 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Gets as shipTo
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\NameAndAddressType
+     * @return NameAndAddressType
      */
     public function getShipTo()
     {
@@ -1036,10 +1042,10 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Sets a new shipTo
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\NameAndAddressType $shipTo
+     * @param NameAndAddressType $shipTo
      * @return self
      */
-    public function setShipTo(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\NameAndAddressType $shipTo)
+    public function setShipTo(NameAndAddressType $shipTo)
     {
         $this->shipTo = $shipTo;
         return $this;
@@ -1202,10 +1208,10 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Adds as returnedItem
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ReturnedItemType $returnedItem
+     * @param ReturnedItemType $returnedItem
      *@return self
      */
-    public function addToReturnedItems(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\ReturnedItemType $returnedItem)
+    public function addToReturnedItems(ReturnedItemType $returnedItem)
     {
         $this->returnedItems[] = $returnedItem;
         return $this;
@@ -1236,7 +1242,7 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Gets as returnedItems
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ReturnedItemType[]
+     * @return ReturnedItemType[]
      */
     public function getReturnedItems()
     {
@@ -1246,7 +1252,7 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Sets a new returnedItems
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ReturnedItemType[] $returnedItems
+     * @param ReturnedItemType[] $returnedItems
      * @return self
      */
     public function setReturnedItems(array $returnedItems)
@@ -1258,7 +1264,7 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Gets as solution
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\SolutionType
+     * @return SolutionType
      */
     public function getSolution()
     {
@@ -1268,10 +1274,10 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Sets a new solution
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\SolutionType $solution
+     * @param SolutionType $solution
      * @return self
      */
-    public function setSolution(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\SolutionType $solution)
+    public function setSolution(SolutionType $solution)
     {
         $this->solution = $solution;
         return $this;
@@ -1285,7 +1291,7 @@ class TransactionDetailsType implements \JsonSerializable
      * \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionDetailsType\EmvDetailsAType\TagAType
      * $tag
      */
-    public function addToEmvDetails(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionDetailsType\EmvDetailsAType\TagAType $tag)
+    public function addToEmvDetails(TagAType $tag)
     {
         $this->emvDetails[] = $tag;
         return $this;
@@ -1341,7 +1347,7 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Gets as profile
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileIdType
+     * @return CustomerProfileIdType
      */
     public function getProfile()
     {
@@ -1351,10 +1357,10 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Sets a new profile
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileIdType $profile
+     * @param CustomerProfileIdType $profile
      * @return self
      */
-    public function setProfile(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileIdType $profile)
+    public function setProfile(CustomerProfileIdType $profile)
     {
         $this->profile = $profile;
         return $this;
@@ -1363,7 +1369,7 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Gets as surcharge
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ExtendedAmountType
+     * @return ExtendedAmountType
      */
     public function getSurcharge()
     {
@@ -1373,10 +1379,10 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Sets a new surcharge
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ExtendedAmountType $surcharge
+     * @param ExtendedAmountType $surcharge
      * @return self
      */
-    public function setSurcharge(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\ExtendedAmountType $surcharge)
+    public function setSurcharge(ExtendedAmountType $surcharge)
     {
         $this->surcharge = $surcharge;
         return $this;
@@ -1407,7 +1413,7 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Gets as tip
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ExtendedAmountType
+     * @return ExtendedAmountType
      */
     public function getTip()
     {
@@ -1417,10 +1423,10 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Sets a new tip
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ExtendedAmountType $tip
+     * @param ExtendedAmountType $tip
      * @return self
      */
-    public function setTip(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\ExtendedAmountType $tip)
+    public function setTip(ExtendedAmountType $tip)
     {
         $this->tip = $tip;
         return $this;
@@ -1429,7 +1435,7 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Gets as otherTax
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\OtherTaxType
+     * @return OtherTaxType
      */
     public function getOtherTax()
     {
@@ -1439,10 +1445,10 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Sets a new otherTax
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\OtherTaxType $otherTax
+     * @param OtherTaxType $otherTax
      * @return self
      */
-    public function setOtherTax(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\OtherTaxType $otherTax)
+    public function setOtherTax(OtherTaxType $otherTax)
     {
         $this->otherTax = $otherTax;
         return $this;
@@ -1451,7 +1457,7 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Gets as shipFrom
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\NameAndAddressType
+     * @return NameAndAddressType
      */
     public function getShipFrom()
     {
@@ -1461,10 +1467,10 @@ class TransactionDetailsType implements \JsonSerializable
     /**
      * Sets a new shipFrom
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\NameAndAddressType $shipFrom
+     * @param NameAndAddressType $shipFrom
      * @return self
      */
-    public function setShipFrom(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\NameAndAddressType $shipFrom)
+    public function setShipFrom(NameAndAddressType $shipFrom)
     {
         $this->shipFrom = $shipFrom;
         return $this;
@@ -1560,13 +1566,13 @@ class TransactionDetailsType implements \JsonSerializable
 
 
   // Json Serialize Code
-   #[\ReturnTypeWillChange]
+   #[ReturnTypeWillChange]
     public function jsonSerialize(){
         $values = array_filter((array)get_object_vars($this),
         function ($val){
             return !is_null($val);
         });
-        $mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
+        $mapper = Mapper::Instance();
         foreach($values as $key => $value){
             $classDetails = $mapper->getClass(get_class($this) , $key);
             if (isset($value)){
@@ -1594,11 +1600,11 @@ class TransactionDetailsType implements \JsonSerializable
     public function set($data)
     {
         if(is_array($data) || is_object($data)) {
-			$mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
+			$mapper = Mapper::Instance();
 			foreach($data AS $key => $value) {
 				$classDetails = $mapper->getClass(get_class($this) , $key);
 
-				if($classDetails !== NULL ) {
+				if(!is_null($classDetails)) {
 					if ($classDetails->isArray) {
 						if ($classDetails->isCustomDefined) {
 							foreach($value AS $keyChild => $valueChild) {
@@ -1609,7 +1615,7 @@ class TransactionDetailsType implements \JsonSerializable
 						}
 						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
 							foreach($value AS $keyChild => $valueChild) {
-								$type = new \DateTime($valueChild);
+								$type = new DateTime($valueChild);
 								$this->{'addTo' . $key}($type);
 							}
 						}
@@ -1626,7 +1632,7 @@ class TransactionDetailsType implements \JsonSerializable
 							$this->{'set' . $key}($type);
 						}
 						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
-							$type = new \DateTime($value);
+							$type = new DateTime($value);
 							$this->{'set' . $key}($type);
 						}
 						else {

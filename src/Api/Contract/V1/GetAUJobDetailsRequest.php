@@ -22,7 +22,7 @@ class GetAUJobDetailsRequest extends ANetApiRequestType
     private $modifiedTypeFilter = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PagingType $paging
+     * @property PagingType $paging
      */
     private $paging = null;
 
@@ -73,7 +73,7 @@ class GetAUJobDetailsRequest extends ANetApiRequestType
     /**
      * Gets as paging
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PagingType
+     * @return PagingType
      */
     public function getPaging()
     {
@@ -83,10 +83,10 @@ class GetAUJobDetailsRequest extends ANetApiRequestType
     /**
      * Sets a new paging
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PagingType $paging
+     * @param PagingType $paging
      * @return self
      */
-    public function setPaging(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\PagingType $paging)
+    public function setPaging(PagingType $paging)
     {
         $this->paging = $paging;
         return $this;

@@ -14,7 +14,7 @@ class GetMerchantDetailsResponse extends ANetApiResponseType
     private $isTestMode = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ProcessorType[] $processors
+     * @property ProcessorType[] $processors
      */
     private $processors = null;
 
@@ -54,7 +54,7 @@ class GetMerchantDetailsResponse extends ANetApiResponseType
     private $publicClientKey = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressType
+     * @property CustomerAddressType
      * $businessInformation
      */
     private $businessInformation = null;
@@ -65,7 +65,7 @@ class GetMerchantDetailsResponse extends ANetApiResponseType
     private $merchantTimeZone = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ContactDetailType[] $contactDetails
+     * @property ContactDetailType[] $contactDetails
      */
     private $contactDetails = null;
 
@@ -94,10 +94,10 @@ class GetMerchantDetailsResponse extends ANetApiResponseType
     /**
      * Adds as processor
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ProcessorType $processor
+     * @param ProcessorType $processor
      *@return self
      */
-    public function addToProcessors(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\ProcessorType $processor)
+    public function addToProcessors(ProcessorType $processor)
     {
         $this->processors[] = $processor;
         return $this;
@@ -128,7 +128,7 @@ class GetMerchantDetailsResponse extends ANetApiResponseType
     /**
      * Gets as processors
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ProcessorType[]
+     * @return ProcessorType[]
      */
     public function getProcessors()
     {
@@ -138,7 +138,7 @@ class GetMerchantDetailsResponse extends ANetApiResponseType
     /**
      * Sets a new processors
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ProcessorType[] $processors
+     * @param ProcessorType[] $processors
      * @return self
      */
     public function setProcessors(array $processors)
@@ -440,7 +440,7 @@ class GetMerchantDetailsResponse extends ANetApiResponseType
     /**
      * Gets as businessInformation
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressType
+     * @return CustomerAddressType
      */
     public function getBusinessInformation()
     {
@@ -450,10 +450,10 @@ class GetMerchantDetailsResponse extends ANetApiResponseType
     /**
      * Sets a new businessInformation
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressType $businessInformation
+     * @param CustomerAddressType $businessInformation
      * @return self
      */
-    public function setBusinessInformation(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressType $businessInformation)
+    public function setBusinessInformation(CustomerAddressType $businessInformation)
     {
         $this->businessInformation = $businessInformation;
         return $this;
@@ -484,10 +484,10 @@ class GetMerchantDetailsResponse extends ANetApiResponseType
     /**
      * Adds as contactDetail
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ContactDetailType $contactDetail
+     * @param ContactDetailType $contactDetail
      *@return self
      */
-    public function addToContactDetails(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\ContactDetailType $contactDetail)
+    public function addToContactDetails(ContactDetailType $contactDetail)
     {
         $this->contactDetails[] = $contactDetail;
         return $this;
@@ -518,7 +518,7 @@ class GetMerchantDetailsResponse extends ANetApiResponseType
     /**
      * Gets as contactDetails
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ContactDetailType[]
+     * @return ContactDetailType[]
      */
     public function getContactDetails()
     {
@@ -528,7 +528,7 @@ class GetMerchantDetailsResponse extends ANetApiResponseType
     /**
      * Sets a new contactDetails
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ContactDetailType[] $contactDetails
+     * @param ContactDetailType[] $contactDetails
      * @return self
      */
     public function setContactDetails(array $contactDetails)

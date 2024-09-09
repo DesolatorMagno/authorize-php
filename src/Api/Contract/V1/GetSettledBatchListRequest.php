@@ -2,6 +2,7 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
+use DateTime;
 use DesolatorMagno\AuthorizePhp\Api\Contract\V1\ANetApiRequestType;
 use DesolatorMagno\AuthorizePhp\Traits\SerializeAnetRequestTrait;
 
@@ -17,12 +18,12 @@ class GetSettledBatchListRequest extends ANetApiRequestType
     private $includeStatistics = null;
 
     /**
-     * @property \DateTime $firstSettlementDate
+     * @property DateTime $firstSettlementDate
      */
     private $firstSettlementDate = null;
 
     /**
-     * @property \DateTime $lastSettlementDate
+     * @property DateTime $lastSettlementDate
      */
     private $lastSettlementDate = null;
 
@@ -51,7 +52,7 @@ class GetSettledBatchListRequest extends ANetApiRequestType
     /**
      * Gets as firstSettlementDate
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getFirstSettlementDate()
     {
@@ -61,10 +62,10 @@ class GetSettledBatchListRequest extends ANetApiRequestType
     /**
      * Sets a new firstSettlementDate
      *
-     * @param \DateTime $firstSettlementDate
+     * @param DateTime $firstSettlementDate
      * @return self
      */
-    public function setFirstSettlementDate(\DateTime $firstSettlementDate)
+    public function setFirstSettlementDate(DateTime $firstSettlementDate)
     {
         $this->firstSettlementDate = $firstSettlementDate;
         return $this;
@@ -73,7 +74,7 @@ class GetSettledBatchListRequest extends ANetApiRequestType
     /**
      * Gets as lastSettlementDate
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getLastSettlementDate()
     {
@@ -83,10 +84,10 @@ class GetSettledBatchListRequest extends ANetApiRequestType
     /**
      * Sets a new lastSettlementDate
      *
-     * @param \DateTime $lastSettlementDate
+     * @param DateTime $lastSettlementDate
      * @return self
      */
-    public function setLastSettlementDate(\DateTime $lastSettlementDate)
+    public function setLastSettlementDate(DateTime $lastSettlementDate)
     {
         $this->lastSettlementDate = $lastSettlementDate;
         return $this;

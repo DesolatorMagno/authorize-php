@@ -4,6 +4,7 @@ namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
 use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeGlobalTrait;
 use DesolatorMagno\AuthorizePhp\Traits\SetGlobalTrait;
+use JsonSerializable;
 
 /**
  * Class representing ProfileTransAmountType
@@ -11,7 +12,7 @@ use DesolatorMagno\AuthorizePhp\Traits\SetGlobalTrait;
  *
  * XSD Type: profileTransAmountType
  */
-class ProfileTransAmountType implements \JsonSerializable
+class ProfileTransAmountType implements JsonSerializable
 {
     use JsonSerializeGlobalTrait, SetGlobalTrait;
 
@@ -21,22 +22,22 @@ class ProfileTransAmountType implements \JsonSerializable
     private $amount = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ExtendedAmountType $tax
+     * @property ExtendedAmountType $tax
      */
     private $tax = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ExtendedAmountType $shipping
+     * @property ExtendedAmountType $shipping
      */
     private $shipping = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ExtendedAmountType $duty
+     * @property ExtendedAmountType $duty
      */
     private $duty = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\LineItemType[] $lineItems
+     * @property LineItemType[] $lineItems
      */
     private $lineItems = null;
 
@@ -65,7 +66,7 @@ class ProfileTransAmountType implements \JsonSerializable
     /**
      * Gets as tax
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ExtendedAmountType
+     * @return ExtendedAmountType
      */
     public function getTax()
     {
@@ -75,10 +76,10 @@ class ProfileTransAmountType implements \JsonSerializable
     /**
      * Sets a new tax
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ExtendedAmountType $tax
+     * @param ExtendedAmountType $tax
      * @return self
      */
-    public function setTax(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\ExtendedAmountType $tax)
+    public function setTax(ExtendedAmountType $tax)
     {
         $this->tax = $tax;
         return $this;
@@ -87,7 +88,7 @@ class ProfileTransAmountType implements \JsonSerializable
     /**
      * Gets as shipping
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ExtendedAmountType
+     * @return ExtendedAmountType
      */
     public function getShipping()
     {
@@ -97,10 +98,10 @@ class ProfileTransAmountType implements \JsonSerializable
     /**
      * Sets a new shipping
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ExtendedAmountType $shipping
+     * @param ExtendedAmountType $shipping
      * @return self
      */
-    public function setShipping(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\ExtendedAmountType $shipping)
+    public function setShipping(ExtendedAmountType $shipping)
     {
         $this->shipping = $shipping;
         return $this;
@@ -109,7 +110,7 @@ class ProfileTransAmountType implements \JsonSerializable
     /**
      * Gets as duty
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ExtendedAmountType
+     * @return ExtendedAmountType
      */
     public function getDuty()
     {
@@ -119,10 +120,10 @@ class ProfileTransAmountType implements \JsonSerializable
     /**
      * Sets a new duty
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ExtendedAmountType $duty
+     * @param ExtendedAmountType $duty
      * @return self
      */
-    public function setDuty(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\ExtendedAmountType $duty)
+    public function setDuty(ExtendedAmountType $duty)
     {
         $this->duty = $duty;
         return $this;
@@ -131,10 +132,10 @@ class ProfileTransAmountType implements \JsonSerializable
     /**
      * Adds as lineItems
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\LineItemType $lineItems
+     * @param LineItemType $lineItems
      *@return self
      */
-    public function addToLineItems(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\LineItemType $lineItems)
+    public function addToLineItems(LineItemType $lineItems)
     {
         $this->lineItems[] = $lineItems;
         return $this;
@@ -165,7 +166,7 @@ class ProfileTransAmountType implements \JsonSerializable
     /**
      * Gets as lineItems
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\LineItemType[]
+     * @return LineItemType[]
      */
     public function getLineItems()
     {
@@ -175,7 +176,7 @@ class ProfileTransAmountType implements \JsonSerializable
     /**
      * Sets a new lineItems
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\LineItemType[] $lineItems
+     * @param LineItemType[] $lineItems
      * @return self
      */
     public function setLineItems(array $lineItems)

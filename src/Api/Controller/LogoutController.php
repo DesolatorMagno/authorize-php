@@ -8,7 +8,7 @@ class LogoutController extends ApiOperationBase
 {
     public function __construct(AnetApiRequestType $request)
     {
-        $responseType = 'DesolatorMagno\AuthorizePhp\Api\Contract\V1\LogoutResponse';
+        $responseType = \DesolatorMagno\AuthorizePhp\Api\Contract\V1\LogoutResponse::class;
         parent::__construct($request, $responseType);
     }
 

@@ -4,6 +4,7 @@ namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
 use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeGlobalTrait;
 use DesolatorMagno\AuthorizePhp\Traits\SetGlobalTrait;
+use JsonSerializable;
 
 /**
  * Class representing ARBSubscriptionType
@@ -11,7 +12,7 @@ use DesolatorMagno\AuthorizePhp\Traits\SetGlobalTrait;
  *
  * XSD Type: ARBSubscriptionType
  */
-class ARBSubscriptionType implements \JsonSerializable
+class ARBSubscriptionType implements JsonSerializable
 {
     use JsonSerializeGlobalTrait, SetGlobalTrait;
     /**
@@ -20,7 +21,7 @@ class ARBSubscriptionType implements \JsonSerializable
     private $name = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentScheduleType $paymentSchedule
+     * @property PaymentScheduleType $paymentSchedule
      */
     private $paymentSchedule = null;
 
@@ -35,32 +36,32 @@ class ARBSubscriptionType implements \JsonSerializable
     private $trialAmount = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentType $payment
+     * @property PaymentType $payment
      */
     private $payment = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\OrderType $order
+     * @property OrderType $order
      */
     private $order = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerType $customer
+     * @property CustomerType $customer
      */
     private $customer = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\NameAndAddressType $billTo
+     * @property NameAndAddressType $billTo
      */
     private $billTo = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\NameAndAddressType $shipTo
+     * @property NameAndAddressType $shipTo
      */
     private $shipTo = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileIdType $profile
+     * @property CustomerProfileIdType $profile
      */
     private $profile = null;
 
@@ -89,7 +90,7 @@ class ARBSubscriptionType implements \JsonSerializable
     /**
      * Gets as paymentSchedule
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentScheduleType
+     * @return PaymentScheduleType
      */
     public function getPaymentSchedule()
     {
@@ -99,10 +100,10 @@ class ARBSubscriptionType implements \JsonSerializable
     /**
      * Sets a new paymentSchedule
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentScheduleType $paymentSchedule
+     * @param PaymentScheduleType $paymentSchedule
      * @return self
      */
-    public function setPaymentSchedule(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentScheduleType $paymentSchedule)
+    public function setPaymentSchedule(PaymentScheduleType $paymentSchedule)
     {
         $this->paymentSchedule = $paymentSchedule;
         return $this;
@@ -155,7 +156,7 @@ class ARBSubscriptionType implements \JsonSerializable
     /**
      * Gets as payment
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentType
+     * @return PaymentType
      */
     public function getPayment()
     {
@@ -165,10 +166,10 @@ class ARBSubscriptionType implements \JsonSerializable
     /**
      * Sets a new payment
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentType $payment
+     * @param PaymentType $payment
      * @return self
      */
-    public function setPayment(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentType $payment)
+    public function setPayment(PaymentType $payment)
     {
         $this->payment = $payment;
         return $this;
@@ -177,7 +178,7 @@ class ARBSubscriptionType implements \JsonSerializable
     /**
      * Gets as order
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\OrderType
+     * @return OrderType
      */
     public function getOrder()
     {
@@ -187,10 +188,10 @@ class ARBSubscriptionType implements \JsonSerializable
     /**
      * Sets a new order
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\OrderType $order
+     * @param OrderType $order
      * @return self
      */
-    public function setOrder(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\OrderType $order)
+    public function setOrder(OrderType $order)
     {
         $this->order = $order;
         return $this;
@@ -199,7 +200,7 @@ class ARBSubscriptionType implements \JsonSerializable
     /**
      * Gets as customer
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerType
+     * @return CustomerType
      */
     public function getCustomer()
     {
@@ -209,10 +210,10 @@ class ARBSubscriptionType implements \JsonSerializable
     /**
      * Sets a new customer
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerType $customer
+     * @param CustomerType $customer
      * @return self
      */
-    public function setCustomer(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerType $customer)
+    public function setCustomer(CustomerType $customer)
     {
         $this->customer = $customer;
         return $this;
@@ -221,7 +222,7 @@ class ARBSubscriptionType implements \JsonSerializable
     /**
      * Gets as billTo
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\NameAndAddressType
+     * @return NameAndAddressType
      */
     public function getBillTo()
     {
@@ -231,10 +232,10 @@ class ARBSubscriptionType implements \JsonSerializable
     /**
      * Sets a new billTo
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\NameAndAddressType $billTo
+     * @param NameAndAddressType $billTo
      * @return self
      */
-    public function setBillTo(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\NameAndAddressType $billTo)
+    public function setBillTo(NameAndAddressType $billTo)
     {
         $this->billTo = $billTo;
         return $this;
@@ -243,7 +244,7 @@ class ARBSubscriptionType implements \JsonSerializable
     /**
      * Gets as shipTo
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\NameAndAddressType
+     * @return NameAndAddressType
      */
     public function getShipTo()
     {
@@ -253,10 +254,10 @@ class ARBSubscriptionType implements \JsonSerializable
     /**
      * Sets a new shipTo
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\NameAndAddressType $shipTo
+     * @param NameAndAddressType $shipTo
      * @return self
      */
-    public function setShipTo(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\NameAndAddressType $shipTo)
+    public function setShipTo(NameAndAddressType $shipTo)
     {
         $this->shipTo = $shipTo;
         return $this;
@@ -265,7 +266,7 @@ class ARBSubscriptionType implements \JsonSerializable
     /**
      * Gets as profile
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileIdType
+     * @return CustomerProfileIdType
      */
     public function getProfile()
     {
@@ -275,10 +276,10 @@ class ARBSubscriptionType implements \JsonSerializable
     /**
      * Sets a new profile
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileIdType $profile
+     * @param CustomerProfileIdType $profile
      * @return self
      */
-    public function setProfile(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileIdType $profile)
+    public function setProfile(CustomerProfileIdType $profile)
     {
         $this->profile = $profile;
         return $this;

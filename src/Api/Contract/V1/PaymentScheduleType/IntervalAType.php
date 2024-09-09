@@ -4,18 +4,19 @@ namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentScheduleType;
 
 use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeGlobalTrait;
 use DesolatorMagno\AuthorizePhp\Traits\SetGlobalTrait;
+use JsonSerializable;
 
 /**
  * Class representing IntervalAType
  */
-class IntervalAType implements \JsonSerializable
+class IntervalAType implements JsonSerializable
 {
     use JsonSerializeGlobalTrait, SetGlobalTrait;
-    private ?int $length = null;
+    private int|null $length = null;
 
-    private ?string $unit = null;
+    private string|null $unit = null;
 
-    public function getLength(): ?int
+    public function getLength(): int|null
     {
         return $this->length;
     }
@@ -26,7 +27,7 @@ class IntervalAType implements \JsonSerializable
         return $this;
     }
 
-    public function getUnit(): ?string
+    public function getUnit(): string|null
     {
         return $this->unit;
     }

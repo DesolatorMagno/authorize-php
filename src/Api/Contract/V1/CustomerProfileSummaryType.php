@@ -2,13 +2,18 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
+use DateTime;
+use DesolatorMagno\AuthorizePhp\Util\Mapper;
+use JsonSerializable;
+use ReturnTypeWillChange;
+
 /**
  * Class representing CustomerProfileSummaryType
  *
  *
  * XSD Type: customerProfileSummaryType
  */
-class CustomerProfileSummaryType implements \JsonSerializable
+class CustomerProfileSummaryType implements JsonSerializable
 {
 
     /**
@@ -32,7 +37,7 @@ class CustomerProfileSummaryType implements \JsonSerializable
     private $email = null;
 
     /**
-     * @property \DateTime $createdDate
+     * @property DateTime $createdDate
      */
     private $createdDate = null;
 
@@ -127,7 +132,7 @@ class CustomerProfileSummaryType implements \JsonSerializable
     /**
      * Gets as createdDate
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getCreatedDate()
     {
@@ -137,10 +142,10 @@ class CustomerProfileSummaryType implements \JsonSerializable
     /**
      * Sets a new createdDate
      *
-     * @param \DateTime $createdDate
+     * @param DateTime $createdDate
      * @return self
      */
-    public function setCreatedDate(\DateTime $createdDate)
+    public function setCreatedDate(DateTime $createdDate)
     {
         $this->createdDate = $createdDate;
         return $this;
@@ -148,13 +153,13 @@ class CustomerProfileSummaryType implements \JsonSerializable
 
 
   // Json Serialize Code
-   #[\ReturnTypeWillChange]
+   #[ReturnTypeWillChange]
     public function jsonSerialize(){
         $values = array_filter((array)get_object_vars($this),
         function ($val){
             return !is_null($val);
         });
-        $mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
+        $mapper = Mapper::Instance();
         foreach($values as $key => $value){
             $classDetails = $mapper->getClass(get_class($this) , $key);
             if (isset($value)){
@@ -182,11 +187,11 @@ class CustomerProfileSummaryType implements \JsonSerializable
     public function set($data)
     {
         if(is_array($data) || is_object($data)) {
-			$mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
+			$mapper = Mapper::Instance();
 			foreach($data AS $key => $value) {
 				$classDetails = $mapper->getClass(get_class($this) , $key);
 
-				if($classDetails !== NULL ) {
+				if(!is_null($classDetails)) {
 					if ($classDetails->isArray) {
 						if ($classDetails->isCustomDefined) {
 							foreach($value AS $keyChild => $valueChild) {
@@ -197,7 +202,7 @@ class CustomerProfileSummaryType implements \JsonSerializable
 						}
 						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
 							foreach($value AS $keyChild => $valueChild) {
-								$type = new \DateTime($valueChild);
+								$type = new DateTime($valueChild);
 								$this->{'addTo' . $key}($type);
 							}
 						}
@@ -214,7 +219,7 @@ class CustomerProfileSummaryType implements \JsonSerializable
 							$this->{'set' . $key}($type);
 						}
 						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
-							$type = new \DateTime($value);
+							$type = new DateTime($value);
 							$this->{'set' . $key}($type);
 						}
 						else {

@@ -12,7 +12,7 @@ class GetHostedPaymentPageRequest extends ANetApiRequestType
 {
     use SerializeAnetRequestTrait;
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionRequestType
+     * @property TransactionRequestType
      * $transactionRequest
      */
     private $transactionRequest = null;
@@ -25,14 +25,14 @@ class GetHostedPaymentPageRequest extends ANetApiRequestType
      * hostedPaymentSecurityOptions, hostedPaymentCustomerOptions,
      * hostedPaymentStyleOptions
      *
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\SettingType[] $hostedPaymentSettings
+     * @property SettingType[] $hostedPaymentSettings
      */
     private $hostedPaymentSettings = null;
 
     /**
      * Gets as transactionRequest
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionRequestType
+     * @return TransactionRequestType
      */
     public function getTransactionRequest()
     {
@@ -42,10 +42,10 @@ class GetHostedPaymentPageRequest extends ANetApiRequestType
     /**
      * Sets a new transactionRequest
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionRequestType $transactionRequest
+     * @param TransactionRequestType $transactionRequest
      * @return self
      */
-    public function setTransactionRequest(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionRequestType $transactionRequest)
+    public function setTransactionRequest(TransactionRequestType $transactionRequest)
     {
         $this->transactionRequest = $transactionRequest;
         return $this;
@@ -61,10 +61,10 @@ class GetHostedPaymentPageRequest extends ANetApiRequestType
      * hostedPaymentSecurityOptions, hostedPaymentCustomerOptions,
      * hostedPaymentStyleOptions
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\SettingType $setting
+     * @param SettingType $setting
      *@return self
      */
-    public function addToHostedPaymentSettings(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\SettingType $setting)
+    public function addToHostedPaymentSettings(SettingType $setting)
     {
         $this->hostedPaymentSettings[] = $setting;
         return $this;
@@ -116,7 +116,7 @@ class GetHostedPaymentPageRequest extends ANetApiRequestType
      * hostedPaymentSecurityOptions, hostedPaymentCustomerOptions,
      * hostedPaymentStyleOptions
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\SettingType[]
+     * @return SettingType[]
      */
     public function getHostedPaymentSettings()
     {
@@ -133,7 +133,7 @@ class GetHostedPaymentPageRequest extends ANetApiRequestType
      * hostedPaymentSecurityOptions, hostedPaymentCustomerOptions,
      * hostedPaymentStyleOptions
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\SettingType[] $hostedPaymentSettings
+     * @param SettingType[] $hostedPaymentSettings
      * @return self
      */
     public function setHostedPaymentSettings(array $hostedPaymentSettings)

@@ -2,54 +2,59 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
+use DateTime;
+use DesolatorMagno\AuthorizePhp\Util\Mapper;
+use JsonSerializable;
+use ReturnTypeWillChange;
+
 /**
  * Class representing ProfileTransactionType
  *
  *
  * XSD Type: profileTransactionType
  */
-class ProfileTransactionType implements \JsonSerializable
+class ProfileTransactionType implements JsonSerializable
 {
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ProfileTransAuthCaptureType
+     * @property ProfileTransAuthCaptureType
      * $profileTransAuthCapture
      */
     private $profileTransAuthCapture = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ProfileTransAuthOnlyType
+     * @property ProfileTransAuthOnlyType
      * $profileTransAuthOnly
      */
     private $profileTransAuthOnly = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ProfileTransPriorAuthCaptureType
+     * @property ProfileTransPriorAuthCaptureType
      * $profileTransPriorAuthCapture
      */
     private $profileTransPriorAuthCapture = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ProfileTransCaptureOnlyType
+     * @property ProfileTransCaptureOnlyType
      * $profileTransCaptureOnly
      */
     private $profileTransCaptureOnly = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ProfileTransRefundType
+     * @property ProfileTransRefundType
      * $profileTransRefund
      */
     private $profileTransRefund = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ProfileTransVoidType $profileTransVoid
+     * @property ProfileTransVoidType $profileTransVoid
      */
     private $profileTransVoid = null;
 
     /**
      * Gets as profileTransAuthCapture
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ProfileTransAuthCaptureType
+     * @return ProfileTransAuthCaptureType
      */
     public function getProfileTransAuthCapture()
     {
@@ -59,11 +64,11 @@ class ProfileTransactionType implements \JsonSerializable
     /**
      * Sets a new profileTransAuthCapture
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ProfileTransAuthCaptureType
+     * @param ProfileTransAuthCaptureType
      * $profileTransAuthCapture
      * @return self
      */
-    public function setProfileTransAuthCapture(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\ProfileTransAuthCaptureType $profileTransAuthCapture)
+    public function setProfileTransAuthCapture(ProfileTransAuthCaptureType $profileTransAuthCapture)
     {
         $this->profileTransAuthCapture = $profileTransAuthCapture;
         return $this;
@@ -72,7 +77,7 @@ class ProfileTransactionType implements \JsonSerializable
     /**
      * Gets as profileTransAuthOnly
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ProfileTransAuthOnlyType
+     * @return ProfileTransAuthOnlyType
      */
     public function getProfileTransAuthOnly()
     {
@@ -82,11 +87,11 @@ class ProfileTransactionType implements \JsonSerializable
     /**
      * Sets a new profileTransAuthOnly
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ProfileTransAuthOnlyType
+     * @param ProfileTransAuthOnlyType
      * $profileTransAuthOnly
      * @return self
      */
-    public function setProfileTransAuthOnly(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\ProfileTransAuthOnlyType $profileTransAuthOnly)
+    public function setProfileTransAuthOnly(ProfileTransAuthOnlyType $profileTransAuthOnly)
     {
         $this->profileTransAuthOnly = $profileTransAuthOnly;
         return $this;
@@ -95,7 +100,7 @@ class ProfileTransactionType implements \JsonSerializable
     /**
      * Gets as profileTransPriorAuthCapture
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ProfileTransPriorAuthCaptureType
+     * @return ProfileTransPriorAuthCaptureType
      */
     public function getProfileTransPriorAuthCapture()
     {
@@ -105,11 +110,11 @@ class ProfileTransactionType implements \JsonSerializable
     /**
      * Sets a new profileTransPriorAuthCapture
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ProfileTransPriorAuthCaptureType
+     * @param ProfileTransPriorAuthCaptureType
      * $profileTransPriorAuthCapture
      * @return self
      */
-    public function setProfileTransPriorAuthCapture(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\ProfileTransPriorAuthCaptureType $profileTransPriorAuthCapture)
+    public function setProfileTransPriorAuthCapture(ProfileTransPriorAuthCaptureType $profileTransPriorAuthCapture)
     {
         $this->profileTransPriorAuthCapture = $profileTransPriorAuthCapture;
         return $this;
@@ -118,7 +123,7 @@ class ProfileTransactionType implements \JsonSerializable
     /**
      * Gets as profileTransCaptureOnly
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ProfileTransCaptureOnlyType
+     * @return ProfileTransCaptureOnlyType
      */
     public function getProfileTransCaptureOnly()
     {
@@ -128,11 +133,11 @@ class ProfileTransactionType implements \JsonSerializable
     /**
      * Sets a new profileTransCaptureOnly
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ProfileTransCaptureOnlyType
+     * @param ProfileTransCaptureOnlyType
      * $profileTransCaptureOnly
      * @return self
      */
-    public function setProfileTransCaptureOnly(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\ProfileTransCaptureOnlyType $profileTransCaptureOnly)
+    public function setProfileTransCaptureOnly(ProfileTransCaptureOnlyType $profileTransCaptureOnly)
     {
         $this->profileTransCaptureOnly = $profileTransCaptureOnly;
         return $this;
@@ -141,7 +146,7 @@ class ProfileTransactionType implements \JsonSerializable
     /**
      * Gets as profileTransRefund
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ProfileTransRefundType
+     * @return ProfileTransRefundType
      */
     public function getProfileTransRefund()
     {
@@ -151,10 +156,10 @@ class ProfileTransactionType implements \JsonSerializable
     /**
      * Sets a new profileTransRefund
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ProfileTransRefundType $profileTransRefund
+     * @param ProfileTransRefundType $profileTransRefund
      * @return self
      */
-    public function setProfileTransRefund(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\ProfileTransRefundType $profileTransRefund)
+    public function setProfileTransRefund(ProfileTransRefundType $profileTransRefund)
     {
         $this->profileTransRefund = $profileTransRefund;
         return $this;
@@ -163,7 +168,7 @@ class ProfileTransactionType implements \JsonSerializable
     /**
      * Gets as profileTransVoid
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ProfileTransVoidType
+     * @return ProfileTransVoidType
      */
     public function getProfileTransVoid()
     {
@@ -173,10 +178,10 @@ class ProfileTransactionType implements \JsonSerializable
     /**
      * Sets a new profileTransVoid
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ProfileTransVoidType $profileTransVoid
+     * @param ProfileTransVoidType $profileTransVoid
      * @return self
      */
-    public function setProfileTransVoid(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\ProfileTransVoidType $profileTransVoid)
+    public function setProfileTransVoid(ProfileTransVoidType $profileTransVoid)
     {
         $this->profileTransVoid = $profileTransVoid;
         return $this;
@@ -184,13 +189,13 @@ class ProfileTransactionType implements \JsonSerializable
 
 
   // Json Serialize Code
-   #[\ReturnTypeWillChange]
+   #[ReturnTypeWillChange]
     public function jsonSerialize(){
         $values = array_filter((array)get_object_vars($this),
         function ($val){
             return !is_null($val);
         });
-        $mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
+        $mapper = Mapper::Instance();
         foreach($values as $key => $value){
             $classDetails = $mapper->getClass(get_class($this) , $key);
             if (isset($value)){
@@ -218,11 +223,11 @@ class ProfileTransactionType implements \JsonSerializable
     public function set($data)
     {
         if(is_array($data) || is_object($data)) {
-			$mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
+			$mapper = Mapper::Instance();
 			foreach($data AS $key => $value) {
 				$classDetails = $mapper->getClass(get_class($this) , $key);
 
-				if($classDetails !== NULL ) {
+				if(!is_null($classDetails)) {
 					if ($classDetails->isArray) {
 						if ($classDetails->isCustomDefined) {
 							foreach($value AS $keyChild => $valueChild) {
@@ -233,7 +238,7 @@ class ProfileTransactionType implements \JsonSerializable
 						}
 						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
 							foreach($value AS $keyChild => $valueChild) {
-								$type = new \DateTime($valueChild);
+								$type = new DateTime($valueChild);
 								$this->{'addTo' . $key}($type);
 							}
 						}
@@ -250,7 +255,7 @@ class ProfileTransactionType implements \JsonSerializable
 							$this->{'set' . $key}($type);
 						}
 						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
-							$type = new \DateTime($value);
+							$type = new DateTime($value);
 							$this->{'set' . $key}($type);
 						}
 						else {

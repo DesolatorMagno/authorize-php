@@ -9,14 +9,14 @@ class GetBatchStatisticsResponse extends ANetApiResponseType
 {
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\BatchDetailsType $batch
+     * @property BatchDetailsType $batch
      */
     private $batch = null;
 
     /**
      * Gets as batch
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\BatchDetailsType
+     * @return BatchDetailsType
      */
     public function getBatch()
     {
@@ -26,10 +26,10 @@ class GetBatchStatisticsResponse extends ANetApiResponseType
     /**
      * Sets a new batch
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\BatchDetailsType $batch
+     * @param BatchDetailsType $batch
      * @return self
      */
-    public function setBatch(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\BatchDetailsType $batch)
+    public function setBatch(BatchDetailsType $batch)
     {
         $this->batch = $batch;
         return $this;

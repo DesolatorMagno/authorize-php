@@ -3,6 +3,7 @@
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
 use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeExtendTrait;
+use JsonSerializable;
 
 /**
  * Class representing ProfileTransRefundType
@@ -10,7 +11,7 @@ use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeExtendTrait;
  *
  * XSD Type: profileTransRefundType
  */
-class ProfileTransRefundType extends ProfileTransAmountType implements \JsonSerializable
+class ProfileTransRefundType extends ProfileTransAmountType implements JsonSerializable
 {
     use JsonSerializeExtendTrait;
 
@@ -45,7 +46,7 @@ class ProfileTransRefundType extends ProfileTransAmountType implements \JsonSeri
     private $bankAccountNumberMasked = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\OrderExType $order
+     * @property OrderExType $order
      */
     private $order = null;
 
@@ -189,7 +190,7 @@ class ProfileTransRefundType extends ProfileTransAmountType implements \JsonSeri
     /**
      * Gets as order
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\OrderExType
+     * @return OrderExType
      */
     public function getOrder()
     {
@@ -199,10 +200,10 @@ class ProfileTransRefundType extends ProfileTransAmountType implements \JsonSeri
     /**
      * Sets a new order
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\OrderExType $order
+     * @param OrderExType $order
      * @return self
      */
-    public function setOrder(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\OrderExType $order)
+    public function setOrder(OrderExType $order)
     {
         $this->order = $order;
         return $this;

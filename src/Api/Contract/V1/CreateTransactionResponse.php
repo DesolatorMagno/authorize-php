@@ -2,10 +2,6 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
-use DesolatorMagno\AuthorizePhp\Traits\SerializeAnetResponseTrait;
-use DesolatorMagno\AuthorizePhp\Traits\SerializeResponseTrait;
-use DesolatorMagno\AuthorizePhp\Traits\SetSerializeTrait;
-
 /**
  * Class representing CreateTransactionResponse
  */
@@ -16,25 +12,25 @@ class CreateTransactionResponse extends ANetApiResponseType
      * @property TransactionResponseType
      * $transactionResponse
      */
-    private ?TransactionResponseType $transactionResponse = null;
+    private TransactionResponseType|null $transactionResponse = null;
 
     /**
      * @property CreateProfileResponseType
      * $profileResponse
      */
-    private ?CreateProfileResponseType $profileResponse = null;
+    private CreateProfileResponseType|null $profileResponse = null;
 
     /**
      * Gets as transactionResponse
      *
      * @return TransactionResponseType
      */
-    public function getTransactionResponse(): ?TransactionResponseType
+    public function getTransactionResponse(): TransactionResponseType|null
     {
         return $this->transactionResponse;
     }
 
-    public function setTransactionResponse(TransactionResponseType $transactionResponse): CreateTransactionResponse
+    public function setTransactionResponse(TransactionResponseType $transactionResponse): self
     {
         //Log::channel('authorize')->debug('Transaction Response', $transactionResponse->jsonSerialize());
         $this->transactionResponse = $transactionResponse;
@@ -46,7 +42,7 @@ class CreateTransactionResponse extends ANetApiResponseType
      *
      * @return CreateProfileResponseType
      */
-    public function getProfileResponse(): ?CreateProfileResponseType
+    public function getProfileResponse(): CreateProfileResponseType|null
     {
         return $this->profileResponse;
     }
@@ -57,7 +53,7 @@ class CreateTransactionResponse extends ANetApiResponseType
      * @param CreateProfileResponseType $profileResponse
      * @return self
      */
-    public function setProfileResponse(CreateProfileResponseType $profileResponse): CreateTransactionResponse
+    public function setProfileResponse(CreateProfileResponseType $profileResponse): self
     {
         $this->profileResponse = $profileResponse;
         return $this;

@@ -17,7 +17,7 @@ class CreateCustomerProfileFromTransactionRequest extends ANetApiRequestType
     private $transId = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileBaseType $customer
+     * @property CustomerProfileBaseType $customer
      */
     private $customer = null;
 
@@ -66,7 +66,7 @@ class CreateCustomerProfileFromTransactionRequest extends ANetApiRequestType
     /**
      * Gets as customer
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileBaseType
+     * @return CustomerProfileBaseType
      */
     public function getCustomer()
     {
@@ -76,10 +76,10 @@ class CreateCustomerProfileFromTransactionRequest extends ANetApiRequestType
     /**
      * Sets a new customer
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileBaseType $customer
+     * @param CustomerProfileBaseType $customer
      * @return self
      */
-    public function setCustomer(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileBaseType $customer)
+    public function setCustomer(CustomerProfileBaseType $customer)
     {
         $this->customer = $customer;
         return $this;

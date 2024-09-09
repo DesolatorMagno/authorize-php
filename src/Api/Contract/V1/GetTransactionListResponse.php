@@ -11,7 +11,7 @@ class GetTransactionListResponse extends ANetApiResponseType
 {
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionSummaryType[] $transactions
+     * @property TransactionSummaryType[] $transactions
      */
     private $transactions = null;
 
@@ -23,10 +23,10 @@ class GetTransactionListResponse extends ANetApiResponseType
     /**
      * Adds as transaction
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionSummaryType $transaction
+     * @param TransactionSummaryType $transaction
      *@return self
      */
-    public function addToTransactions(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionSummaryType $transaction)
+    public function addToTransactions(TransactionSummaryType $transaction)
     {
         $this->transactions[] = $transaction;
         return $this;
@@ -57,7 +57,7 @@ class GetTransactionListResponse extends ANetApiResponseType
     /**
      * Gets as transactions
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionSummaryType[]
+     * @return TransactionSummaryType[]
      */
     public function getTransactions()
     {
@@ -67,7 +67,7 @@ class GetTransactionListResponse extends ANetApiResponseType
     /**
      * Sets a new transactions
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionSummaryType[] $transactions
+     * @param TransactionSummaryType[] $transactions
      * @return self
      */
     public function setTransactions(array $transactions)

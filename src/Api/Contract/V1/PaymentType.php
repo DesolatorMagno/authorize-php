@@ -2,48 +2,53 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
+use DateTime;
+use DesolatorMagno\AuthorizePhp\Util\Mapper;
+use JsonSerializable;
+use ReturnTypeWillChange;
+
 /**
  * Class representing PaymentType
  *
  *
  * XSD Type: paymentType
  */
-class PaymentType implements \JsonSerializable
+class PaymentType implements JsonSerializable
 {
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CreditCardType $creditCard
+     * @property CreditCardType $creditCard
      */
     private $creditCard = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\BankAccountType $bankAccount
+     * @property BankAccountType $bankAccount
      */
     private $bankAccount = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CreditCardTrackType $trackData
+     * @property CreditCardTrackType $trackData
      */
     private $trackData = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\EncryptedTrackDataType
+     * @property EncryptedTrackDataType
      * $encryptedTrackData
      */
     private $encryptedTrackData = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PayPalType $payPal
+     * @property PayPalType $payPal
      */
     private $payPal = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\OpaqueDataType $opaqueData
+     * @property OpaqueDataType $opaqueData
      */
     private $opaqueData = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentEmvType $emv
+     * @property PaymentEmvType $emv
      */
     private $emv = null;
 
@@ -55,7 +60,7 @@ class PaymentType implements \JsonSerializable
     /**
      * Gets as creditCard
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CreditCardType
+     * @return CreditCardType
      */
     public function getCreditCard()
     {
@@ -65,10 +70,10 @@ class PaymentType implements \JsonSerializable
     /**
      * Sets a new creditCard
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CreditCardType $creditCard
+     * @param CreditCardType $creditCard
      * @return self
      */
-    public function setCreditCard(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\CreditCardType $creditCard)
+    public function setCreditCard(CreditCardType $creditCard)
     {
         $this->creditCard = $creditCard;
         return $this;
@@ -77,7 +82,7 @@ class PaymentType implements \JsonSerializable
     /**
      * Gets as bankAccount
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\BankAccountType
+     * @return BankAccountType
      */
     public function getBankAccount()
     {
@@ -87,10 +92,10 @@ class PaymentType implements \JsonSerializable
     /**
      * Sets a new bankAccount
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\BankAccountType $bankAccount
+     * @param BankAccountType $bankAccount
      * @return self
      */
-    public function setBankAccount(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\BankAccountType $bankAccount)
+    public function setBankAccount(BankAccountType $bankAccount)
     {
         $this->bankAccount = $bankAccount;
         return $this;
@@ -99,7 +104,7 @@ class PaymentType implements \JsonSerializable
     /**
      * Gets as trackData
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CreditCardTrackType
+     * @return CreditCardTrackType
      */
     public function getTrackData()
     {
@@ -109,10 +114,10 @@ class PaymentType implements \JsonSerializable
     /**
      * Sets a new trackData
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CreditCardTrackType $trackData
+     * @param CreditCardTrackType $trackData
      * @return self
      */
-    public function setTrackData(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\CreditCardTrackType $trackData)
+    public function setTrackData(CreditCardTrackType $trackData)
     {
         $this->trackData = $trackData;
         return $this;
@@ -121,7 +126,7 @@ class PaymentType implements \JsonSerializable
     /**
      * Gets as encryptedTrackData
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\EncryptedTrackDataType
+     * @return EncryptedTrackDataType
      */
     public function getEncryptedTrackData()
     {
@@ -131,10 +136,10 @@ class PaymentType implements \JsonSerializable
     /**
      * Sets a new encryptedTrackData
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\EncryptedTrackDataType $encryptedTrackData
+     * @param EncryptedTrackDataType $encryptedTrackData
      * @return self
      */
-    public function setEncryptedTrackData(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\EncryptedTrackDataType $encryptedTrackData)
+    public function setEncryptedTrackData(EncryptedTrackDataType $encryptedTrackData)
     {
         $this->encryptedTrackData = $encryptedTrackData;
         return $this;
@@ -143,7 +148,7 @@ class PaymentType implements \JsonSerializable
     /**
      * Gets as payPal
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PayPalType
+     * @return PayPalType
      */
     public function getPayPal()
     {
@@ -153,10 +158,10 @@ class PaymentType implements \JsonSerializable
     /**
      * Sets a new payPal
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PayPalType $payPal
+     * @param PayPalType $payPal
      * @return self
      */
-    public function setPayPal(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\PayPalType $payPal)
+    public function setPayPal(PayPalType $payPal)
     {
         $this->payPal = $payPal;
         return $this;
@@ -165,7 +170,7 @@ class PaymentType implements \JsonSerializable
     /**
      * Gets as opaqueData
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\OpaqueDataType
+     * @return OpaqueDataType
      */
     public function getOpaqueData()
     {
@@ -175,10 +180,10 @@ class PaymentType implements \JsonSerializable
     /**
      * Sets a new opaqueData
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\OpaqueDataType $opaqueData
+     * @param OpaqueDataType $opaqueData
      * @return self
      */
-    public function setOpaqueData(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\OpaqueDataType $opaqueData)
+    public function setOpaqueData(OpaqueDataType $opaqueData)
     {
         $this->opaqueData = $opaqueData;
         return $this;
@@ -187,7 +192,7 @@ class PaymentType implements \JsonSerializable
     /**
      * Gets as emv
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentEmvType
+     * @return PaymentEmvType
      */
     public function getEmv()
     {
@@ -197,10 +202,10 @@ class PaymentType implements \JsonSerializable
     /**
      * Sets a new emv
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentEmvType $emv
+     * @param PaymentEmvType $emv
      * @return self
      */
-    public function setEmv(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentEmvType $emv)
+    public function setEmv(PaymentEmvType $emv)
     {
         $this->emv = $emv;
         return $this;
@@ -230,13 +235,13 @@ class PaymentType implements \JsonSerializable
 
 
   // Json Serialize Code
-   #[\ReturnTypeWillChange]
+   #[ReturnTypeWillChange]
     public function jsonSerialize(){
         $values = array_filter((array)get_object_vars($this),
         function ($val){
             return !is_null($val);
         });
-        $mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
+        $mapper = Mapper::Instance();
         foreach($values as $key => $value){
             $classDetails = $mapper->getClass(get_class($this) , $key);
             if (isset($value)){
@@ -264,11 +269,11 @@ class PaymentType implements \JsonSerializable
     public function set($data)
     {
         if(is_array($data) || is_object($data)) {
-			$mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
+			$mapper = Mapper::Instance();
 			foreach($data AS $key => $value) {
 				$classDetails = $mapper->getClass(get_class($this) , $key);
 
-				if($classDetails !== NULL ) {
+				if(!is_null($classDetails)) {
 					if ($classDetails->isArray) {
 						if ($classDetails->isCustomDefined) {
 							foreach($value AS $keyChild => $valueChild) {
@@ -279,7 +284,7 @@ class PaymentType implements \JsonSerializable
 						}
 						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
 							foreach($value AS $keyChild => $valueChild) {
-								$type = new \DateTime($valueChild);
+								$type = new DateTime($valueChild);
 								$this->{'addTo' . $key}($type);
 							}
 						}
@@ -296,7 +301,7 @@ class PaymentType implements \JsonSerializable
 							$this->{'set' . $key}($type);
 						}
 						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
-							$type = new \DateTime($value);
+							$type = new DateTime($value);
 							$this->{'set' . $key}($type);
 						}
 						else {

@@ -5,11 +5,12 @@ namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType;
 use DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\SplitTenderPaymentsAType\SplitTenderPaymentAType;
 use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeGlobalTrait;
 use DesolatorMagno\AuthorizePhp\Traits\SetGlobalTrait;
+use JsonSerializable;
 
 /**
  * Class representing SplitTenderPaymentsAType
  */
-class SplitTenderPaymentsAType implements \JsonSerializable
+class SplitTenderPaymentsAType implements JsonSerializable
 {
     Use JsonSerializeGlobalTrait, SetGlobalTrait;
     /**

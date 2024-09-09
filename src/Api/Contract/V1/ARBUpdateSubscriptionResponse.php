@@ -11,14 +11,14 @@ class ARBUpdateSubscriptionResponse extends ANetApiResponseType
 {
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileIdType $profile
+     * @property CustomerProfileIdType $profile
      */
     private $profile = null;
 
     /**
      * Gets as profile
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileIdType
+     * @return CustomerProfileIdType
      */
     public function getProfile()
     {
@@ -28,10 +28,10 @@ class ARBUpdateSubscriptionResponse extends ANetApiResponseType
     /**
      * Sets a new profile
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileIdType $profile
+     * @param CustomerProfileIdType $profile
      * @return self
      */
-    public function setProfile(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileIdType $profile)
+    public function setProfile(CustomerProfileIdType $profile)
     {
         $this->profile = $profile;
         return $this;

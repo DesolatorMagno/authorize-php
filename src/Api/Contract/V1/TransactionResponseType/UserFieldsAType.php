@@ -2,17 +2,19 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType;
 
+use DesolatorMagno\AuthorizePhp\Api\Contract\V1\UserFieldType;
 use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeGlobalTrait;
 use DesolatorMagno\AuthorizePhp\Traits\SetGlobalTrait;
+use JsonSerializable;
 
 /**
  * Class representing UserFieldsAType
  */
-class UserFieldsAType implements \JsonSerializable
+class UserFieldsAType implements JsonSerializable
 {
     Use JsonSerializeGlobalTrait, SetGlobalTrait;
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\UserFieldType[] $userField
+     * @property UserFieldType[] $userField
      */
     private $userField = null;
 
@@ -20,9 +22,9 @@ class UserFieldsAType implements \JsonSerializable
      * Adds as userField
      *
      * @return self
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\UserFieldType $userField
+     * @param UserFieldType $userField
      */
-    public function addToUserField(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\UserFieldType $userField)
+    public function addToUserField(UserFieldType $userField)
     {
         $this->userField[] = $userField;
         return $this;
@@ -53,7 +55,7 @@ class UserFieldsAType implements \JsonSerializable
     /**
      * Gets as userField
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\UserFieldType[]
+     * @return UserFieldType[]
      */
     public function getUserField()
     {
@@ -63,7 +65,7 @@ class UserFieldsAType implements \JsonSerializable
     /**
      * Sets a new userField
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\UserFieldType[] $userField
+     * @param UserFieldType[] $userField
      * @return self
      */
     public function setUserField(array $userField)

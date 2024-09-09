@@ -4,19 +4,20 @@ namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionDetailsType\Emv
 
 use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeGlobalTrait;
 use DesolatorMagno\AuthorizePhp\Traits\SetGlobalTrait;
+use JsonSerializable;
 
 /**
  * Class representing TagAType
  */
-class TagAType implements \JsonSerializable
+class TagAType implements JsonSerializable
 {
     Use JsonSerializeGlobalTrait, SetGlobalTrait;
 
-    private ?string $tagId = null;
+    private string|null $tagId = null;
 
-    private ?string $data = null;
+    private string|null $data = null;
 
-    public function getTagId(): ?string
+    public function getTagId(): string|null
     {
         return $this->tagId;
     }
@@ -27,7 +28,7 @@ class TagAType implements \JsonSerializable
         return $this;
     }
 
-    public function getData(): ?string
+    public function getData(): string|null
     {
         return $this->data;
     }

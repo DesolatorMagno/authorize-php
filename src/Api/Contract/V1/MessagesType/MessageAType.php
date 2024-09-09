@@ -4,25 +4,26 @@ namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1\MessagesType;
 
 use DesolatorMagno\AuthorizePhp\Traits\ATypeSerialize;
 use DesolatorMagno\AuthorizePhp\Traits\SetGlobalTrait;
+use JsonSerializable;
 
 /**
  * Class representing MessageAType
  */
-class MessageAType implements \JsonSerializable
+class MessageAType implements JsonSerializable
 {
     use ATypeSerialize, SetGlobalTrait;
 
     /**
      * @property string $code
      */
-    private ?string $code = null;
+    private string|null $code = null;
 
     /**
      * @property string $text
      */
-    private ?string $text = null;
+    private string|null $text = null;
 
-    public function getCode(): ?string
+    public function getCode(): string|null
     {
         return $this->code;
     }
@@ -33,7 +34,7 @@ class MessageAType implements \JsonSerializable
         return $this;
     }
 
-    public function getText(): ?string
+    public function getText(): string|null
     {
         return $this->text;
     }

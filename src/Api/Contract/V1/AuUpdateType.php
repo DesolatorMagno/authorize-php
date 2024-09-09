@@ -4,6 +4,7 @@ namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
 use DesolatorMagno\AuthorizePhp\Api\Contract\V1\AuDetailsType;
 use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeExtendTrait;
+use JsonSerializable;
 
 /**
  * Class representing AuUpdateType
@@ -11,24 +12,24 @@ use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeExtendTrait;
  *
  * XSD Type: auUpdateType
  */
-class AuUpdateType extends AuDetailsType implements \JsonSerializable
+class AuUpdateType extends AuDetailsType implements JsonSerializable
 {
     use JsonSerializeExtendTrait;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CreditCardMaskedType $newCreditCard
+     * @property CreditCardMaskedType $newCreditCard
      */
     private $newCreditCard = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CreditCardMaskedType $oldCreditCard
+     * @property CreditCardMaskedType $oldCreditCard
      */
     private $oldCreditCard = null;
 
     /**
      * Gets as newCreditCard
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CreditCardMaskedType
+     * @return CreditCardMaskedType
      */
     public function getNewCreditCard()
     {
@@ -38,10 +39,10 @@ class AuUpdateType extends AuDetailsType implements \JsonSerializable
     /**
      * Sets a new newCreditCard
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CreditCardMaskedType $newCreditCard
+     * @param CreditCardMaskedType $newCreditCard
      * @return self
      */
-    public function setNewCreditCard(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\CreditCardMaskedType $newCreditCard)
+    public function setNewCreditCard(CreditCardMaskedType $newCreditCard)
     {
         $this->newCreditCard = $newCreditCard;
         return $this;
@@ -50,7 +51,7 @@ class AuUpdateType extends AuDetailsType implements \JsonSerializable
     /**
      * Gets as oldCreditCard
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CreditCardMaskedType
+     * @return CreditCardMaskedType
      */
     public function getOldCreditCard()
     {
@@ -60,10 +61,10 @@ class AuUpdateType extends AuDetailsType implements \JsonSerializable
     /**
      * Sets a new oldCreditCard
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CreditCardMaskedType $oldCreditCard
+     * @param CreditCardMaskedType $oldCreditCard
      * @return self
      */
-    public function setOldCreditCard(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\CreditCardMaskedType $oldCreditCard)
+    public function setOldCreditCard(CreditCardMaskedType $oldCreditCard)
     {
         $this->oldCreditCard = $oldCreditCard;
         return $this;

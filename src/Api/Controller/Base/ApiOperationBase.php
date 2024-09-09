@@ -17,7 +17,7 @@ use ReflectionClass;
 abstract class ApiOperationBase implements IApiOperation
 {
     private AnetApiRequestType $apiRequest;
-    protected ?AnetApiResponseType $apiResponse = null;
+    protected AnetApiResponseType|null $apiResponse = null;
     private string $apiResponseType;
     public AuthorizeApiClient $httpClient;
 
@@ -26,12 +26,12 @@ abstract class ApiOperationBase implements IApiOperation
      */
     public function __construct(AnetApiRequestType $request, string $responseType)
     {
-        if (null == $responseType || '' == $responseType) {
-            throw new InvalidArgumentException("responseType cannot be null or empty");
+        if ($responseType === '') {
+            throw new InvalidArgumentException('responseType cannot be empty');
         }
 
-        if (null != $this->apiResponse) {
-            throw new InvalidArgumentException("response has to be null");
+        if ($this->apiResponse != null) {
+            throw new InvalidArgumentException('response has to be null');
         }
 
         $this->apiRequest = $request;
@@ -45,7 +45,7 @@ abstract class ApiOperationBase implements IApiOperation
         ]);*/
     }
 
-    public function getApiResponse(): ?AnetApiResponseType
+    public function getApiResponse(): AnetApiResponseType
     {
         return $this->apiResponse;
     }
@@ -53,7 +53,7 @@ abstract class ApiOperationBase implements IApiOperation
     /**
      * @throws Exception
      */
-    public function executeWithApiResponse($endPoint = ANetEnvironment::CUSTOM): ?AnetApiResponseType
+    public function executeWithApiResponse($endPoint = ANetEnvironment::CUSTOM): AnetApiResponseType
     {
         Log::channel('authorize')->info('***** Start Authorize Process *****');
         $this->execute($endPoint);
@@ -65,10 +65,10 @@ abstract class ApiOperationBase implements IApiOperation
     /**
      * @throws Exception
      */
-    public function execute($endPoint = ANetEnvironment::CUSTOM)
+    public function execute($endPoint = ANetEnvironment::CUSTOM): void
     {
         $this->beforeExecute();
-        $this->apiRequest->setClientId("sdk-php-" . ANetEnvironment::VERSION);
+        $this->apiRequest->setClientId('sdk-php-' . ANetEnvironment::VERSION);
         Log::channel('authorize')->info('Request Creation Begin');
         //Too much useless data in there.
         //Log::channel('authorize')->debug($this->apiRequest->jsonSerialize());
@@ -110,11 +110,11 @@ abstract class ApiOperationBase implements IApiOperation
         $this->afterExecute();
     }
 
-    private function validate()
+    private function validate(): void
     {
         $merchantAuthentication = $this->apiRequest->getMerchantAuthentication();
-        if (null == $merchantAuthentication) {
-            throw new InvalidArgumentException("MerchantAuthentication cannot be null");
+        if (is_null($merchantAuthentication)) {
+            throw new InvalidArgumentException('MerchantAuthentication cannot be null');
         }
 
         $this->validateRequest();
@@ -132,7 +132,7 @@ abstract class ApiOperationBase implements IApiOperation
     {
     } //need to make this abstract
 
-    protected function now()
+    protected function now(): string
     {
         return date( DATE_RFC2822);
     }

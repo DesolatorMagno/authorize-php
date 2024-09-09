@@ -8,7 +8,7 @@ class MobileDeviceRegistrationController extends ApiOperationBase
 {
     public function __construct(AnetApiRequestType $request)
     {
-        $responseType = 'DesolatorMagno\AuthorizePhp\Api\Contract\V1\MobileDeviceRegistrationResponse';
+        $responseType = \DesolatorMagno\AuthorizePhp\Api\Contract\V1\MobileDeviceRegistrationResponse::class;
         parent::__construct($request, $responseType);
     }
 

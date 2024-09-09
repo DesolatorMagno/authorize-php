@@ -11,14 +11,14 @@ class ARBCreateSubscriptionRequest extends ANetApiRequestType
 {
     use SerializeAnetRequestTrait;
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ARBSubscriptionType $subscription
+     * @property ARBSubscriptionType $subscription
      */
     private $subscription = null;
 
     /**
      * Gets as subscription
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ARBSubscriptionType
+     * @return ARBSubscriptionType
      */
     public function getSubscription()
     {
@@ -28,10 +28,10 @@ class ARBCreateSubscriptionRequest extends ANetApiRequestType
     /**
      * Sets a new subscription
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ARBSubscriptionType $subscription
+     * @param ARBSubscriptionType $subscription
      * @return self
      */
-    public function setSubscription(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\ARBSubscriptionType $subscription): self
+    public function setSubscription(ARBSubscriptionType $subscription): self
     {
         $this->subscription = $subscription;
         return $this;

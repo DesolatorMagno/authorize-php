@@ -4,24 +4,25 @@ namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1\KeyManagementSchemeType\DU
 
 use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeGlobalTrait;
 use DesolatorMagno\AuthorizePhp\Traits\SetGlobalTrait;
+use JsonSerializable;
 
 /**
  * Class representing DeviceInfoAType
  */
-class DeviceInfoAType implements \JsonSerializable
+class DeviceInfoAType implements JsonSerializable
 {
     use JsonSerializeGlobalTrait, SetGlobalTrait;
     /**
      * @property string $description
      */
-    private ?string $description = null;
+    private string|null $description = null;
 
     /**
      * Gets as description
      *
      * @return string
      */
-    public function getDescription(): ?string
+    public function getDescription(): string|null
     {
         return $this->description;
     }

@@ -9,7 +9,7 @@ class GetCustomerPaymentProfileResponse extends ANetApiResponseType
 {
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerPaymentProfileMaskedType
+     * @property CustomerPaymentProfileMaskedType
      * $paymentProfile
      */
     private $paymentProfile = null;
@@ -17,7 +17,7 @@ class GetCustomerPaymentProfileResponse extends ANetApiResponseType
     /**
      * Gets as paymentProfile
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerPaymentProfileMaskedType
+     * @return CustomerPaymentProfileMaskedType
      */
     public function getPaymentProfile()
     {
@@ -27,11 +27,11 @@ class GetCustomerPaymentProfileResponse extends ANetApiResponseType
     /**
      * Sets a new paymentProfile
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerPaymentProfileMaskedType
+     * @param CustomerPaymentProfileMaskedType
      * $paymentProfile
      * @return self
      */
-    public function setPaymentProfile(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerPaymentProfileMaskedType $paymentProfile)
+    public function setPaymentProfile(CustomerPaymentProfileMaskedType $paymentProfile)
     {
         $this->paymentProfile = $paymentProfile;
         return $this;

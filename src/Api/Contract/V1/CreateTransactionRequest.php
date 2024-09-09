@@ -15,14 +15,14 @@ class CreateTransactionRequest extends ANetApiRequestType
      * @property TransactionRequestType
      * $transactionRequest
      */
-    private ?TransactionRequestType $transactionRequest = null;
+    private TransactionRequestType|null $transactionRequest = null;
 
     /**
      * Gets as transactionRequest
      *
      * @return TransactionRequestType
      */
-    public function getTransactionRequest(): ?TransactionRequestType
+    public function getTransactionRequest(): TransactionRequestType|null
     {
         return $this->transactionRequest;
     }
@@ -33,7 +33,7 @@ class CreateTransactionRequest extends ANetApiRequestType
      * @param TransactionRequestType $transactionRequest
      * @return self
      */
-    public function setTransactionRequest(TransactionRequestType $transactionRequest): CreateTransactionRequest
+    public function setTransactionRequest(TransactionRequestType $transactionRequest): self
     {
         $this->transactionRequest = $transactionRequest;
         return $this;

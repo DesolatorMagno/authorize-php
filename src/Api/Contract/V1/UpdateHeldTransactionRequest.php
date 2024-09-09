@@ -12,7 +12,7 @@ class UpdateHeldTransactionRequest extends ANetApiRequestType
 {
     use SerializeAnetRequestTrait;
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\HeldTransactionRequestType
+     * @property HeldTransactionRequestType
      * $heldTransactionRequest
      */
     private $heldTransactionRequest = null;
@@ -20,7 +20,7 @@ class UpdateHeldTransactionRequest extends ANetApiRequestType
     /**
      * Gets as heldTransactionRequest
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\HeldTransactionRequestType
+     * @return HeldTransactionRequestType
      */
     public function getHeldTransactionRequest()
     {
@@ -30,11 +30,11 @@ class UpdateHeldTransactionRequest extends ANetApiRequestType
     /**
      * Sets a new heldTransactionRequest
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\HeldTransactionRequestType
+     * @param HeldTransactionRequestType
      * $heldTransactionRequest
      * @return self
      */
-    public function setHeldTransactionRequest(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\HeldTransactionRequestType $heldTransactionRequest)
+    public function setHeldTransactionRequest(HeldTransactionRequestType $heldTransactionRequest)
     {
         $this->heldTransactionRequest = $heldTransactionRequest;
         return $this;

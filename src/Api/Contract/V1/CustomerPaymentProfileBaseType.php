@@ -4,6 +4,7 @@ namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
 use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeGlobalTrait;
 use DesolatorMagno\AuthorizePhp\Traits\SetGlobalTrait;
+use JsonSerializable;
 
 /**
  * Class representing CustomerPaymentProfileBaseType
@@ -11,7 +12,7 @@ use DesolatorMagno\AuthorizePhp\Traits\SetGlobalTrait;
  *
  * XSD Type: customerPaymentProfileBaseType
  */
-class CustomerPaymentProfileBaseType implements \JsonSerializable
+class CustomerPaymentProfileBaseType implements JsonSerializable
 {
 
     use JsonSerializeGlobalTrait, SetGlobalTrait;
@@ -22,7 +23,7 @@ class CustomerPaymentProfileBaseType implements \JsonSerializable
     private $customerType = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressType $billTo
+     * @property CustomerAddressType $billTo
      */
     private $billTo = null;
 
@@ -51,7 +52,7 @@ class CustomerPaymentProfileBaseType implements \JsonSerializable
     /**
      * Gets as billTo
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressType
+     * @return CustomerAddressType
      */
     public function getBillTo()
     {
@@ -61,10 +62,10 @@ class CustomerPaymentProfileBaseType implements \JsonSerializable
     /**
      * Sets a new billTo
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressType $billTo
+     * @param CustomerAddressType $billTo
      * @return self
      */
-    public function setBillTo(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressType $billTo)
+    public function setBillTo(CustomerAddressType $billTo)
     {
         $this->billTo = $billTo;
         return $this;

@@ -17,7 +17,7 @@ class ARBUpdateSubscriptionRequest extends ANetApiRequestType
     private $subscriptionId = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ARBSubscriptionType $subscription
+     * @property ARBSubscriptionType $subscription
      */
     private $subscription = null;
 
@@ -46,7 +46,7 @@ class ARBUpdateSubscriptionRequest extends ANetApiRequestType
     /**
      * Gets as subscription
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ARBSubscriptionType
+     * @return ARBSubscriptionType
      */
     public function getSubscription()
     {
@@ -56,10 +56,10 @@ class ARBUpdateSubscriptionRequest extends ANetApiRequestType
     /**
      * Sets a new subscription
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ARBSubscriptionType $subscription
+     * @param ARBSubscriptionType $subscription
      * @return self
      */
-    public function setSubscription(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\ARBSubscriptionType $subscription)
+    public function setSubscription(ARBSubscriptionType $subscription)
     {
         $this->subscription = $subscription;
         return $this;

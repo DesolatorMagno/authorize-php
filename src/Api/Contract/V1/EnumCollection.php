@@ -9,13 +9,13 @@ class EnumCollection
 {
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileSummaryType
+     * @property CustomerProfileSummaryType
      * $customerProfileSummaryType
      */
     private $customerProfileSummaryType = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentSimpleType $paymentSimpleType
+     * @property PaymentSimpleType $paymentSimpleType
      */
     private $paymentSimpleType = null;
 
@@ -62,7 +62,7 @@ class EnumCollection
     /**
      * Gets as customerProfileSummaryType
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileSummaryType
+     * @return CustomerProfileSummaryType
      */
     public function getCustomerProfileSummaryType()
     {
@@ -72,11 +72,11 @@ class EnumCollection
     /**
      * Sets a new customerProfileSummaryType
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileSummaryType
+     * @param CustomerProfileSummaryType
      * $customerProfileSummaryType
      * @return self
      */
-    public function setCustomerProfileSummaryType(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileSummaryType $customerProfileSummaryType)
+    public function setCustomerProfileSummaryType(CustomerProfileSummaryType $customerProfileSummaryType)
     {
         $this->customerProfileSummaryType = $customerProfileSummaryType;
         return $this;
@@ -85,7 +85,7 @@ class EnumCollection
     /**
      * Gets as paymentSimpleType
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentSimpleType
+     * @return PaymentSimpleType
      */
     public function getPaymentSimpleType()
     {
@@ -95,10 +95,10 @@ class EnumCollection
     /**
      * Sets a new paymentSimpleType
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentSimpleType $paymentSimpleType
+     * @param PaymentSimpleType $paymentSimpleType
      * @return self
      */
-    public function setPaymentSimpleType(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentSimpleType $paymentSimpleType)
+    public function setPaymentSimpleType(PaymentSimpleType $paymentSimpleType)
     {
         $this->paymentSimpleType = $paymentSimpleType;
         return $this;

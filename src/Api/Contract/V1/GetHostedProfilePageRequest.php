@@ -24,7 +24,7 @@ class GetHostedProfilePageRequest extends ANetApiRequestType
      * hostedProfileBillingAddressOptions, hostedProfileManageOptions,
      * hostedProfilePaymentOptions, hostedProfileSaveButtonText.
      *
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\SettingType[] $hostedProfileSettings
+     * @property SettingType[] $hostedProfileSettings
      */
     private $hostedProfileSettings = null;
 
@@ -60,10 +60,10 @@ class GetHostedProfilePageRequest extends ANetApiRequestType
      * hostedProfileBillingAddressOptions, hostedProfileManageOptions,
      * hostedProfilePaymentOptions, hostedProfileSaveButtonText.
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\SettingType $setting
+     * @param SettingType $setting
      *@return self
      */
-    public function addToHostedProfileSettings(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\SettingType $setting)
+    public function addToHostedProfileSettings(SettingType $setting)
     {
         $this->hostedProfileSettings[] = $setting;
         return $this;
@@ -115,7 +115,7 @@ class GetHostedProfilePageRequest extends ANetApiRequestType
      * hostedProfileBillingAddressOptions, hostedProfileManageOptions,
      * hostedProfilePaymentOptions, hostedProfileSaveButtonText.
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\SettingType[]
+     * @return SettingType[]
      */
     public function getHostedProfileSettings()
     {
@@ -132,7 +132,7 @@ class GetHostedProfilePageRequest extends ANetApiRequestType
      * hostedProfileBillingAddressOptions, hostedProfileManageOptions,
      * hostedProfilePaymentOptions, hostedProfileSaveButtonText.
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\SettingType[] $hostedProfileSettings
+     * @param SettingType[] $hostedProfileSettings
      * @return self
      */
     public function setHostedProfileSettings(array $hostedProfileSettings)

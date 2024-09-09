@@ -22,7 +22,7 @@ class SendCustomerTransactionReceiptRequest extends ANetApiRequestType
     private $customerEmail = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\EmailSettingsType $emailSettings
+     * @property EmailSettingsType $emailSettings
      */
     private $emailSettings = null;
 
@@ -73,7 +73,7 @@ class SendCustomerTransactionReceiptRequest extends ANetApiRequestType
     /**
      * Gets as emailSettings
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\EmailSettingsType
+     * @return EmailSettingsType
      */
     public function getEmailSettings()
     {
@@ -83,10 +83,10 @@ class SendCustomerTransactionReceiptRequest extends ANetApiRequestType
     /**
      * Sets a new emailSettings
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\EmailSettingsType $emailSettings
+     * @param EmailSettingsType $emailSettings
      * @return self
      */
-    public function setEmailSettings(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\EmailSettingsType $emailSettings)
+    public function setEmailSettings(EmailSettingsType $emailSettings)
     {
         $this->emailSettings = $emailSettings;
         return $this;

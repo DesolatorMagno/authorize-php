@@ -1,10 +1,16 @@
 <?php
 namespace DesolatorMagno\AuthorizePhp\Api\Controller\Base;
 
+use DesolatorMagno\AuthorizePhp\Api\Constants\ANetEnvironment;
+use DesolatorMagno\AuthorizePhp\Api\Contract\V1\AnetApiRequestType;
+use DesolatorMagno\AuthorizePhp\Api\Contract\V1\AnetApiResponseType;
 use DesolatorMagno\AuthorizePhp\Util\Helpers;
 use DesolatorMagno\AuthorizePhp\Util\HttpClient;
 use DesolatorMagno\AuthorizePhp\Util\LogFactory as LogFactory;
+use DesolatorMagno\AuthorizePhp\Util\Mapper;
 use InvalidArgumentException;
+use ReflectionClass;
+
 // use JMS\Serializer\SerializerBuilder;
 // use JMS\Serializer\handler\HandlerRegistryInterface;
 // use GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\BaseTypesHandler;
@@ -14,12 +20,12 @@ use InvalidArgumentException;
 abstract class OldApiOperationBase implements IApiOperation
 {
     /**
-     * @var \DesolatorMagno\AuthorizePhp\Api\Contract\V1\AnetApiRequestType
+     * @var AnetApiRequestType
      */
     private $apiRequest = null;
 
     /**
-     * @var \DesolatorMagno\AuthorizePhp\Api\Contract\V1\AnetApiResponseType
+     * @var AnetApiResponseType
      */
     private $apiResponse = null;
 
@@ -29,34 +35,34 @@ abstract class OldApiOperationBase implements IApiOperation
     private $apiResponseType = '';
 
      /**
-     * @var \DesolatorMagno\AuthorizePhp\Util\HttpClient;
+     * @var HttpClient;
      */
     public $httpClient = null;
     private $logger = null;
     /**
      * Constructor.
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\AnetApiRequestType $request ApiRequest to send
+     * @param AnetApiRequestType $request ApiRequest to send
      * @param string $responseType response type expected
      * @throws InvalidArgumentException if invalid request
      */
-    public function __construct(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\AnetApiRequestType $request, $responseType)
+    public function __construct(AnetApiRequestType $request, $responseType)
     {
         $this->logger = LogFactory::getLog(get_class($this));
 
         if ( null == $request)
         {
-            throw new InvalidArgumentException( "request cannot be null");
+            throw new InvalidArgumentException('request cannot be null');
         }
 
-        if ( null == $responseType || '' == $responseType)
+        if ( $responseType == null || $responseType === '')
         {
-            throw new InvalidArgumentException( "responseType cannot be null or empty");
+            throw new InvalidArgumentException('responseType cannot be null or empty');
         }
 
         if ( null != $this->apiResponse)
         {
-            throw new InvalidArgumentException( "response has to be null");
+            throw new InvalidArgumentException('response has to be null');
         }
 
         $this->apiRequest = $request;
@@ -82,42 +88,42 @@ abstract class OldApiOperationBase implements IApiOperation
 
     /**
      * Retrieves response
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\AnetApiResponseType
+     * @return AnetApiResponseType
      */
-    public function getApiResponse()
+    public function getApiResponse(): ANetApiResponseType
     {
         return $this->apiResponse;
     }
 
     /**
      * Sends request and retrieves response
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\AnetApiResponseType
+     * @return AnetApiResponseType
      */
-    public function executeWithApiResponse($endPoint = \DesolatorMagno\AuthorizePhp\Api\Constants\ANetEnvironment::CUSTOM)
+    public function executeWithApiResponse($endPoint = ANetEnvironment::CUSTOM): ANetApiResponseType
     {
         $this->execute($endPoint);
         return $this->apiResponse;
     }
 
-    public function execute($endPoint = \DesolatorMagno\AuthorizePhp\Api\Constants\ANetEnvironment::CUSTOM)
+    public function execute($endPoint = ANetEnvironment::CUSTOM): void
     {
         $this->beforeExecute();
 
-    $this->apiRequest->setClientId("sdk-php-" . \DesolatorMagno\AuthorizePhp\Api\Constants\ANetEnvironment::VERSION);
+    $this->apiRequest->setClientId('sdk-php-' . ANetEnvironment::VERSION);
 
-        $this->logger->info("Request Creation Begin");
+        $this->logger->info('Request Creation Begin');
         $this->logger->debug($this->apiRequest);
         // $xmlRequest = $this->serializer->serialize($this->apiRequest, 'xml');
         //$requestArray = [lcfirst((new \ReflectionClass($this->apiRequest))->getShortName()) => $this->apiRequest];
 
         // $requestRoot = (new \DesolatorMagno\AuthorizePhp\Api\Contract\V1\Mapper)->getXmlName((new \ReflectionClass($this->apiRequest))->getName());
         // $requestRoot = (\DesolatorMagno\AuthorizePhp\Api\Contract\V1\Mapper::Instance())->getXmlName((new \ReflectionClass($this->apiRequest))->getName());
-        $mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
-        $requestRoot = $mapper->getXmlName((new \ReflectionClass($this->apiRequest))->getName());
+        $mapper = Mapper::Instance();
+        $requestRoot = $mapper->getXmlName((new ReflectionClass($this->apiRequest))->getName());
 
         $requestArray = [$requestRoot => $this->apiRequest];
 
-        $this->logger->info("Request  Creation End");
+        $this->logger->info('Request  Creation End');
 
         $this->httpClient->setPostUrl( $endPoint);
         /*$xmlResponse = $this->httpClient->_sendRequest($xmlRequest);
@@ -133,7 +139,7 @@ abstract class OldApiOperationBase implements IApiOperation
         if($jsonResponse != null){
             //decoding json and removing bom
             $possibleBOM = substr($jsonResponse, 0, 3);
-            $utfBOM = pack("CCC", 0xef, 0xbb, 0xbf);
+            $utfBOM = pack('CCC', 0xef, 0xbb, 0xbf);
 
             if (0 === strncmp($possibleBOM, $utfBOM, 3)) {
                 $response = json_decode( substr($jsonResponse,3), true);
@@ -145,7 +151,7 @@ abstract class OldApiOperationBase implements IApiOperation
             $this->apiResponse->set($response);
         }
         else {
-            $this->logger->error("Error getting response from API");
+            $this->logger->error('Error getting response from API');
             $this->apiResponse = null;
         }
 
@@ -157,7 +163,7 @@ abstract class OldApiOperationBase implements IApiOperation
         $merchantAuthentication = $this->apiRequest->getMerchantAuthentication();
         if ( null == $merchantAuthentication)
         {
-            throw new \InvalidArgumentException( "MerchantAuthentication cannot be null");
+            throw new InvalidArgumentException('MerchantAuthentication cannot be null');
         }
 
         $this->validateRequest();

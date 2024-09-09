@@ -4,6 +4,7 @@ namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
 use DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileBaseType;
 use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeExtendTrait;
+use JsonSerializable;
 
 /**
  * Class representing CustomerProfileExType
@@ -11,7 +12,7 @@ use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeExtendTrait;
  *
  * XSD Type: customerProfileExType
  */
-class CustomerProfileExType extends CustomerProfileBaseType implements \JsonSerializable
+class CustomerProfileExType extends CustomerProfileBaseType implements JsonSerializable
 {
     use JsonSerializeExtendTrait;
 

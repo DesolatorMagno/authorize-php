@@ -9,24 +9,24 @@ class MobileDeviceLoginResponse extends ANetApiResponseType
 {
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\MerchantContactType $merchantContact
+     * @property MerchantContactType $merchantContact
      */
     private $merchantContact = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PermissionType[] $userPermissions
+     * @property PermissionType[] $userPermissions
      */
     private $userPermissions = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransRetailInfoType $merchantAccount
+     * @property TransRetailInfoType $merchantAccount
      */
     private $merchantAccount = null;
 
     /**
      * Gets as merchantContact
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\MerchantContactType
+     * @return MerchantContactType
      */
     public function getMerchantContact()
     {
@@ -36,10 +36,10 @@ class MobileDeviceLoginResponse extends ANetApiResponseType
     /**
      * Sets a new merchantContact
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\MerchantContactType $merchantContact
+     * @param MerchantContactType $merchantContact
      * @return self
      */
-    public function setMerchantContact(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\MerchantContactType $merchantContact)
+    public function setMerchantContact(MerchantContactType $merchantContact)
     {
         $this->merchantContact = $merchantContact;
         return $this;
@@ -48,10 +48,10 @@ class MobileDeviceLoginResponse extends ANetApiResponseType
     /**
      * Adds as permission
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PermissionType $permission
+     * @param PermissionType $permission
      *@return self
      */
-    public function addToUserPermissions(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\PermissionType $permission)
+    public function addToUserPermissions(PermissionType $permission)
     {
         $this->userPermissions[] = $permission;
         return $this;
@@ -82,7 +82,7 @@ class MobileDeviceLoginResponse extends ANetApiResponseType
     /**
      * Gets as userPermissions
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PermissionType[]
+     * @return PermissionType[]
      */
     public function getUserPermissions()
     {
@@ -92,7 +92,7 @@ class MobileDeviceLoginResponse extends ANetApiResponseType
     /**
      * Sets a new userPermissions
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PermissionType[] $userPermissions
+     * @param PermissionType[] $userPermissions
      * @return self
      */
     public function setUserPermissions(array $userPermissions)
@@ -104,7 +104,7 @@ class MobileDeviceLoginResponse extends ANetApiResponseType
     /**
      * Gets as merchantAccount
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransRetailInfoType
+     * @return TransRetailInfoType
      */
     public function getMerchantAccount()
     {
@@ -114,10 +114,10 @@ class MobileDeviceLoginResponse extends ANetApiResponseType
     /**
      * Sets a new merchantAccount
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransRetailInfoType $merchantAccount
+     * @param TransRetailInfoType $merchantAccount
      * @return self
      */
-    public function setMerchantAccount(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransRetailInfoType $merchantAccount)
+    public function setMerchantAccount(TransRetailInfoType $merchantAccount)
     {
         $this->merchantAccount = $merchantAccount;
         return $this;

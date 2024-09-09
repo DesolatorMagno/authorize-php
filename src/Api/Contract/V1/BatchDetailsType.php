@@ -2,8 +2,10 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
+use DateTime;
 use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeGlobalTrait;
 use DesolatorMagno\AuthorizePhp\Traits\SetGlobalTrait;
+use JsonSerializable;
 
 /**
  * Class representing BatchDetailsType
@@ -11,7 +13,7 @@ use DesolatorMagno\AuthorizePhp\Traits\SetGlobalTrait;
  *
  * XSD Type: batchDetailsType
  */
-class BatchDetailsType implements \JsonSerializable
+class BatchDetailsType implements JsonSerializable
 {
     use JsonSerializeGlobalTrait, SetGlobalTrait;
     /**
@@ -20,12 +22,12 @@ class BatchDetailsType implements \JsonSerializable
     private $batchId = null;
 
     /**
-     * @property \DateTime $settlementTimeUTC
+     * @property DateTime $settlementTimeUTC
      */
     private $settlementTimeUTC = null;
 
     /**
-     * @property \DateTime $settlementTimeLocal
+     * @property DateTime $settlementTimeLocal
      */
     private $settlementTimeLocal = null;
 
@@ -50,7 +52,7 @@ class BatchDetailsType implements \JsonSerializable
     private $product = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\BatchStatisticType[] $statistics
+     * @property BatchStatisticType[] $statistics
      */
     private $statistics = null;
 
@@ -79,7 +81,7 @@ class BatchDetailsType implements \JsonSerializable
     /**
      * Gets as settlementTimeUTC
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getSettlementTimeUTC()
     {
@@ -89,10 +91,10 @@ class BatchDetailsType implements \JsonSerializable
     /**
      * Sets a new settlementTimeUTC
      *
-     * @param \DateTime $settlementTimeUTC
+     * @param DateTime $settlementTimeUTC
      * @return self
      */
-    public function setSettlementTimeUTC(\DateTime $settlementTimeUTC): self
+    public function setSettlementTimeUTC(DateTime $settlementTimeUTC): self
     {
         $this->settlementTimeUTC = $settlementTimeUTC;
         return $this;
@@ -101,7 +103,7 @@ class BatchDetailsType implements \JsonSerializable
     /**
      * Gets as settlementTimeLocal
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getSettlementTimeLocal()
     {
@@ -111,10 +113,10 @@ class BatchDetailsType implements \JsonSerializable
     /**
      * Sets a new settlementTimeLocal
      *
-     * @param \DateTime $settlementTimeLocal
+     * @param DateTime $settlementTimeLocal
      * @return self
      */
-    public function setSettlementTimeLocal(\DateTime $settlementTimeLocal): self
+    public function setSettlementTimeLocal(DateTime $settlementTimeLocal): self
     {
         $this->settlementTimeLocal = $settlementTimeLocal;
         return $this;
@@ -211,10 +213,10 @@ class BatchDetailsType implements \JsonSerializable
     /**
      * Adds as statistic
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\BatchStatisticType $statistic
+     * @param BatchStatisticType $statistic
      *@return self
      */
-    public function addToStatistics(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\BatchStatisticType $statistic): self
+    public function addToStatistics(BatchStatisticType $statistic): self
     {
         $this->statistics[] = $statistic;
         return $this;
@@ -245,7 +247,7 @@ class BatchDetailsType implements \JsonSerializable
     /**
      * Gets as statistics
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\BatchStatisticType[]
+     * @return BatchStatisticType[]
      */
     public function getStatistics()
     {
@@ -255,7 +257,7 @@ class BatchDetailsType implements \JsonSerializable
     /**
      * Sets a new statistics
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\BatchStatisticType[] $statistics
+     * @param BatchStatisticType[] $statistics
      * @return self
      */
     public function setStatistics(array $statistics): self

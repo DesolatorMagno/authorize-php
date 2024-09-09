@@ -22,13 +22,13 @@ class GetCustomerPaymentProfileListRequest extends ANetApiRequestType
     private $month = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerPaymentProfileSortingType
+     * @property CustomerPaymentProfileSortingType
      * $sorting
      */
     private $sorting = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PagingType $paging
+     * @property PagingType $paging
      */
     private $paging = null;
 
@@ -79,7 +79,7 @@ class GetCustomerPaymentProfileListRequest extends ANetApiRequestType
     /**
      * Gets as sorting
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerPaymentProfileSortingType
+     * @return CustomerPaymentProfileSortingType
      */
     public function getSorting()
     {
@@ -89,10 +89,10 @@ class GetCustomerPaymentProfileListRequest extends ANetApiRequestType
     /**
      * Sets a new sorting
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerPaymentProfileSortingType $sorting
+     * @param CustomerPaymentProfileSortingType $sorting
      * @return self
      */
-    public function setSorting(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerPaymentProfileSortingType $sorting)
+    public function setSorting(CustomerPaymentProfileSortingType $sorting)
     {
         $this->sorting = $sorting;
         return $this;
@@ -101,7 +101,7 @@ class GetCustomerPaymentProfileListRequest extends ANetApiRequestType
     /**
      * Gets as paging
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PagingType
+     * @return PagingType
      */
     public function getPaging()
     {
@@ -111,10 +111,10 @@ class GetCustomerPaymentProfileListRequest extends ANetApiRequestType
     /**
      * Sets a new paging
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PagingType $paging
+     * @param PagingType $paging
      * @return self
      */
-    public function setPaging(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\PagingType $paging)
+    public function setPaging(PagingType $paging)
     {
         $this->paging = $paging;
         return $this;

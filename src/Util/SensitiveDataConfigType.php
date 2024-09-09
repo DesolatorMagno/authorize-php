@@ -17,4 +17,3 @@ class SensitiveDataConfigType
      */
 	public $sensitiveStringRegexes;
 }
-?>

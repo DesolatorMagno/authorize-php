@@ -8,7 +8,7 @@ class CreateTransactionController extends ApiOperationBase
 {
     public function __construct(AnetApiRequestType $request)
     {
-        $responseType = 'DesolatorMagno\AuthorizePhp\Api\Contract\V1\CreateTransactionResponse';
+        $responseType = \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CreateTransactionResponse::class;
         parent::__construct($request, $responseType);
     }
 

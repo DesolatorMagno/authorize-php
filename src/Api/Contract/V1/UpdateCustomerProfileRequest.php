@@ -12,14 +12,14 @@ class UpdateCustomerProfileRequest extends ANetApiRequestType
 {
     use SerializeAnetRequestTrait;
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileExType $profile
+     * @property CustomerProfileExType $profile
      */
     private $profile = null;
 
     /**
      * Gets as profile
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileExType
+     * @return CustomerProfileExType
      */
     public function getProfile()
     {
@@ -29,10 +29,10 @@ class UpdateCustomerProfileRequest extends ANetApiRequestType
     /**
      * Sets a new profile
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileExType $profile
+     * @param CustomerProfileExType $profile
      * @return self
      */
-    public function setProfile(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileExType $profile)
+    public function setProfile(CustomerProfileExType $profile)
     {
         $this->profile = $profile;
         return $this;

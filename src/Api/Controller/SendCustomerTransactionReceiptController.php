@@ -8,7 +8,7 @@ class SendCustomerTransactionReceiptController extends ApiOperationBase
 {
     public function __construct(AnetApiRequestType $request)
     {
-        $responseType = 'DesolatorMagno\AuthorizePhp\Api\Contract\V1\SendCustomerTransactionReceiptResponse';
+        $responseType = \DesolatorMagno\AuthorizePhp\Api\Contract\V1\SendCustomerTransactionReceiptResponse::class;
         parent::__construct($request, $responseType);
     }
 

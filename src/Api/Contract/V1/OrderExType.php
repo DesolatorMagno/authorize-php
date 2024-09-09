@@ -3,6 +3,7 @@
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
 use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeExtendTrait;
+use JsonSerializable;
 
 /**
  * Class representing OrderExType
@@ -10,7 +11,7 @@ use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeExtendTrait;
  *
  * XSD Type: orderExType
  */
-class OrderExType extends OrderType implements \JsonSerializable
+class OrderExType extends OrderType implements JsonSerializable
 {
     use JsonSerializeExtendTrait;
 

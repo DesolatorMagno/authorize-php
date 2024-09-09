@@ -12,7 +12,7 @@ class CreateCustomerProfileTransactionRequest extends ANetApiRequestType
 {
     use SerializeAnetRequestTrait;
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ProfileTransactionType $transaction
+     * @property ProfileTransactionType $transaction
      */
     private $transaction = null;
 
@@ -24,7 +24,7 @@ class CreateCustomerProfileTransactionRequest extends ANetApiRequestType
     /**
      * Gets as transaction
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ProfileTransactionType
+     * @return ProfileTransactionType
      */
     public function getTransaction()
     {
@@ -34,10 +34,10 @@ class CreateCustomerProfileTransactionRequest extends ANetApiRequestType
     /**
      * Sets a new transaction
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ProfileTransactionType $transaction
+     * @param ProfileTransactionType $transaction
      * @return self
      */
-    public function setTransaction(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\ProfileTransactionType $transaction)
+    public function setTransaction(ProfileTransactionType $transaction)
     {
         $this->transaction = $transaction;
         return $this;

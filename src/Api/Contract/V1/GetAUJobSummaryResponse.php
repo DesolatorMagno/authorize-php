@@ -11,17 +11,17 @@ class GetAUJobSummaryResponse extends ANetApiResponseType
 {
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\AuResponseType[] $auSummary
+     * @property AuResponseType[] $auSummary
      */
     private $auSummary = null;
 
     /**
      * Adds as auResponse
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\AuResponseType $auResponse
+     * @param AuResponseType $auResponse
      *@return self
      */
-    public function addToAuSummary(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\AuResponseType $auResponse)
+    public function addToAuSummary(AuResponseType $auResponse)
     {
         $this->auSummary[] = $auResponse;
         return $this;
@@ -52,7 +52,7 @@ class GetAUJobSummaryResponse extends ANetApiResponseType
     /**
      * Gets as auSummary
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\AuResponseType[]
+     * @return AuResponseType[]
      */
     public function getAuSummary()
     {
@@ -62,7 +62,7 @@ class GetAUJobSummaryResponse extends ANetApiResponseType
     /**
      * Sets a new auSummary
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\AuResponseType[] $auSummary
+     * @param AuResponseType[] $auSummary
      * @return self
      */
     public function setAuSummary(array $auSummary)

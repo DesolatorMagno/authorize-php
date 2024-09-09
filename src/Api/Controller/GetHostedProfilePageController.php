@@ -8,7 +8,7 @@ class GetHostedProfilePageController extends ApiOperationBase
 {
     public function __construct(AnetApiRequestType $request)
     {
-        $responseType = 'DesolatorMagno\AuthorizePhp\Api\Contract\V1\GetHostedProfilePageResponse';
+        $responseType = \DesolatorMagno\AuthorizePhp\Api\Contract\V1\GetHostedProfilePageResponse::class;
         parent::__construct($request, $responseType);
     }
 

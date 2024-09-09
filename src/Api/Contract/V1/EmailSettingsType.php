@@ -4,6 +4,7 @@ namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
 use DesolatorMagno\AuthorizePhp\Api\Contract\V1\ArrayOfSettingType;
 use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeExtendTrait;
+use JsonSerializable;
 
 /**
  * Class representing EmailSettingsType
@@ -11,7 +12,7 @@ use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeExtendTrait;
  * Allowed values for settingName are: headerEmailReceipt and footerEmailReceipt
  * XSD Type: emailSettingsType
  */
-class EmailSettingsType extends ArrayOfSettingType implements \JsonSerializable
+class EmailSettingsType extends ArrayOfSettingType implements JsonSerializable
 {
     use JsonSerializeExtendTrait;
 

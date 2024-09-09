@@ -8,7 +8,7 @@ class UpdateSplitTenderGroupController extends ApiOperationBase
 {
     public function __construct(AnetApiRequestType $request)
     {
-        $responseType = 'DesolatorMagno\AuthorizePhp\Api\Contract\V1\UpdateSplitTenderGroupResponse';
+        $responseType = \DesolatorMagno\AuthorizePhp\Api\Contract\V1\UpdateSplitTenderGroupResponse::class;
         parent::__construct($request, $responseType);
     }
 

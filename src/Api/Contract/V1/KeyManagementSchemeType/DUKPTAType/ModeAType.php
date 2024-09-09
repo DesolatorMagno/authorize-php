@@ -4,11 +4,12 @@ namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1\KeyManagementSchemeType\DU
 
 use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeGlobalTrait;
 use DesolatorMagno\AuthorizePhp\Traits\SetGlobalTrait;
+use JsonSerializable;
 
 /**
  * Class representing ModeAType
  */
-class ModeAType implements \JsonSerializable
+class ModeAType implements JsonSerializable
 {
     use JsonSerializeGlobalTrait, SetGlobalTrait;
     /**
@@ -48,7 +49,7 @@ class ModeAType implements \JsonSerializable
      *
      * @return string
      */
-    public function getData(): ?string
+    public function getData(): string|null
     {
         return $this->data;
     }

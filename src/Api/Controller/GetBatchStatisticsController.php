@@ -8,7 +8,7 @@ class GetBatchStatisticsController extends ApiOperationBase
 {
     public function __construct(AnetApiRequestType $request)
     {
-        $responseType = 'DesolatorMagno\AuthorizePhp\Api\Contract\V1\GetBatchStatisticsResponse';
+        $responseType = \DesolatorMagno\AuthorizePhp\Api\Contract\V1\GetBatchStatisticsResponse::class;
         parent::__construct($request, $responseType);
     }
 

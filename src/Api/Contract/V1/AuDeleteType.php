@@ -4,6 +4,7 @@ namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
 use DesolatorMagno\AuthorizePhp\Api\Contract\V1\AuDetailsType;
 use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeExtendTrait;
+use JsonSerializable;
 
 /**
  * Class representing AuDeleteType
@@ -11,19 +12,19 @@ use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeExtendTrait;
  *
  * XSD Type: auDeleteType
  */
-class AuDeleteType extends AuDetailsType implements \JsonSerializable
+class AuDeleteType extends AuDetailsType implements JsonSerializable
 {
     use JsonSerializeExtendTrait;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CreditCardMaskedType $creditCard
+     * @property CreditCardMaskedType $creditCard
      */
     private $creditCard = null;
 
     /**
      * Gets as creditCard
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CreditCardMaskedType
+     * @return CreditCardMaskedType
      */
     public function getCreditCard()
     {
@@ -33,10 +34,10 @@ class AuDeleteType extends AuDetailsType implements \JsonSerializable
     /**
      * Sets a new creditCard
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CreditCardMaskedType $creditCard
+     * @param CreditCardMaskedType $creditCard
      * @return self
      */
-    public function setCreditCard(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\CreditCardMaskedType $creditCard)
+    public function setCreditCard(CreditCardMaskedType $creditCard)
     {
         $this->creditCard = $creditCard;
         return $this;

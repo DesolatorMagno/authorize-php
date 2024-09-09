@@ -8,7 +8,7 @@ class UpdateMerchantDetailsController extends ApiOperationBase
 {
     public function __construct(AnetApiRequestType $request)
     {
-        $responseType = 'DesolatorMagno\AuthorizePhp\Api\Contract\V1\UpdateMerchantDetailsResponse';
+        $responseType = \DesolatorMagno\AuthorizePhp\Api\Contract\V1\UpdateMerchantDetailsResponse::class;
         parent::__construct($request, $responseType);
     }
 

@@ -1,20 +1,16 @@
 <?php
 namespace DesolatorMagno\AuthorizePhp\Api\Controller\Base;
 
+use DesolatorMagno\AuthorizePhp\Api\Contract\V1\ANetApiResponseType;
+
 interface IApiOperation
 {
-    /**
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ANetApiResponseType
-     */
-    public function getApiResponse();
-    /**
- * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ANetApiResponseType
- */
-public function executeWithApiResponse( $endPoint = null);
-    /**
- * @return void
- */
-public function execute( $endPoint = null);
+
+public function getApiResponse(): ANetApiResponseType;
+
+public function executeWithApiResponse(string|null $endPoint = null): ANetApiResponseType;
+
+public function execute(string|null $endPoint = null): void;
     /*
         //TS GetApiResponse();
         AuthorizeNet.Api.Contracts.V1.ANetApiResponse GetErrorResponse();

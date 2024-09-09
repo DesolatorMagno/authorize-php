@@ -4,6 +4,7 @@ namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
 use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeGlobalTrait;
 use DesolatorMagno\AuthorizePhp\Traits\SetGlobalTrait;
+use JsonSerializable;
 
 /**
  * Class representing ANetApiResponseType
@@ -11,7 +12,7 @@ use DesolatorMagno\AuthorizePhp\Traits\SetGlobalTrait;
  *
  * XSD Type: ANetApiResponse
  */
-class ANetApiResponseType implements \JsonSerializable
+class ANetApiResponseType implements JsonSerializable
 {
 
     use JsonSerializeGlobalTrait, SetGlobalTrait;
@@ -22,7 +23,7 @@ class ANetApiResponseType implements \JsonSerializable
     private $refId = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\MessagesType $messages
+     * @property MessagesType $messages
      */
     private $messages = null;
 
@@ -56,7 +57,7 @@ class ANetApiResponseType implements \JsonSerializable
     /**
      * Gets as messages
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\MessagesType
+     * @return MessagesType
      */
     public function getMessages()
     {
@@ -66,10 +67,10 @@ class ANetApiResponseType implements \JsonSerializable
     /**
      * Sets a new messages
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\MessagesType $messages
+     * @param MessagesType $messages
      * @return self
      */
-    public function setMessages(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\MessagesType $messages): self
+    public function setMessages(MessagesType $messages): self
     {
         $this->messages = $messages;
         return $this;
@@ -80,7 +81,7 @@ class ANetApiResponseType implements \JsonSerializable
      *
      * @return string
      */
-    public function getSessionToken()
+    public function getSessionToken(): ?string
     {
         return $this->sessionToken;
     }
@@ -91,7 +92,7 @@ class ANetApiResponseType implements \JsonSerializable
      * @param string $sessionToken
      * @return self
      */
-    public function setSessionToken($sessionToken): self
+    public function setSessionToken(string $sessionToken): self
     {
         $this->sessionToken = $sessionToken;
         return $this;

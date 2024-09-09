@@ -3,6 +3,7 @@
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
 use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeExtendTrait;
+use JsonSerializable;
 
 /**
  * Class representing CustomerPaymentProfileMaskedType
@@ -10,7 +11,7 @@ use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeExtendTrait;
  *
  * XSD Type: customerPaymentProfileMaskedType
  */
-class CustomerPaymentProfileMaskedType extends CustomerPaymentProfileBaseType implements \JsonSerializable
+class CustomerPaymentProfileMaskedType extends CustomerPaymentProfileBaseType implements JsonSerializable
 {
     use JsonSerializeExtendTrait;
 
@@ -30,12 +31,12 @@ class CustomerPaymentProfileMaskedType extends CustomerPaymentProfileBaseType im
     private $defaultPaymentProfile = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentMaskedType $payment
+     * @property PaymentMaskedType $payment
      */
     private $payment = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\DriversLicenseMaskedType
+     * @property DriversLicenseMaskedType
      * $driversLicense
      */
     private $driversLicense = null;
@@ -129,7 +130,7 @@ class CustomerPaymentProfileMaskedType extends CustomerPaymentProfileBaseType im
     /**
      * Gets as payment
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentMaskedType
+     * @return PaymentMaskedType
      */
     public function getPayment()
     {
@@ -139,10 +140,10 @@ class CustomerPaymentProfileMaskedType extends CustomerPaymentProfileBaseType im
     /**
      * Sets a new payment
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentMaskedType $payment
+     * @param PaymentMaskedType $payment
      * @return self
      */
-    public function setPayment(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\PaymentMaskedType $payment)
+    public function setPayment(PaymentMaskedType $payment)
     {
         $this->payment = $payment;
         return $this;
@@ -151,7 +152,7 @@ class CustomerPaymentProfileMaskedType extends CustomerPaymentProfileBaseType im
     /**
      * Gets as driversLicense
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\DriversLicenseMaskedType
+     * @return DriversLicenseMaskedType
      */
     public function getDriversLicense()
     {
@@ -161,10 +162,10 @@ class CustomerPaymentProfileMaskedType extends CustomerPaymentProfileBaseType im
     /**
      * Sets a new driversLicense
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\DriversLicenseMaskedType $driversLicense
+     * @param DriversLicenseMaskedType $driversLicense
      * @return self
      */
-    public function setDriversLicense(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\DriversLicenseMaskedType $driversLicense)
+    public function setDriversLicense(DriversLicenseMaskedType $driversLicense)
     {
         $this->driversLicense = $driversLicense;
         return $this;

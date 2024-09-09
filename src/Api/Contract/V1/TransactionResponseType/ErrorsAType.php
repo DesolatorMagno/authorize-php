@@ -5,11 +5,12 @@ namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType;
 use DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType\ErrorsAType\ErrorAType;
 use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeGlobalTrait;
 use DesolatorMagno\AuthorizePhp\Traits\SetGlobalTrait;
+use JsonSerializable;
 
 /**
  * Class representing ErrorsAType
  */
-class ErrorsAType implements \JsonSerializable
+class ErrorsAType implements JsonSerializable
 {
     use JsonSerializeGlobalTrait, SetGlobalTrait;
     /**

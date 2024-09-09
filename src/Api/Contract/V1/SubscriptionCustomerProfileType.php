@@ -3,6 +3,9 @@
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
 use DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileExType;
+use DesolatorMagno\AuthorizePhp\Util\Mapper;
+use JsonSerializable;
+use ReturnTypeWillChange;
 
 /**
  * Class representing SubscriptionCustomerProfileType
@@ -10,24 +13,24 @@ use DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerProfileExType;
  *
  * XSD Type: subscriptionCustomerProfileType
  */
-class SubscriptionCustomerProfileType extends CustomerProfileExType implements \JsonSerializable
+class SubscriptionCustomerProfileType extends CustomerProfileExType implements JsonSerializable
 {
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerPaymentProfileMaskedType
+     * @property CustomerPaymentProfileMaskedType
      * $paymentProfile
      */
     private $paymentProfile = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressExType $shippingProfile
+     * @property CustomerAddressExType $shippingProfile
      */
     private $shippingProfile = null;
 
     /**
      * Gets as paymentProfile
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerPaymentProfileMaskedType
+     * @return CustomerPaymentProfileMaskedType
      */
     public function getPaymentProfile()
     {
@@ -37,11 +40,11 @@ class SubscriptionCustomerProfileType extends CustomerProfileExType implements \
     /**
      * Sets a new paymentProfile
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerPaymentProfileMaskedType
+     * @param CustomerPaymentProfileMaskedType
      * $paymentProfile
      * @return self
      */
-    public function setPaymentProfile(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerPaymentProfileMaskedType $paymentProfile)
+    public function setPaymentProfile(CustomerPaymentProfileMaskedType $paymentProfile)
     {
         $this->paymentProfile = $paymentProfile;
         return $this;
@@ -50,7 +53,7 @@ class SubscriptionCustomerProfileType extends CustomerProfileExType implements \
     /**
      * Gets as shippingProfile
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressExType
+     * @return CustomerAddressExType
      */
     public function getShippingProfile()
     {
@@ -60,10 +63,10 @@ class SubscriptionCustomerProfileType extends CustomerProfileExType implements \
     /**
      * Sets a new shippingProfile
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressExType $shippingProfile
+     * @param CustomerAddressExType $shippingProfile
      * @return self
      */
-    public function setShippingProfile(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressExType $shippingProfile)
+    public function setShippingProfile(CustomerAddressExType $shippingProfile)
     {
         $this->shippingProfile = $shippingProfile;
         return $this;
@@ -71,13 +74,13 @@ class SubscriptionCustomerProfileType extends CustomerProfileExType implements \
 
 
   // Json Serialize Code
-   #[\ReturnTypeWillChange]
+   #[ReturnTypeWillChange]
     public function jsonSerialize(){
         $values = array_filter((array)get_object_vars($this),
         function ($val){
             return !is_null($val);
         });
-        $mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
+        $mapper = Mapper::Instance();
         foreach($values as $key => $value){
             $classDetails = $mapper->getClass(get_class($this) , $key);
             if (isset($value)){

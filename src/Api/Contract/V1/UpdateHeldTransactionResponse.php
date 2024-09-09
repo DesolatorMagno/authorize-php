@@ -9,7 +9,7 @@ class UpdateHeldTransactionResponse extends ANetApiResponseType
 {
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType
+     * @property TransactionResponseType
      * $transactionResponse
      */
     private $transactionResponse = null;
@@ -17,7 +17,7 @@ class UpdateHeldTransactionResponse extends ANetApiResponseType
     /**
      * Gets as transactionResponse
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType
+     * @return TransactionResponseType
      */
     public function getTransactionResponse()
     {
@@ -27,11 +27,11 @@ class UpdateHeldTransactionResponse extends ANetApiResponseType
     /**
      * Sets a new transactionResponse
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType
+     * @param TransactionResponseType
      * $transactionResponse
      * @return self
      */
-    public function setTransactionResponse(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType $transactionResponse)
+    public function setTransactionResponse(TransactionResponseType $transactionResponse)
     {
         $this->transactionResponse = $transactionResponse;
         return $this;

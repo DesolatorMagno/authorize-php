@@ -17,12 +17,12 @@ class GetUnsettledTransactionListRequest extends ANetApiRequestType
     private $status = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionListSortingType $sorting
+     * @property TransactionListSortingType $sorting
      */
     private $sorting = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PagingType $paging
+     * @property PagingType $paging
      */
     private $paging = null;
 
@@ -51,7 +51,7 @@ class GetUnsettledTransactionListRequest extends ANetApiRequestType
     /**
      * Gets as sorting
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionListSortingType
+     * @return TransactionListSortingType
      */
     public function getSorting()
     {
@@ -61,10 +61,10 @@ class GetUnsettledTransactionListRequest extends ANetApiRequestType
     /**
      * Sets a new sorting
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionListSortingType $sorting
+     * @param TransactionListSortingType $sorting
      * @return self
      */
-    public function setSorting(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionListSortingType $sorting)
+    public function setSorting(TransactionListSortingType $sorting)
     {
         $this->sorting = $sorting;
         return $this;
@@ -73,7 +73,7 @@ class GetUnsettledTransactionListRequest extends ANetApiRequestType
     /**
      * Gets as paging
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PagingType
+     * @return PagingType
      */
     public function getPaging()
     {
@@ -83,10 +83,10 @@ class GetUnsettledTransactionListRequest extends ANetApiRequestType
     /**
      * Sets a new paging
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\PagingType $paging
+     * @param PagingType $paging
      * @return self
      */
-    public function setPaging(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\PagingType $paging)
+    public function setPaging(PagingType $paging)
     {
         $this->paging = $paging;
         return $this;

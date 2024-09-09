@@ -3,6 +3,7 @@
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
 use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeExtendTrait;
+use JsonSerializable;
 
 /**
  * Class representing CustomerProfileType
@@ -10,18 +11,18 @@ use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeExtendTrait;
  *
  * XSD Type: customerProfileType
  */
-class CustomerProfileType extends CustomerProfileBaseType implements \JsonSerializable
+class CustomerProfileType extends CustomerProfileBaseType implements JsonSerializable
 {
     use JsonSerializeExtendTrait;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerPaymentProfileType[]
+     * @property CustomerPaymentProfileType[]
      * $paymentProfiles
      */
     private $paymentProfiles = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressType[] $shipToList
+     * @property CustomerAddressType[] $shipToList
      */
     private $shipToList = null;
 
@@ -33,11 +34,11 @@ class CustomerProfileType extends CustomerProfileBaseType implements \JsonSerial
     /**
      * Adds as paymentProfiles
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerPaymentProfileType
+     * @param CustomerPaymentProfileType
      * $paymentProfiles
      *@return self
      */
-    public function addToPaymentProfiles(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerPaymentProfileType $paymentProfiles)
+    public function addToPaymentProfiles(CustomerPaymentProfileType $paymentProfiles)
     {
         $this->paymentProfiles[] = $paymentProfiles;
         return $this;
@@ -68,7 +69,7 @@ class CustomerProfileType extends CustomerProfileBaseType implements \JsonSerial
     /**
      * Gets as paymentProfiles
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerPaymentProfileType[]
+     * @return CustomerPaymentProfileType[]
      */
     public function getPaymentProfiles()
     {
@@ -78,7 +79,7 @@ class CustomerProfileType extends CustomerProfileBaseType implements \JsonSerial
     /**
      * Sets a new paymentProfiles
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerPaymentProfileType[]
+     * @param CustomerPaymentProfileType[]
      * $paymentProfiles
      * @return self
      */
@@ -91,10 +92,10 @@ class CustomerProfileType extends CustomerProfileBaseType implements \JsonSerial
     /**
      * Adds as shipToList
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressType $shipToList
+     * @param CustomerAddressType $shipToList
      *@return self
      */
-    public function addToShipToList(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressType $shipToList)
+    public function addToShipToList(CustomerAddressType $shipToList)
     {
         $this->shipToList[] = $shipToList;
         return $this;
@@ -125,7 +126,7 @@ class CustomerProfileType extends CustomerProfileBaseType implements \JsonSerial
     /**
      * Gets as shipToList
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressType[]
+     * @return CustomerAddressType[]
      */
     public function getShipToList()
     {
@@ -135,7 +136,7 @@ class CustomerProfileType extends CustomerProfileBaseType implements \JsonSerial
     /**
      * Sets a new shipToList
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CustomerAddressType[] $shipToList
+     * @param CustomerAddressType[] $shipToList
      * @return self
      */
     public function setShipToList(array $shipToList)

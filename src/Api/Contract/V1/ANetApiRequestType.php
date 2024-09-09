@@ -16,15 +16,12 @@ class ANetApiRequestType implements JsonSerializable
 {
 
     use JsonSerializeGlobalTrait, SetGlobalTrait;
-
-    private ?MerchantAuthenticationType $merchantAuthentication = null;
-
-    private ?string $clientId = null;
-
-    private ?string $refId = null;
+    private MerchantAuthenticationType|null $merchantAuthentication = null;
+    private string|null $clientId = null;
+    private string|null $refId = null;
 
 
-    public function getMerchantAuthentication(): ?MerchantAuthenticationType
+    public function getMerchantAuthentication(): MerchantAuthenticationType|null
     {
         return $this->merchantAuthentication;
     }
@@ -38,9 +35,8 @@ class ANetApiRequestType implements JsonSerializable
     /**
      * Gets as clientId
      *
-     * @return string
      */
-    public function getClientId(): ?string
+    public function getClientId(): string|null
     {
         return $this->clientId;
     }
@@ -51,7 +47,7 @@ class ANetApiRequestType implements JsonSerializable
         return $this;
     }
 
-    public function getRefId(): ?string
+    public function getRefId(): string|null
     {
         return $this->refId;
     }

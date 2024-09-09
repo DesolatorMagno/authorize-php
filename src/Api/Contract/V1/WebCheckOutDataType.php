@@ -2,13 +2,18 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
+use DateTime;
+use DesolatorMagno\AuthorizePhp\Util\Mapper;
+use JsonSerializable;
+use ReturnTypeWillChange;
+
 /**
  * Class representing WebCheckOutDataType
  *
  *
  * XSD Type: webCheckOutDataType
  */
-class WebCheckOutDataType implements \JsonSerializable
+class WebCheckOutDataType implements JsonSerializable
 {
 
     /**
@@ -22,12 +27,12 @@ class WebCheckOutDataType implements \JsonSerializable
     private $id = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\WebCheckOutDataTypeTokenType $token
+     * @property WebCheckOutDataTypeTokenType $token
      */
     private $token = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\BankAccountType $bankToken
+     * @property BankAccountType $bankToken
      */
     private $bankToken = null;
 
@@ -78,7 +83,7 @@ class WebCheckOutDataType implements \JsonSerializable
     /**
      * Gets as token
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\WebCheckOutDataTypeTokenType
+     * @return WebCheckOutDataTypeTokenType
      */
     public function getToken()
     {
@@ -88,10 +93,10 @@ class WebCheckOutDataType implements \JsonSerializable
     /**
      * Sets a new token
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\WebCheckOutDataTypeTokenType $token
+     * @param WebCheckOutDataTypeTokenType $token
      * @return self
      */
-    public function setToken(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\WebCheckOutDataTypeTokenType $token)
+    public function setToken(WebCheckOutDataTypeTokenType $token)
     {
         $this->token = $token;
         return $this;
@@ -100,7 +105,7 @@ class WebCheckOutDataType implements \JsonSerializable
     /**
      * Gets as bankToken
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\BankAccountType
+     * @return BankAccountType
      */
     public function getBankToken()
     {
@@ -110,10 +115,10 @@ class WebCheckOutDataType implements \JsonSerializable
     /**
      * Sets a new bankToken
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\BankAccountType $bankToken
+     * @param BankAccountType $bankToken
      * @return self
      */
-    public function setBankToken(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\BankAccountType $bankToken)
+    public function setBankToken(BankAccountType $bankToken)
     {
         $this->bankToken = $bankToken;
         return $this;
@@ -121,13 +126,13 @@ class WebCheckOutDataType implements \JsonSerializable
 
 
   // Json Serialize Code
-   #[\ReturnTypeWillChange]
+   #[ReturnTypeWillChange]
     public function jsonSerialize(){
         $values = array_filter((array)get_object_vars($this),
         function ($val){
             return !is_null($val);
         });
-        $mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
+        $mapper = Mapper::Instance();
         foreach($values as $key => $value){
             $classDetails = $mapper->getClass(get_class($this) , $key);
             if (isset($value)){
@@ -155,11 +160,11 @@ class WebCheckOutDataType implements \JsonSerializable
     public function set($data)
     {
         if(is_array($data) || is_object($data)) {
-			$mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
+			$mapper = Mapper::Instance();
 			foreach($data AS $key => $value) {
 				$classDetails = $mapper->getClass(get_class($this) , $key);
 
-				if($classDetails !== NULL ) {
+				if(!is_null($classDetails)) {
 					if ($classDetails->isArray) {
 						if ($classDetails->isCustomDefined) {
 							foreach($value AS $keyChild => $valueChild) {
@@ -170,7 +175,7 @@ class WebCheckOutDataType implements \JsonSerializable
 						}
 						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
 							foreach($value AS $keyChild => $valueChild) {
-								$type = new \DateTime($valueChild);
+								$type = new DateTime($valueChild);
 								$this->{'addTo' . $key}($type);
 							}
 						}
@@ -187,7 +192,7 @@ class WebCheckOutDataType implements \JsonSerializable
 							$this->{'set' . $key}($type);
 						}
 						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
-							$type = new \DateTime($value);
+							$type = new DateTime($value);
 							$this->{'set' . $key}($type);
 						}
 						else {

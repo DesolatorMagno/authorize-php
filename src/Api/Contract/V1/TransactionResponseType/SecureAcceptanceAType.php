@@ -4,34 +4,35 @@ namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1\TransactionResponseType;
 
 use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeGlobalTrait;
 use DesolatorMagno\AuthorizePhp\Traits\SetGlobalTrait;
+use JsonSerializable;
 
 /**
  * Class representing SecureAcceptanceAType
  */
-class SecureAcceptanceAType implements \JsonSerializable
+class SecureAcceptanceAType implements JsonSerializable
 {
     use JsonSerializeGlobalTrait, SetGlobalTrait;
     /**
      * @property string $secureAcceptanceUrl
      */
-    private ?string $secureAcceptanceUrl = null;
+    private string|null $secureAcceptanceUrl = null;
 
     /**
      * @property string $payerID
      */
-    private ?string $payerID = null;
+    private string|null $payerID = null;
 
     /**
      * @property string $payerEmail
      */
-    private ?string $payerEmail = null;
+    private string|null $payerEmail = null;
 
     /**
      * Gets as secureAcceptanceUrl
      *
      * @return string
      */
-    public function getSecureAcceptanceUrl(): ?string
+    public function getSecureAcceptanceUrl(): string|null
     {
         return $this->secureAcceptanceUrl;
     }
@@ -53,7 +54,7 @@ class SecureAcceptanceAType implements \JsonSerializable
      *
      * @return string
      */
-    public function getPayerID(): ?string
+    public function getPayerID(): string|null
     {
         return $this->payerID;
     }

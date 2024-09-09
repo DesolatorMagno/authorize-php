@@ -4,6 +4,7 @@ namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
 use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeGlobalTrait;
 use DesolatorMagno\AuthorizePhp\Traits\SetGlobalTrait;
+use JsonSerializable;
 
 /**
  * Class representing ArrayOfSettingType
@@ -11,22 +12,22 @@ use DesolatorMagno\AuthorizePhp\Traits\SetGlobalTrait;
  *
  * XSD Type: ArrayOfSetting
  */
-class ArrayOfSettingType implements \JsonSerializable
+class ArrayOfSettingType implements JsonSerializable
 {
     use JsonSerializeGlobalTrait, SetGlobalTrait;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\SettingType[] $setting
+     * @property SettingType[] $setting
      */
     private $setting = null;
 
     /**
      * Adds as setting
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\SettingType $setting
+     * @param SettingType $setting
      *@return self
      */
-    public function addToSetting(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\SettingType $setting)
+    public function addToSetting(SettingType $setting)
     {
         $this->setting[] = $setting;
         return $this;
@@ -57,7 +58,7 @@ class ArrayOfSettingType implements \JsonSerializable
     /**
      * Gets as setting
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\SettingType[]
+     * @return SettingType[]
      */
     public function getSetting()
     {
@@ -67,7 +68,7 @@ class ArrayOfSettingType implements \JsonSerializable
     /**
      * Sets a new setting
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\SettingType[] $setting
+     * @param SettingType[] $setting
      * @return self
      */
     public function setSetting(array $setting)

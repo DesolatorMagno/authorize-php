@@ -8,7 +8,7 @@ class GetAUJobDetailsController extends ApiOperationBase
 {
     public function __construct(AnetApiRequestType $request)
     {
-        $responseType = 'DesolatorMagno\AuthorizePhp\Api\Contract\V1\GetAUJobDetailsResponse';
+        $responseType = \DesolatorMagno\AuthorizePhp\Api\Contract\V1\GetAUJobDetailsResponse::class;
         parent::__construct($request, $responseType);
     }
 

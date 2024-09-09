@@ -12,14 +12,14 @@ class MobileDeviceRegistrationRequest extends ANetApiRequestType
 {
     use SerializeAnetRequestTrait;
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\MobileDeviceType $mobileDevice
+     * @property MobileDeviceType $mobileDevice
      */
     private $mobileDevice = null;
 
     /**
      * Gets as mobileDevice
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\MobileDeviceType
+     * @return MobileDeviceType
      */
     public function getMobileDevice()
     {
@@ -29,10 +29,10 @@ class MobileDeviceRegistrationRequest extends ANetApiRequestType
     /**
      * Sets a new mobileDevice
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\MobileDeviceType $mobileDevice
+     * @param MobileDeviceType $mobileDevice
      * @return self
      */
-    public function setMobileDevice(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\MobileDeviceType $mobileDevice)
+    public function setMobileDevice(MobileDeviceType $mobileDevice)
     {
         $this->mobileDevice = $mobileDevice;
         return $this;

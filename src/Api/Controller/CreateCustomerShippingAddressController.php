@@ -8,7 +8,7 @@ class CreateCustomerShippingAddressController extends ApiOperationBase
 {
     public function __construct(AnetApiRequestType $request)
     {
-        $responseType = 'DesolatorMagno\AuthorizePhp\Api\Contract\V1\CreateCustomerShippingAddressResponse';
+        $responseType = \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CreateCustomerShippingAddressResponse::class;
         parent::__construct($request, $responseType);
     }
 

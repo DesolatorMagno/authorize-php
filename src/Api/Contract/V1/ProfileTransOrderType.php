@@ -3,6 +3,9 @@
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
 use DesolatorMagno\AuthorizePhp\Api\Contract\V1\ProfileTransAmountType;
+use DesolatorMagno\AuthorizePhp\Util\Mapper;
+use JsonSerializable;
+use ReturnTypeWillChange;
 
 /**
  * Class representing ProfileTransOrderType
@@ -10,7 +13,7 @@ use DesolatorMagno\AuthorizePhp\Api\Contract\V1\ProfileTransAmountType;
  *
  * XSD Type: profileTransOrderType
  */
-class ProfileTransOrderType extends ProfileTransAmountType implements \JsonSerializable
+class ProfileTransOrderType extends ProfileTransAmountType implements JsonSerializable
 {
 
     /**
@@ -29,7 +32,7 @@ class ProfileTransOrderType extends ProfileTransAmountType implements \JsonSeria
     private $customerShippingAddressId = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\OrderExType $order
+     * @property OrderExType $order
      */
     private $order = null;
 
@@ -54,19 +57,19 @@ class ProfileTransOrderType extends ProfileTransAmountType implements \JsonSeria
     private $splitTenderId = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ProcessingOptionsType
+     * @property ProcessingOptionsType
      * $processingOptions
      */
     private $processingOptions = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\SubsequentAuthInformationType
+     * @property SubsequentAuthInformationType
      * $subsequentAuthInformation
      */
     private $subsequentAuthInformation = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\AuthorizationIndicatorType
+     * @property AuthorizationIndicatorType
      * $authorizationIndicatorType
      */
     private $authorizationIndicatorType = null;
@@ -140,7 +143,7 @@ class ProfileTransOrderType extends ProfileTransAmountType implements \JsonSeria
     /**
      * Gets as order
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\OrderExType
+     * @return OrderExType
      */
     public function getOrder()
     {
@@ -150,10 +153,10 @@ class ProfileTransOrderType extends ProfileTransAmountType implements \JsonSeria
     /**
      * Sets a new order
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\OrderExType $order
+     * @param OrderExType $order
      * @return self
      */
-    public function setOrder(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\OrderExType $order)
+    public function setOrder(OrderExType $order)
     {
         $this->order = $order;
         return $this;
@@ -250,7 +253,7 @@ class ProfileTransOrderType extends ProfileTransAmountType implements \JsonSeria
     /**
      * Gets as processingOptions
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ProcessingOptionsType
+     * @return ProcessingOptionsType
      */
     public function getProcessingOptions()
     {
@@ -260,10 +263,10 @@ class ProfileTransOrderType extends ProfileTransAmountType implements \JsonSeria
     /**
      * Sets a new processingOptions
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ProcessingOptionsType $processingOptions
+     * @param ProcessingOptionsType $processingOptions
      * @return self
      */
-    public function setProcessingOptions(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\ProcessingOptionsType $processingOptions)
+    public function setProcessingOptions(ProcessingOptionsType $processingOptions)
     {
         $this->processingOptions = $processingOptions;
         return $this;
@@ -272,7 +275,7 @@ class ProfileTransOrderType extends ProfileTransAmountType implements \JsonSeria
     /**
      * Gets as subsequentAuthInformation
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\SubsequentAuthInformationType
+     * @return SubsequentAuthInformationType
      */
     public function getSubsequentAuthInformation()
     {
@@ -282,11 +285,11 @@ class ProfileTransOrderType extends ProfileTransAmountType implements \JsonSeria
     /**
      * Sets a new subsequentAuthInformation
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\SubsequentAuthInformationType
+     * @param SubsequentAuthInformationType
      * $subsequentAuthInformation
      * @return self
      */
-    public function setSubsequentAuthInformation(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\SubsequentAuthInformationType $subsequentAuthInformation)
+    public function setSubsequentAuthInformation(SubsequentAuthInformationType $subsequentAuthInformation)
     {
         $this->subsequentAuthInformation = $subsequentAuthInformation;
         return $this;
@@ -295,7 +298,7 @@ class ProfileTransOrderType extends ProfileTransAmountType implements \JsonSeria
     /**
      * Gets as authorizationIndicatorType
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\AuthorizationIndicatorType
+     * @return AuthorizationIndicatorType
      */
     public function getAuthorizationIndicatorType()
     {
@@ -305,24 +308,24 @@ class ProfileTransOrderType extends ProfileTransAmountType implements \JsonSeria
     /**
      * Sets a new authorizationIndicatorType
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\AuthorizationIndicatorType
+     * @param AuthorizationIndicatorType
      * $authorizationIndicatorType
      * @return self
      */
-    public function setAuthorizationIndicatorType(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\AuthorizationIndicatorType $authorizationIndicatorType)
+    public function setAuthorizationIndicatorType(AuthorizationIndicatorType $authorizationIndicatorType)
     {
         $this->authorizationIndicatorType = $authorizationIndicatorType;
         return $this;
     }
 
   // Json Serialize Code
-   #[\ReturnTypeWillChange]
+   #[ReturnTypeWillChange]
     public function jsonSerialize(){
         $values = array_filter((array)get_object_vars($this),
         function ($val){
             return !is_null($val);
         });
-        $mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
+        $mapper = Mapper::Instance();
         foreach($values as $key => $value){
             $classDetails = $mapper->getClass(get_class($this) , $key);
             if (isset($value)){

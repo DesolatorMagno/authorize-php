@@ -2,13 +2,18 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
+use DateTime;
+use DesolatorMagno\AuthorizePhp\Util\Mapper;
+use JsonSerializable;
+use ReturnTypeWillChange;
+
 /**
  * Class representing ReturnedItemType
  *
  *
  * XSD Type: returnedItemType
  */
-class ReturnedItemType implements \JsonSerializable
+class ReturnedItemType implements JsonSerializable
 {
 
     /**
@@ -17,12 +22,12 @@ class ReturnedItemType implements \JsonSerializable
     private $id = null;
 
     /**
-     * @property \DateTime $dateUTC
+     * @property DateTime $dateUTC
      */
     private $dateUTC = null;
 
     /**
-     * @property \DateTime $dateLocal
+     * @property DateTime $dateLocal
      */
     private $dateLocal = null;
 
@@ -61,7 +66,7 @@ class ReturnedItemType implements \JsonSerializable
     /**
      * Gets as dateUTC
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getDateUTC()
     {
@@ -71,10 +76,10 @@ class ReturnedItemType implements \JsonSerializable
     /**
      * Sets a new dateUTC
      *
-     * @param \DateTime $dateUTC
+     * @param DateTime $dateUTC
      * @return self
      */
-    public function setDateUTC(\DateTime $dateUTC)
+    public function setDateUTC(DateTime $dateUTC)
     {
         $this->dateUTC = $dateUTC;
         return $this;
@@ -83,7 +88,7 @@ class ReturnedItemType implements \JsonSerializable
     /**
      * Gets as dateLocal
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getDateLocal()
     {
@@ -93,10 +98,10 @@ class ReturnedItemType implements \JsonSerializable
     /**
      * Sets a new dateLocal
      *
-     * @param \DateTime $dateLocal
+     * @param DateTime $dateLocal
      * @return self
      */
-    public function setDateLocal(\DateTime $dateLocal)
+    public function setDateLocal(DateTime $dateLocal)
     {
         $this->dateLocal = $dateLocal;
         return $this;
@@ -148,13 +153,13 @@ class ReturnedItemType implements \JsonSerializable
 
 
   // Json Serialize Code
-   #[\ReturnTypeWillChange]
+   #[ReturnTypeWillChange]
     public function jsonSerialize(){
         $values = array_filter((array)get_object_vars($this),
         function ($val){
             return !is_null($val);
         });
-        $mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
+        $mapper = Mapper::Instance();
         foreach($values as $key => $value){
             $classDetails = $mapper->getClass(get_class($this) , $key);
             if (isset($value)){
@@ -182,11 +187,11 @@ class ReturnedItemType implements \JsonSerializable
     public function set($data)
     {
         if(is_array($data) || is_object($data)) {
-			$mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
+			$mapper = Mapper::Instance();
 			foreach($data AS $key => $value) {
 				$classDetails = $mapper->getClass(get_class($this) , $key);
 
-				if($classDetails !== NULL ) {
+				if(!is_null($classDetails)) {
 					if ($classDetails->isArray) {
 						if ($classDetails->isCustomDefined) {
 							foreach($value AS $keyChild => $valueChild) {
@@ -197,7 +202,7 @@ class ReturnedItemType implements \JsonSerializable
 						}
 						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
 							foreach($value AS $keyChild => $valueChild) {
-								$type = new \DateTime($valueChild);
+								$type = new DateTime($valueChild);
 								$this->{'addTo' . $key}($type);
 							}
 						}
@@ -214,7 +219,7 @@ class ReturnedItemType implements \JsonSerializable
 							$this->{'set' . $key}($type);
 						}
 						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
-							$type = new \DateTime($value);
+							$type = new DateTime($value);
 							$this->{'set' . $key}($type);
 						}
 						else {

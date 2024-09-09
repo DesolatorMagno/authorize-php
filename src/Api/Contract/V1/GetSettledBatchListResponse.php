@@ -9,17 +9,17 @@ class GetSettledBatchListResponse extends ANetApiResponseType
 {
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\BatchDetailsType[] $batchList
+     * @property BatchDetailsType[] $batchList
      */
     private $batchList = null;
 
     /**
      * Adds as batch
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\BatchDetailsType $batch
+     * @param BatchDetailsType $batch
      *@return self
      */
-    public function addToBatchList(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\BatchDetailsType $batch)
+    public function addToBatchList(BatchDetailsType $batch)
     {
         $this->batchList[] = $batch;
         return $this;
@@ -50,7 +50,7 @@ class GetSettledBatchListResponse extends ANetApiResponseType
     /**
      * Gets as batchList
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\BatchDetailsType[]
+     * @return BatchDetailsType[]
      */
     public function getBatchList()
     {
@@ -60,7 +60,7 @@ class GetSettledBatchListResponse extends ANetApiResponseType
     /**
      * Sets a new batchList
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\BatchDetailsType[] $batchList
+     * @param BatchDetailsType[] $batchList
      * @return self
      */
     public function setBatchList(array $batchList)

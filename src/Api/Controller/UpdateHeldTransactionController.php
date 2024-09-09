@@ -8,7 +8,7 @@ class UpdateHeldTransactionController extends ApiOperationBase
 {
     public function __construct(AnetApiRequestType $request)
     {
-        $responseType = 'DesolatorMagno\AuthorizePhp\Api\Contract\V1\UpdateHeldTransactionResponse';
+        $responseType = \DesolatorMagno\AuthorizePhp\Api\Contract\V1\UpdateHeldTransactionResponse::class;
         parent::__construct($request, $responseType);
     }
 

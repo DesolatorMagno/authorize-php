@@ -35,8 +35,8 @@ class Log
 {
     private $sensitiveXmlTags = NULL;
     private $sensitiveStringRegexes = NULL;
-    private $logFile = '';
-    private $logLevel = ANET_LOG_LEVEL;
+    private string $logFile = '';
+    private int $logLevel = ANET_LOG_LEVEL;
 
     /**
      * Takes a regex pattern (string) as argument and adds the forward slash delimiter.
@@ -82,8 +82,7 @@ class Log
             $patterns [$i] = $pattern;
             $replacements[$i] = $replacement;
         }
-        $maskedString = preg_replace($patterns, $replacements, $rawString);
-        return $maskedString;
+        return preg_replace($patterns, $replacements, $rawString);
     }
 
     /**
@@ -95,8 +94,8 @@ class Log
      */
     private function maskCreditCards(string $rawString): string
     {
-        $patterns = array();
-        $replacements = array();
+        $patterns = [];
+        $replacements = [];
 
         foreach ($this->sensitiveStringRegexes as $i => $creditCardRegex) {
             $pattern = $creditCardRegex;
@@ -121,21 +120,21 @@ class Log
      * iteratively fetches the properties of the object (including from the base classes up the hierarchy), ...
      * collects them in an array of ReflectionProperty and returns the array.
      *
-     * @param ReflectionObject $reflClass
+     * @param ReflectionObject $reflexionClass
      *
      * @return ReflectionProperty[]
      */
-    private function getPropertiesInclBase($reflClass)
+    private function getPropertiesInclBase(ReflectionObject $reflexionClass)
     {
-        $properties = array();
+        $properties = [];
         try {
             do {
-                $curClassPropList = $reflClass->getProperties();
+                $curClassPropList = $reflexionClass->getProperties();
                 foreach ($curClassPropList as $p) {
                     $p->setAccessible(true);
                 }
                 $properties = array_merge($curClassPropList, $properties);
-            } while ($reflClass = $reflClass->getParentClass());
+            } while ($reflexionClass = $reflexionClass->getParentClass());
         } catch (ReflectionException $e) {
         }
         return $properties;
@@ -195,7 +194,7 @@ class Log
             if (is_object($propValue)) {
                 $prop->setValue($obj, $this->maskSensitiveProperties($propValue));
             } else if (is_array($propValue)) {
-                $newVals = array();
+                $newVals = [];
                 foreach ($propValue as $e => $arrEle) {
                     $newVals[] = $this->maskSensitiveProperties($arrEle);
                 }
@@ -224,8 +223,8 @@ class Log
      *
      * @return string
      */
-    private function getMasked($raw)
-    { //always returns string
+    private function getMasked($raw): string
+    {
         $messageType = gettype($raw);
         $message = '';
         if ($messageType == 'object') {
@@ -238,11 +237,11 @@ class Log
             }
             $message = print_r($copyArray, true); // returns string
         } else { //$messageType == "string")
-            $primtiveTypeAsString = strval($raw);
+            $primitiveTypeAsString = (string)$raw;
 
-            $maskedXml = $primtiveTypeAsString;
+            $maskedXml = $primitiveTypeAsString;
             if ($messageType == 'string') {
-                $maskedXml = $this->maskSensitiveXmlString($primtiveTypeAsString);
+                $maskedXml = $this->maskSensitiveXmlString($primitiveTypeAsString);
             }
             //mask credit card numbers
             $message = $this->maskCreditCards($maskedXml);
@@ -250,7 +249,7 @@ class Log
         return $message;
     }
 
-    private function log($logLevelPrefix, $logMessage, $flags)
+    private function log($logLevelPrefix, $logMessage, int $flags): void
     {
         if (!$this->logFile) return;
         //masking
@@ -273,35 +272,35 @@ class Log
         file_put_contents($this->logFile, $logString, $flags);
     }
 
-    public function debug($logMessage, $flags = FILE_APPEND)
+    public function debug($logMessage, int $flags = FILE_APPEND): void
     {
         if (ANET_LOG_DEBUG >= $this->logLevel) {
             $this->log(ANET_LOG_DEBUG_PREFIX, $logMessage, $flags);
         }
     }
 
-    public function info($logMessage, $flags = FILE_APPEND)
+    public function info($logMessage, int $flags = FILE_APPEND): void
     {
         if (ANET_LOG_INFO >= $this->logLevel) {
             $this->log(ANET_LOG_INFO_PREFIX, $logMessage, $flags);
         }
     }
 
-    public function warn($logMessage, $flags = FILE_APPEND)
+    public function warn($logMessage, int $flags = FILE_APPEND): void
     {
         if (ANET_LOG_WARN >= $this->logLevel) {
             $this->log(ANET_LOG_WARN_PREFIX, $logMessage, $flags);
         }
     }
 
-    public function error($logMessage, $flags = FILE_APPEND)
+    public function error($logMessage, int $flags = FILE_APPEND): void
     {
         if (ANET_LOG_ERROR >= $this->logLevel) {
             $this->log(ANET_LOG_ERROR_PREFIX, $logMessage, $flags);
         }
     }
 
-    private function logFormat($logLevelPrefix, $format, $objects, $flags)
+    private function logFormat($logLevelPrefix, string $format, $objects, int $flags): void
     {
         try {
             foreach ($objects as $i => $testObject) {
@@ -314,28 +313,28 @@ class Log
         }
     }
 
-    public function debugFormat($format, $args = array(), $flags = FILE_APPEND)
+    public function debugFormat($format, array $args = [], int $flags = FILE_APPEND): void
     {
         if (ANET_LOG_DEBUG >= $this->logLevel) {
             $this->logFormat(ANET_LOG_DEBUG_PREFIX, $format, $args, $flags);
         }
     }
 
-    public function infoFormat($format, $args = array(), $flags = FILE_APPEND)
+    public function infoFormat($format, array $args = [], int $flags = FILE_APPEND): void
     {
         if (ANET_LOG_INFO >= $this->logLevel) {
             $this->logFormat(ANET_LOG_INFO_PREFIX, $format, $args, $flags);
         }
     }
 
-    public function warnFormat($format, $args = array(), $flags = FILE_APPEND)
+    public function warnFormat($format, array $args = [], int $flags = FILE_APPEND): void
     {
         if (ANET_LOG_WARN >= $this->logLevel) {
             $this->logFormat(ANET_LOG_WARN_PREFIX, $format, $args, $flags);
         }
     }
 
-    public function errorFormat($format, $args = array(), $flags = FILE_APPEND)
+    public function errorFormat(string $format, array $args = [], $flags = FILE_APPEND): void
     {
         if (ANET_LOG_ERROR >= $this->logLevel) {
             $this->logFormat(ANET_LOG_ERROR_PREFIX, $format, $args, $flags);
@@ -346,7 +345,7 @@ class Log
      * @param string $logLevel
      * possible values = ANET_LOG_DEBUG, ANET_LOG_INFO, ANET_LOG_WARN, ANET_LOG_ERROR
      */
-    public function setLogLevel($logLevel)
+    public function setLogLevel(string $logLevel): void
     {
         $this->logLevel = $logLevel;
     }
@@ -354,7 +353,7 @@ class Log
     /**
      * @return string
      */
-    public function getLogLevel()
+    public function getLogLevel(): string
     {
         return $this->logLevel;
     }
@@ -362,7 +361,7 @@ class Log
     /**
      * @param string $logFile
      */
-    public function setLogFile($logFile)
+    public function setLogFile(string $logFile): void
     {
         $this->logFile = $logFile;
     }
@@ -370,7 +369,7 @@ class Log
     /**
      * @return string
      */
-    public function getLogFile()
+    public function getLogFile(): string
     {
         return $this->logFile;
     }
@@ -381,5 +380,3 @@ class Log
         $this->sensitiveStringRegexes = ANetSensitiveFields::getSensitiveStringRegexes();
     }
 }
-
-?>

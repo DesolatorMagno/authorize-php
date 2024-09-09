@@ -3,9 +3,10 @@
 namespace DesolatorMagno\AuthorizePhp\Traits;
 
 use DesolatorMagno\AuthorizePhp\Util\Mapper;
+use ReturnTypeWillChange;
 
 trait SerializeAnetResponseTrait {
-    #[\ReturnTypeWillChange]
+    #[ReturnTypeWillChange]
     public function jsonSerialize(){
         $values = array_filter((array)get_object_vars($this),
             function ($val){

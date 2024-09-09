@@ -5,7 +5,7 @@ namespace DesolatorMagno\AuthorizePhp\Util;
 trait BoomRemover
 {
 
-    public function removeBoom(?string $jsonResponse): ?array
+    public function removeBoom(string|null $jsonResponse): array|null
     {
         if (is_null($jsonResponse)) {
             return null;
@@ -13,7 +13,7 @@ trait BoomRemover
 
         //decoding json and removing bom
         $possibleBOM = substr($jsonResponse, 0, 3);
-        $utfBOM = pack("CCC", 0xef, 0xbb, 0xbf);
+        $utfBOM = pack('CCC', 0xef, 0xbb, 0xbf);
 
         if (0 === strncmp($possibleBOM, $utfBOM, 3)) {
             return json_decode(substr($jsonResponse, 3), true);

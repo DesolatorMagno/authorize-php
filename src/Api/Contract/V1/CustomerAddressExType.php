@@ -2,6 +2,9 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
+use DesolatorMagno\AuthorizePhp\Util\Mapper;
+use ReturnTypeWillChange;
+
 /**
  * Class representing CustomerAddressExType
  *
@@ -40,13 +43,13 @@ class CustomerAddressExType extends CustomerAddressType
 
 
   // Json Serialize Code
-   #[\ReturnTypeWillChange]
+   #[ReturnTypeWillChange]
     public function jsonSerialize(){
         $values = array_filter((array)get_object_vars($this),
         function ($val){
             return !is_null($val);
         });
-        $mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
+        $mapper = Mapper::Instance();
         foreach($values as $key => $value){
             $classDetails = $mapper->getClass(get_class($this) , $key);
             if (isset($value)){

@@ -14,7 +14,7 @@ class GetAUJobDetailsResponse extends ANetApiResponseType
     private $totalNumInResultSet = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ListOfAUDetailsType $auDetails
+     * @property ListOfAUDetailsType $auDetails
      */
     private $auDetails = null;
 
@@ -43,7 +43,7 @@ class GetAUJobDetailsResponse extends ANetApiResponseType
     /**
      * Gets as auDetails
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ListOfAUDetailsType
+     * @return ListOfAUDetailsType
      */
     public function getAuDetails()
     {
@@ -53,10 +53,10 @@ class GetAUJobDetailsResponse extends ANetApiResponseType
     /**
      * Sets a new auDetails
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\ListOfAUDetailsType $auDetails
+     * @param ListOfAUDetailsType $auDetails
      * @return self
      */
-    public function setAuDetails(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\ListOfAUDetailsType $auDetails)
+    public function setAuDetails(ListOfAUDetailsType $auDetails)
     {
         $this->auDetails = $auDetails;
         return $this;

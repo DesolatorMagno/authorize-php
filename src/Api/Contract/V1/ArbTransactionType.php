@@ -2,8 +2,10 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
+use DateTime;
 use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeGlobalTrait;
 use DesolatorMagno\AuthorizePhp\Traits\SetGlobalTrait;
+use JsonSerializable;
 
 /**
  * Class representing ArbTransactionType
@@ -11,7 +13,7 @@ use DesolatorMagno\AuthorizePhp\Traits\SetGlobalTrait;
  *
  * XSD Type: arbTransaction
  */
-class ArbTransactionType implements \JsonSerializable
+class ArbTransactionType implements JsonSerializable
 {
     use JsonSerializeGlobalTrait, SetGlobalTrait;
     /**
@@ -25,7 +27,7 @@ class ArbTransactionType implements \JsonSerializable
     private $response = null;
 
     /**
-     * @property \DateTime $submitTimeUTC
+     * @property DateTime $submitTimeUTC
      */
     private $submitTimeUTC = null;
 
@@ -86,7 +88,7 @@ class ArbTransactionType implements \JsonSerializable
     /**
      * Gets as submitTimeUTC
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getSubmitTimeUTC()
     {
@@ -96,10 +98,10 @@ class ArbTransactionType implements \JsonSerializable
     /**
      * Sets a new submitTimeUTC
      *
-     * @param \DateTime $submitTimeUTC
+     * @param DateTime $submitTimeUTC
      * @return self
      */
-    public function setSubmitTimeUTC(\DateTime $submitTimeUTC)
+    public function setSubmitTimeUTC(DateTime $submitTimeUTC)
     {
         $this->submitTimeUTC = $submitTimeUTC;
         return $this;

@@ -8,7 +8,7 @@ class GetTransactionListController extends ApiOperationBase
 {
     public function __construct(AnetApiRequestType $request)
     {
-        $responseType = 'DesolatorMagno\AuthorizePhp\Api\Contract\V1\GetTransactionListResponse';
+        $responseType = \DesolatorMagno\AuthorizePhp\Api\Contract\V1\GetTransactionListResponse::class;
         parent::__construct($request, $responseType);
     }
 

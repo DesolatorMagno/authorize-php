@@ -8,7 +8,7 @@ class UpdateCustomerPaymentProfileController extends ApiOperationBase
 {
     public function __construct(AnetApiRequestType $request)
     {
-        $responseType = 'DesolatorMagno\AuthorizePhp\Api\Contract\V1\UpdateCustomerPaymentProfileResponse';
+        $responseType = \DesolatorMagno\AuthorizePhp\Api\Contract\V1\UpdateCustomerPaymentProfileResponse::class;
         parent::__construct($request, $responseType);
     }
 

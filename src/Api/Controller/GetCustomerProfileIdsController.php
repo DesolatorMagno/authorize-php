@@ -8,7 +8,7 @@ class GetCustomerProfileIdsController extends ApiOperationBase
 {
     public function __construct(AnetApiRequestType $request)
     {
-        $responseType = 'DesolatorMagno\AuthorizePhp\Api\Contract\V1\GetCustomerProfileIdsResponse';
+        $responseType = \DesolatorMagno\AuthorizePhp\Api\Contract\V1\GetCustomerProfileIdsResponse::class;
         parent::__construct($request, $responseType);
     }
 

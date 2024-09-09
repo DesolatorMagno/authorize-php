@@ -2,8 +2,10 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
+use DateTime;
 use DesolatorMagno\AuthorizePhp\Traits\JsonSerializeGlobalTrait;
 use DesolatorMagno\AuthorizePhp\Traits\SetGlobalTrait;
+use JsonSerializable;
 
 /**
  * Class representing OrderType
@@ -11,7 +13,7 @@ use DesolatorMagno\AuthorizePhp\Traits\SetGlobalTrait;
  *
  * XSD Type: orderType
  */
-class OrderType implements \JsonSerializable
+class OrderType implements JsonSerializable
 {
     use JsonSerializeGlobalTrait, SetGlobalTrait;
 
@@ -66,7 +68,7 @@ class OrderType implements \JsonSerializable
     private $summaryCommodityCode = null;
 
     /**
-     * @property \DateTime $purchaseOrderDateUTC
+     * @property DateTime $purchaseOrderDateUTC
      */
     private $purchaseOrderDateUTC = null;
 
@@ -328,7 +330,7 @@ class OrderType implements \JsonSerializable
     /**
      * Gets as purchaseOrderDateUTC
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getPurchaseOrderDateUTC()
     {
@@ -338,10 +340,10 @@ class OrderType implements \JsonSerializable
     /**
      * Sets a new purchaseOrderDateUTC
      *
-     * @param \DateTime $purchaseOrderDateUTC
+     * @param DateTime $purchaseOrderDateUTC
      * @return self
      */
-    public function setPurchaseOrderDateUTC(\DateTime $purchaseOrderDateUTC)
+    public function setPurchaseOrderDateUTC(DateTime $purchaseOrderDateUTC)
     {
         $this->purchaseOrderDateUTC = $purchaseOrderDateUTC;
         return $this;

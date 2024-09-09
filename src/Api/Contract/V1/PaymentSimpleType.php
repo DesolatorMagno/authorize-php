@@ -2,29 +2,34 @@
 
 namespace DesolatorMagno\AuthorizePhp\Api\Contract\V1;
 
+use DateTime;
+use DesolatorMagno\AuthorizePhp\Util\Mapper;
+use JsonSerializable;
+use ReturnTypeWillChange;
+
 /**
  * Class representing PaymentSimpleType
  *
  *
  * XSD Type: paymentSimpleType
  */
-class PaymentSimpleType implements \JsonSerializable
+class PaymentSimpleType implements JsonSerializable
 {
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CreditCardSimpleType $creditCard
+     * @property CreditCardSimpleType $creditCard
      */
     private $creditCard = null;
 
     /**
-     * @property \DesolatorMagno\AuthorizePhp\Api\Contract\V1\BankAccountType $bankAccount
+     * @property BankAccountType $bankAccount
      */
     private $bankAccount = null;
 
     /**
      * Gets as creditCard
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CreditCardSimpleType
+     * @return CreditCardSimpleType
      */
     public function getCreditCard()
     {
@@ -34,10 +39,10 @@ class PaymentSimpleType implements \JsonSerializable
     /**
      * Sets a new creditCard
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\CreditCardSimpleType $creditCard
+     * @param CreditCardSimpleType $creditCard
      * @return self
      */
-    public function setCreditCard(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\CreditCardSimpleType $creditCard)
+    public function setCreditCard(CreditCardSimpleType $creditCard)
     {
         $this->creditCard = $creditCard;
         return $this;
@@ -46,7 +51,7 @@ class PaymentSimpleType implements \JsonSerializable
     /**
      * Gets as bankAccount
      *
-     * @return \DesolatorMagno\AuthorizePhp\Api\Contract\V1\BankAccountType
+     * @return BankAccountType
      */
     public function getBankAccount()
     {
@@ -56,10 +61,10 @@ class PaymentSimpleType implements \JsonSerializable
     /**
      * Sets a new bankAccount
      *
-     * @param \DesolatorMagno\AuthorizePhp\Api\Contract\V1\BankAccountType $bankAccount
+     * @param BankAccountType $bankAccount
      * @return self
      */
-    public function setBankAccount(\DesolatorMagno\AuthorizePhp\Api\Contract\V1\BankAccountType $bankAccount)
+    public function setBankAccount(BankAccountType $bankAccount)
     {
         $this->bankAccount = $bankAccount;
         return $this;
@@ -67,13 +72,13 @@ class PaymentSimpleType implements \JsonSerializable
 
 
   // Json Serialize Code
-   #[\ReturnTypeWillChange]
+   #[ReturnTypeWillChange]
     public function jsonSerialize(){
         $values = array_filter((array)get_object_vars($this),
         function ($val){
             return !is_null($val);
         });
-        $mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
+        $mapper = Mapper::Instance();
         foreach($values as $key => $value){
             $classDetails = $mapper->getClass(get_class($this) , $key);
             if (isset($value)){
@@ -101,11 +106,11 @@ class PaymentSimpleType implements \JsonSerializable
     public function set($data)
     {
         if(is_array($data) || is_object($data)) {
-			$mapper = \DesolatorMagno\AuthorizePhp\Util\Mapper::Instance();
+			$mapper = Mapper::Instance();
 			foreach($data AS $key => $value) {
 				$classDetails = $mapper->getClass(get_class($this) , $key);
 
-				if($classDetails !== NULL ) {
+				if(!is_null($classDetails)) {
 					if ($classDetails->isArray) {
 						if ($classDetails->isCustomDefined) {
 							foreach($value AS $keyChild => $valueChild) {
@@ -116,7 +121,7 @@ class PaymentSimpleType implements \JsonSerializable
 						}
 						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
 							foreach($value AS $keyChild => $valueChild) {
-								$type = new \DateTime($valueChild);
+								$type = new DateTime($valueChild);
 								$this->{'addTo' . $key}($type);
 							}
 						}
@@ -133,7 +138,7 @@ class PaymentSimpleType implements \JsonSerializable
 							$this->{'set' . $key}($type);
 						}
 						else if ($classDetails->className === 'DateTime' || $classDetails->className === 'Date' ) {
-							$type = new \DateTime($value);
+							$type = new DateTime($value);
 							$this->{'set' . $key}($type);
 						}
 						else {
